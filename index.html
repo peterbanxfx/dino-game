@@ -1038,30 +1038,23 @@ function stopBGMusic(){
 
 function toggleMusic(){
   const btn=document.getElementById('music-btn');
+  // iOS Safari: MUST create AudioContext synchronously inside user gesture
   if(!AC){
-    // Must create AND resume in same user-gesture call stack for iOS Safari
     try{
       AC = new (window.AudioContext||window.webkitAudioContext)();
     }catch(e){ console.warn('AudioContext failed',e); return; }
   }
+  // iOS Safari: MUST call resume() synchronously inside user gesture
+  if(AC.state==='suspended') AC.resume();
   musicOn=!musicOn;
   if(musicOn){
     btn.textContent='🔊 音乐开';
     btn.style.background='#f0faf5';
-    // iOS requires explicit resume inside user gesture
-    const tryStart=()=>{
-      if(AC.state==='suspended'){
-        AC.resume().then(startBGMusic);
-      } else {
-        startBGMusic();
-      }
-    };
-    tryStart();
+    startBGMusic();
   } else {
     btn.textContent='🔇 音乐关';
     btn.style.background='#fff';
     stopBGMusic();
-    if(AC.state==='running') AC.suspend();
   }
 }
 
