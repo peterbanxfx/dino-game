@@ -15,11 +15,12 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 .hide{display:none!important;}
 :root{--g:#1B8A5A;--am:#E6900A;--bl:#1565C0;--pu:#5E35B1;--rd:#C62828;}
 
+/* MAP */
 #map{background:linear-gradient(135deg,#e0f7fa,#f1f8e9);}
 .mwrap{width:90%;max-width:780px;text-align:center;padding:20px 0;}
 .mtitle{font-size:26px;font-weight:800;color:var(--g);margin-bottom:6px;}
 .msub{font-size:13px;color:#5a7a5a;margin-bottom:20px;}
-.mlevels{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+.mlevels{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;}
 .mlv{width:170px;border-radius:18px;border:2px solid #a5d6a7;background:#fff;padding:16px;cursor:pointer;transition:all .15s;box-shadow:0 3px 10px rgba(0,0,0,.08);}
 .mlv:hover{transform:translateY(-3px);border-color:var(--g);}
 .mlv.locked{opacity:.4;cursor:not-allowed;pointer-events:none;}
@@ -28,6 +29,7 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 .lvd{font-size:11px;color:#5a7a5a;margin-top:3px;line-height:1.5;}
 .lvs{font-size:18px;margin-top:6px;letter-spacing:3px;}
 
+/* STORY */
 #story{background:linear-gradient(135deg,#f1f8e9,#e3f2fd);}
 .swrap{width:90%;max-width:740px;display:flex;flex-direction:column;gap:10px;padding:16px 0;}
 .shdr{display:flex;align-items:center;gap:14px;}
@@ -59,6 +61,7 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 .sbtn{padding:10px 28px;border-radius:10px;background:var(--g);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;align-self:flex-start;}
 .sbtn.show{opacity:1;pointer-events:all;}
 
+/* MATH */
 #math{background:linear-gradient(135deg,#e3f2fd,#e8eaf6);}
 .mathwrap{width:88%;max-width:540px;display:flex;flex-direction:column;gap:14px;padding:16px 0;}
 .mathcard{background:#fff;border:1.5px solid #90caf9;border-radius:16px;padding:20px;}
@@ -77,6 +80,7 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 .nb:active{background:#e3f2fd;}
 .nb.go{background:var(--bl);color:#fff;}
 
+/* HUD */
 #hud{position:absolute;top:0;left:0;right:0;height:48px;background:rgba(255,255,255,.92);border-bottom:1px solid #c8e6c9;display:flex;align-items:center;padding:0 14px;gap:12px;pointer-events:none;}
 .hz{font-size:12px;color:var(--g);font-weight:700;}
 .hpb{width:80px;height:8px;background:#e0e0e0;border-radius:4px;overflow:hidden;}
@@ -84,15 +88,17 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 .hpt{font-size:10px;color:var(--g);}
 .hsc{font-size:12px;color:var(--bl);font-weight:700;}
 .hpg{font-size:11px;color:var(--am);font-weight:700;}
-.hbf{font-size:11px;color:var(--am);}
+/* type badge in HUD */
+.htype{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600;}
+.htype.en{background:#e3f2fd;color:var(--bl);}
+.htype.cn{background:#f3e5f5;color:var(--pu);}
+.htype.ma{background:#fff8e1;color:#e65100;}
 
-/* Q panel bottom */
+/* Q PANEL bottom */
 #qp{position:absolute;bottom:0;left:0;right:0;background:rgba(255,255,255,.96);border-top:2px solid #c8e6c9;padding:10px 16px 12px;pointer-events:none;box-shadow:0 -3px 12px rgba(0,0,0,.08);}
 #qtb{font-size:10px;color:#5a7a5a;margin-bottom:3px;font-weight:600;}
 #qrow{display:flex;align-items:center;gap:12px;}
-/* scene canvas — fixed intrinsic size, CSS scales to fit */
-#qsc{border-radius:8px;border:1.5px solid #c8e6c9;background:#f9fbe7;flex-shrink:0;display:none;
-     width:130px;height:110px;}
+#qsc{border-radius:8px;border:1.5px solid #c8e6c9;background:#f9fbe7;flex-shrink:0;display:none;width:130px;height:110px;}
 #qt{font-size:15px;color:#1a3a2a;font-weight:700;line-height:1.6;flex:1;white-space:pre-line;}
 #wpl{padding-top:6px;border-top:1px solid #e8f5e9;margin-top:6px;display:none;}
 #wsl{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;}
@@ -100,6 +106,7 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 .ws.ok{border-color:var(--g);color:var(--g);background:#f0faf5;}
 #wzh{font-size:11px;color:#5a7a5a;margin-top:3px;}
 
+/* CONTROLS */
 #jz{position:absolute;pointer-events:all;}
 #jb{position:absolute;inset:0;border-radius:50%;background:rgba(27,138,90,.12);border:2px solid rgba(27,138,90,.3);}
 #jk{position:absolute;width:50px;height:50px;border-radius:50%;background:rgba(27,138,90,.55);border:2px solid var(--g);top:50%;left:50%;transform:translate(-50%,-50%);}
@@ -113,6 +120,7 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 #dmg{position:absolute;inset:0;background:rgba(198,40,40,.22);pointer-events:none;opacity:0;transition:opacity .12s;}
 #wpop{position:absolute;top:35%;left:50%;transform:translate(-50%,-50%);font-size:24px;font-weight:800;color:var(--g);pointer-events:none;opacity:0;white-space:nowrap;transition:opacity .2s;}
 
+/* READING */
 #reading{background:linear-gradient(135deg,#f3e5f5,#e8eaf6);}
 .rpanel{background:#fff;border:2px solid #ce93d8;border-radius:16px;padding:22px;width:86%;max-width:560px;}
 .rtag{font-size:12px;color:var(--pu);margin-bottom:10px;font-weight:700;}
@@ -127,6 +135,7 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 .rnxt{margin-top:14px;width:100%;padding:11px;border-radius:10px;background:var(--g);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;}
 .rnxt.show{opacity:1;pointer-events:all;}
 
+/* RESULT */
 #result{background:linear-gradient(135deg,#e8f5e9,#fff9c4);}
 .rsp{background:#fff;border:2px solid #a5d6a7;border-radius:20px;padding:22px 26px;width:82%;max-width:500px;text-align:center;}
 .rdi{font-size:52px;margin-bottom:6px;}
@@ -156,9 +165,10 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
   <span class="hz" id="hz">🌿</span>
   <div style="display:flex;align-items:center;gap:5px;"><div class="hpb"><div class="hpf" id="hpf" style="width:100%"></div></div><span class="hpt" id="hpt">100%</span></div>
   <div style="flex:1"></div>
-  <span class="hpg" id="hpg">0/10</span>
+  <span class="htype" id="htype"></span>
+  <span class="hpg" id="hpg">0/20</span>
   <span class="hsc">⭐<span id="hsc">0</span></span>
-  <span class="hbf" id="hbf"></span>
+  <span id="hbf" style="font-size:11px;color:var(--am);display:none"></span>
 </div>
 
 <div id="qp" class="hide">
@@ -174,21 +184,24 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
   </div>
 </div>
 
-<div id="kh" class="hide">WASD 移动 · 空格 吞噬</div>
+<div id="kh" class="hide">WASD 移动 · 空格 吞噬/踩蛋/撞陨石</div>
 <div id="jz" class="hide"><div id="jb"></div><div id="jk"></div></div>
-<div id="eb" class="hide"><div style="font-size:28px">👄</div><div style="font-size:10px;color:var(--am);font-weight:700;margin-top:2px">吞噬</div></div>
+<div id="eb" class="hide"><div style="font-size:28px">👄</div><div style="font-size:10px;color:var(--am);font-weight:700;margin-top:2px" id="eblbl">吞噬</div></div>
 <div id="bfw" class="hide">⚡加速<div id="bfb"><div id="bff"></div></div></div>
 <div id="dmg"></div>
 <div id="wpop"></div>
 
+<!-- MAP -->
 <div id="map" class="scr">
   <div class="mwrap">
     <div class="mtitle">🌍 恐龙星球守卫战</div>
-    <div class="msub">选择关卡开始冒险 · 每次内容随机不重复</div>
+    <div class="msub">语文·数学·英语 · 每次随机不重复</div>
     <div class="mlevels" id="mlevels"></div>
+    <button id="music-btn" onclick="toggleMusic()" style="padding:8px 20px;border-radius:20px;border:1.5px solid #a5d6a7;background:#fff;color:#1B8A5A;font-size:13px;font-weight:600;cursor:pointer;">🔊 开启音乐</button>
   </div>
 </div>
 
+<!-- STORY -->
 <div id="story" class="scr hide">
   <div class="swrap">
     <div class="shdr"><div class="sdino" id="sdino">🦖</div><div class="stxt"><h2 id="stitle"></h2><p id="ssub"></p></div></div>
@@ -202,6 +215,7 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
   </div>
 </div>
 
+<!-- MATH -->
 <div id="math" class="scr hide">
   <div class="mathwrap">
     <div class="mathcard">
@@ -221,6 +235,7 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
   </div>
 </div>
 
+<!-- READING -->
 <div id="reading" class="scr hide">
   <div class="rpanel">
     <div class="rtag">📖 阅读理解 · 答对+50XP</div>
@@ -232,6 +247,7 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
   </div>
 </div>
 
+<!-- RESULT -->
 <div id="result" class="scr hide">
   <div class="rsp">
     <div class="rdi" id="rdi">🏆</div>
@@ -256,62 +272,53 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 </div></div></div>
 <script>
 // ══════════════════════════════════════
-// HISTORY — localStorage backed, persists across refresh
+// HISTORY (localStorage, anti-repeat)
 // ══════════════════════════════════════
-const HMAX = 8;
-function hLoad(key){ try{ return JSON.parse(localStorage.getItem('dg_h_'+key)||'[]'); }catch(e){ return []; } }
-function hSave(key,arr){ try{ localStorage.setItem('dg_h_'+key, JSON.stringify(arr)); }catch(e){} }
-
-// ── Persist level stars ──
-function saveStars(){ try{ localStorage.setItem('dg_stars', JSON.stringify(G.lvSt)); }catch(e){} }
-function loadStars(){ try{ const s=JSON.parse(localStorage.getItem('dg_stars')||'[0,0,0]'); G.lvSt=s; }catch(e){} }
-function pickFresh(pool, hkey, n){
-  let hist = hLoad(hkey);
-  let idxs = pool.map((_,i)=>i).filter(i=>!hist.includes(i));
-  if(idxs.length < n) idxs = pool.map((_,i)=>i); // reset if pool exhausted
-  idxs.sort(()=>Math.random()-.5);
-  const chosen = idxs.slice(0,n);
-  chosen.forEach(i=>{ hist.push(i); if(hist.length>HMAX) hist.shift(); });
-  hSave(hkey, hist);
-  return chosen.map(i=>pool[i]);
+const HMAX=8;
+function hLoad(k){try{return JSON.parse(localStorage.getItem('dg_h_'+k)||'[]');}catch(e){return[];}}
+function hSave(k,a){try{localStorage.setItem('dg_h_'+k,JSON.stringify(a));}catch(e){}}
+function pickFresh(pool,hkey,n){
+  let h=hLoad(hkey);
+  let idx=pool.map((_,i)=>i).filter(i=>!h.includes(i));
+  if(idx.length<n) idx=pool.map((_,i)=>i);
+  idx.sort(()=>Math.random()-.5);
+  const ch=idx.slice(0,n);
+  ch.forEach(i=>{h.push(i);if(h.length>HMAX)h.shift();});
+  hSave(hkey,h);
+  return ch.map(i=>pool[i]);
 }
+function saveStars(){try{localStorage.setItem('dg_stars',JSON.stringify(G.lvSt));}catch(e){}}
+function loadStars(){try{const s=JSON.parse(localStorage.getItem('dg_stars')||'[0,0,0]');G.lvSt=s;}catch(e){}}
 
 // ══════════════════════════════════════
-// DATA
+// DATA — ENGLISH
 // ══════════════════════════════════════
 const WORDS=[
   {w:'TIGER',zh:'老虎'},{w:'LION',zh:'狮子'},{w:'PANDA',zh:'熊猫'},{w:'MONKEY',zh:'猴子'},
   {w:'FOX',zh:'狐狸'},{w:'HORSE',zh:'马'},{w:'ZEBRA',zh:'斑马'},{w:'BEAR',zh:'熊'},
-  {w:'WOLF',zh:'狼'},{w:'DEER',zh:'鹿'},{w:'ANT',zh:'蚂蚁'},{w:'PLANE',zh:'飞机'},
-  {w:'BUS',zh:'巴士'},{w:'SHIP',zh:'轮船'},{w:'TRAIN',zh:'火车'},{w:'BOAT',zh:'小船'},
-  {w:'LEMON',zh:'柠檬'},{w:'BREAD',zh:'面包'},{w:'CAKE',zh:'蛋糕'},{w:'SALT',zh:'盐'},
-  {w:'SUGAR',zh:'糖'},{w:'JUICE',zh:'果汁'},{w:'WATER',zh:'水'},{w:'MILK',zh:'牛奶'},
-  {w:'HAT',zh:'帽子'},{w:'COAT',zh:'外套'},{w:'SCARF',zh:'围巾'},{w:'JACKET',zh:'夹克'},
-  {w:'DRESS',zh:'连衣裙'},{w:'SHIRT',zh:'衬衫'},{w:'SKIRT',zh:'裙子'},
-  {w:'SNOW',zh:'雪'},{w:'CLOUD',zh:'云'},{w:'RAIN',zh:'雨'},{w:'WIND',zh:'风'},
-  {w:'SPRING',zh:'春天'},{w:'SUMMER',zh:'夏天'},{w:'AUTUMN',zh:'秋天'},{w:'WINTER',zh:'冬天'},
+  {w:'WOLF',zh:'狼'},{w:'DEER',zh:'鹿'},{w:'PLANE',zh:'飞机'},{w:'TRAIN',zh:'火车'},
+  {w:'LEMON',zh:'柠檬'},{w:'BREAD',zh:'面包'},{w:'SUGAR',zh:'糖'},{w:'MILK',zh:'牛奶'},
+  {w:'COAT',zh:'外套'},{w:'SCARF',zh:'围巾'},{w:'JACKET',zh:'夹克'},{w:'DRESS',zh:'连衣裙'},
+  {w:'SNOW',zh:'雪'},{w:'CLOUD',zh:'云'},{w:'SPRING',zh:'春天'},{w:'WINTER',zh:'冬天'},
   {w:'SOFT',zh:'软的'},{w:'HARD',zh:'硬的'},{w:'SWEET',zh:'甜的'},{w:'SOUR',zh:'酸的'},
-  {w:'ROUND',zh:'圆形'},{w:'STAR',zh:'星形'},{w:'ROBOT',zh:'机器人'},{w:'DOLL',zh:'娃娃'},
-  {w:'RIVER',zh:'河流'},{w:'BEACH',zh:'海滩'},{w:'LEAF',zh:'树叶'},{w:'GRASS',zh:'草'},
-  {w:'HEAD',zh:'头'},{w:'HAIR',zh:'头发'},{w:'HAND',zh:'手'},{w:'KNEE',zh:'膝盖'},
-  {w:'JUMP',zh:'跳'},{w:'DRAW',zh:'画画'},{w:'FISH',zh:'钓鱼'},{w:'SWIM',zh:'游泳'},
+  {w:'ROUND',zh:'圆形'},{w:'ROBOT',zh:'机器人'},{w:'RIVER',zh:'河流'},{w:'BEACH',zh:'海滩'},
+  {w:'GRASS',zh:'草'},{w:'JUMP',zh:'跳'},{w:'SWIM',zh:'游泳'},{w:'CLIMB',zh:'爬'},
+  {w:'ROUGH',zh:'粗糙的'},{w:'SMOOTH',zh:'光滑的'},{w:'HUNGRY',zh:'饿的'},{w:'STRONG',zh:'强壮的'},
 ];
-
 const PREP=[
-  {sc:'monkey_on',    s:'The monkey is _____ the tree.',   a:'ON',      o:['ON','IN','UNDER','BEHIND']},
-  {sc:'cat_under',    s:'The cat is _____ the chair.',     a:'UNDER',   o:['ON','IN','UNDER','NEXT TO']},
-  {sc:'bird_in',      s:'The bird is _____ the box.',      a:'IN',      o:['ON','IN','BEHIND','UNDER']},
-  {sc:'dog_behind',   s:'The dog is _____ the tree.',      a:'BEHIND',  o:['ON','IN','BEHIND','UNDER']},
-  {sc:'cat_nextto',   s:'The cat is _____ the box.',       a:'NEXT TO', o:['ON','IN','NEXT TO','BEHIND']},
-  {sc:'bird_on',      s:'The bird is _____ the chair.',    a:'ON',      o:['ON','IN','UNDER','NEXT TO']},
-  {sc:'fox_under',    s:'The fox is _____ the tree.',      a:'UNDER',   o:['ON','UNDER','BEHIND','IN']},
-  {sc:'monkey_behind',s:'The monkey is _____ the box.',    a:'BEHIND',  o:['ON','IN','BEHIND','UNDER']},
-  {sc:'cat_on',       s:'The cat is _____ the box.',       a:'ON',      o:['ON','IN','BEHIND','UNDER']},
-  {sc:'bird_nextto',  s:'The bird is _____ the tree.',     a:'NEXT TO', o:['ON','NEXT TO','BEHIND','IN']},
-  {sc:'fox_in',       s:'The fox is _____ the box.',       a:'IN',      o:['ON','IN','BEHIND','UNDER']},
-  {sc:'dog_on',       s:'The dog is _____ the chair.',     a:'ON',      o:['ON','IN','UNDER','NEXT TO']},
+  {sc:'monkey_on',s:'The monkey is _____ the tree.',a:'ON',o:['ON','IN','UNDER','BEHIND']},
+  {sc:'cat_under',s:'The cat is _____ the chair.',a:'UNDER',o:['ON','IN','UNDER','NEXT TO']},
+  {sc:'bird_in',s:'The bird is _____ the box.',a:'IN',o:['ON','IN','BEHIND','UNDER']},
+  {sc:'dog_behind',s:'The dog is _____ the tree.',a:'BEHIND',o:['ON','IN','BEHIND','UNDER']},
+  {sc:'cat_nextto',s:'The cat is _____ the box.',a:'NEXT TO',o:['ON','IN','NEXT TO','BEHIND']},
+  {sc:'bird_on',s:'The bird is _____ the chair.',a:'ON',o:['ON','IN','UNDER','NEXT TO']},
+  {sc:'fox_under',s:'The fox is _____ the tree.',a:'UNDER',o:['ON','UNDER','BEHIND','IN']},
+  {sc:'monkey_behind',s:'The monkey is _____ the box.',a:'BEHIND',o:['ON','IN','BEHIND','UNDER']},
+  {sc:'cat_on',s:'The cat is _____ the box.',a:'ON',o:['ON','IN','BEHIND','UNDER']},
+  {sc:'bird_nextto',s:'The bird is _____ the tree.',a:'NEXT TO',o:['ON','NEXT TO','BEHIND','IN']},
+  {sc:'fox_in',s:'The fox is _____ the box.',a:'IN',o:['ON','IN','BEHIND','UNDER']},
+  {sc:'dog_on',s:'The dog is _____ the chair.',a:'ON',o:['ON','IN','UNDER','NEXT TO']},
 ];
-
 const SENT=[
   {q:'It is _____ today. The sun is shining brightly.',zh:'阳光灿烂',sc:'sunny',a:'SUNNY',o:['RAINY','SUNNY','SNOWY','WINDY']},
   {q:'It is _____ today. I can see dark clouds and rain.',zh:'下雨了',sc:'rain',a:'RAINY',o:['RAINY','SUNNY','SNOWY','WINDY']},
@@ -325,123 +332,144 @@ const SENT=[
   {q:'The sugar tastes _____. Children love it.',zh:'糖是什么味道',sc:null,a:'SWEET',o:['SALTY','BITTER','SOUR','SWEET']},
   {q:'It is very _____ in summer. I drink lots of water.',zh:'夏天天气',sc:'sunny',a:'HOT',o:['COLD','COOL','WARM','HOT']},
   {q:'Touch the stone. It feels _____ and rough.',zh:'石头的感觉',sc:null,a:'HARD',o:['SOFT','HARD','SWEET','SOUR']},
-  {q:'Touch the cotton. It feels _____ and smooth.',zh:'棉花的感觉',sc:null,a:'SOFT',o:['SOFT','HARD','ROUGH','COLD']},
   {q:'In autumn, the leaves _____ and fall from trees.',zh:'秋天树叶会',sc:null,a:'FALL',o:['GROW','FALL','SWIM','JUMP']},
   {q:'The ball is _____. It looks just like the moon.',zh:'球是什么形状',sc:null,a:'ROUND',o:['ROUND','STAR','HARD','SOFT']},
+  {q:'I like _____ best. I love flowers and warm rain.',zh:'最喜欢花和雨',sc:'rain',a:'SPRING',o:['SPRING','SUMMER','AUTUMN','WINTER']},
 ];
 
-// All math answers verified by hand
-const MATH=[
-  {sc:'基地有 <b>36</b> 片区域，每片驻守 <b>124</b> 名守卫。',q:'一共需要多少名守卫？',a:4464},     // 36×124=4464 ✓
-  {sc:'飞船每小时 <b>285</b> 千米，飞行 <b>24</b> 小时到陨石带。',q:'一共飞多少千米？',a:6840},      // 285×24=6840 ✓
-  {sc:'仓库有 <b>3648</b> 块能量石，平均分给 <b>12</b> 支分队。',q:'每支分队分多少块？',a:304},      // 3648÷12=304 ✓
-  {sc:'领地面积 <b>1248</b> 平方千米，宽 <b>24</b> 千米。',q:'领地的长是多少千米？',a:52},           // 1248÷24=52 ✓
-  {sc:'恐龙王每天消耗 <b>468</b> 单位，封印持续 <b>15</b> 天。',q:'总共消耗多少单位能量？',a:7020},  // 468×15=7020 ✓
-  {sc:'陨石碎片 <b>4056</b> 块，用 <b>13</b> 艘飞船平均运走。',q:'每艘飞船运多少块？',a:312},       // 4056÷13=312 ✓
-  {sc:'苹果 <b>125</b> 个，橙子数量是苹果的 <b>3</b> 倍。',q:'有多少个橙子？',a:375},               // 125×3=375 ✓
-  {sc:'长方形领地，周长 <b>44</b> 千米，长 <b>12</b> 千米。',q:'面积是多少平方千米？',a:120},        // 宽=(44-24)/2=10，面积=12×10=120 ✓
-  {sc:'原计划每天 <b>150</b> 个，<b>12</b> 天完成；实际每天 <b>180</b> 个。',q:'可以提前几天？',a:2},// 总=1800，1800÷180=10天，12-10=2 ✓
-  {sc:'步行 <b>75</b> 米/分，走了 <b>30</b> 分钟。',q:'走了多少米？',a:2250},                       // 75×30=2250 ✓
-  {sc:'正方形领地，周长 <b>28</b> 千米。',q:'面积是多少平方千米？',a:49},                            // 边=7，面积=49 ✓
-  {sc:'飞船 <b>3</b> 小时飞行 <b>336</b> 千米。',q:'每小时飞多少千米？',a:112},                     // 336÷3=112 ✓
-  {sc:'买了 <b>3</b> 件装备每件 <b>15</b> 枚能量币，用这些钱买每个 <b>5</b> 枚的道具。',q:'能买几个道具？',a:9}, // 45÷5=9 ✓
+// ══════════════════════════════════════
+// DATA — CHINESE (蛋踩题，4选1)
+// ══════════════════════════════════════
+const CN_QS=[
+  // 近义词
+  {q:'"耐心"的近义词是？',a:'耐烦',o:['耐烦','急躁','焦虑','烦躁'],e:'"耐心"与"耐烦"意思相近，都表示能忍耐等待。'},
+  {q:'"凶猛"的近义词是？',a:'凶狠',o:['凶狠','温顺','善良','温和'],e:'"凶猛"与"凶狠"意思相近，都形容凶恶猛烈。'},
+  {q:'"镇静"的近义词是？',a:'镇定',o:['镇定','慌张','焦急','紧张'],e:'"镇静"与"镇定"都表示冷静不慌乱。'},
+  {q:'"蔓延"的近义词是？',a:'扩散',o:['扩散','收缩','聚集','缩小'],e:'"蔓延"与"扩散"都表示向四周扩展。'},
+  // 反义词
+  {q:'"耐心"的反义词是？',a:'急躁',o:['急躁','冷静','温和','平静'],e:'"耐心"的反义词是"急躁"，表示不能忍耐等待。'},
+  {q:'"凶猛"的反义词是？',a:'温顺',o:['温顺','强壮','勇敢','坚强'],e:'"凶猛"的反义词是"温顺"，表示温和驯服。'},
+  {q:'"昏暗"的反义词是？',a:'明亮',o:['明亮','暗淡','模糊','朦胧'],e:'"昏暗"的反义词是"明亮"，表示光线充足。'},
+  {q:'"奖励"的反义词是？',a:'批评',o:['批评','表扬','夸奖','称赞'],e:'"奖励"的反义词是"批评"，一褒一贬。'},
+  // 形近字
+  {q:'选出正确的字：他善于（辨/辩/辫）别真假。',a:'辨',o:['辨','辩','辫','办'],e:'"辨"是辨别的辨，"辩"是辩论的辩，"辫"是辫子的辫。'},
+  {q:'选出正确的字：他们进行了一场精彩的（辨/辩/辫）论。',a:'辩',o:['辩','辨','辫','办'],e:'"辩论"用"辩"，表示用语言争论。'},
+  {q:'选出正确的字：这匹马身形（骏/俊/峻）美。',a:'俊',o:['俊','骏','峻','竣'],e:'"俊美"用"俊"，"骏马"用"骏"，"峻岭"用"峻"。'},
+  {q:'选出正确的字：（骏/俊/峻）马奔腾在草原上。',a:'骏',o:['骏','俊','峻','竣'],e:'"骏马"用"骏"，专指好马。'},
+  // 词语搭配
+  {q:'（　　）的春装，括号里填什么？',a:'漂亮',o:['漂亮','蔓延','凶猛','昏暗'],e:'"漂亮的春装"是正确搭配，形容词修饰名词。'},
+  {q:'（　　）的天空，括号里填什么？',a:'蔚蓝',o:['蔚蓝','漂亮','镇静','凶猛'],e:'"蔚蓝的天空"是常见词语搭配。'},
+  {q:'（　　）地躲藏，括号里填什么？',a:'悄悄',o:['悄悄','漂亮','蔚蓝','凶猛'],e:'"悄悄地躲藏"，副词修饰动词。'},
+  // 成语/日积月累
+  {q:'"水来___掩"，横线填什么？',a:'土',o:['土','石','木','草'],e:'"水来土掩"比喻不管什么困难都有办法对付。'},
+  {q:'"不入虎穴，焉得___子"，横线填什么？',a:'虎',o:['虎','兔','狐','狼'],e:'"不入虎穴，焉得虎子"比喻不亲历险境就无法成功。'},
+  {q:'"耳听为___，眼见为实"，横线填什么？',a:'虚',o:['虚','空','假','幻'],e:'"耳听为虚，眼见为实"强调亲眼所见才可信。'},
+  {q:'"近朱者赤，近___者黑"，横线填什么？',a:'墨',o:['墨','水','火','土'],e:'"近朱者赤，近墨者黑"说明环境对人的影响。'},
+  // 多音字/易错字
+  {q:'"脊背"的"脊"怎么读？',a:'jǐ',o:['jǐ','jí','jì','jī'],e:'"脊背"读jǐbèi，"脊"字读第三声。'},
+  {q:'"颠倒"的"颠"怎么读？',a:'diān',o:['diān','diǎn','diàn','dián'],e:'"颠倒"读diāndǎo，"颠"字读第一声。'},
 ];
 
+// ══════════════════════════════════════
+// DATA — MATH (陨石题，4选1)
+// verified answers
+// ══════════════════════════════════════
+const MA_QS=[
+  {q:'6/9里面有几个1/9？',a:'6',o:['6','9','3','4'],e:'6/9里面有6个1/9，分子就是份数。'},
+  {q:'72棵树的5/8是多少棵？',a:'45',o:['45','40','36','48'],e:'72×5÷8=45棵。'},// 72×5/8=45 ✓
+  {q:'花店共40束花，玫瑰32束，百合占总数的几分之几？',a:'1/5',o:['1/5','1/4','2/5','1/8'],e:'百合=40-32=8束，8/40=1/5。'},// 8/40=1/5 ✓
+  {q:'正方形周长28m，面积是多少平方米？',a:'49',o:['49','56','64','36'],e:'边长=28÷4=7，面积=7×7=49平方米。'},// 7×7=49 ✓
+  {q:'长方形周长44km，长12km，面积是多少平方千米？',a:'120',o:['120','100','132','110'],e:'宽=(44-24)÷2=10，面积=12×10=120。'},// 120 ✓
+  {q:'36cm铁丝围长方形，最大面积是多少cm²？',a:'81',o:['81','72','90','64'],e:'长=宽=9cm时面积最大，9×9=81。'},// 9×9=81 ✓
+  {q:'甲车3小时216km，乙车4小时260km，哪辆更快？',a:'甲车',o:['甲车','乙车','一样快','无法比'],e:'甲：216÷3=72km/h，乙：260÷4=65km/h，甲更快。'},// 72>65 ✓
+  {q:'小明每分钟跑200m，3分钟能跑多少米？',a:'600',o:['600','500','400','300'],e:'200×3=600米。'},// ✓
+  {q:'132人坐船，每船25人，最少需要几条船？',a:'6',o:['6','5','7','4'],e:'132÷25=5余7，需要6条船。'},// ⌈132/25⌉=6 ✓
+  {q:'工厂每天150个，12天完成；改为每天180个，提前几天？',a:'2',o:['2','3','1','4'],e:'总量=1800，1800÷180=10天，提前2天。'},// ✓
+  {q:'水果店苹果125个，橙子是苹果的3倍，橙子多少个？',a:'375',o:['375','300','350','400'],e:'125×3=375个。'},// ✓
+  {q:'猎豹3小时跑336km，每小时跑多少千米？',a:'112',o:['112','100','120','96'],e:'336÷3=112km/h。'},// ✓
+  {q:'一个正方形边长扩大到原来2倍，面积扩大到原来几倍？',a:'4',o:['4','2','6','8'],e:'面积=边长²，边长×2则面积×4。'},// ✓
+  {q:'5个1/7是多少？',a:'5/7',o:['5/7','1/7','7/5','2/7'],e:'5个1/7就是5/7。'},// ✓
+  {q:'把6个边长2cm正方形拼成长方形，周长最小是多少cm？',a:'28',o:['28','24','32','20'],e:'拼成3×2排列，长6cm宽4cm，周长=2×(6+4)×2÷2，最优长12宽4，周长2×(12+4)=32，最优2×6×1排，长12宽2周长=28。'},// 2×(12+2)=28 ✓
+];
+
+// ══════════════════════════════════════
+// DATA — STORY / READING
+// ══════════════════════════════════════
 const CHN0=[
   {t:'雷克斯[0]族群，踏上了穿越丛林的征途。丛林深处，恐龙的[1]在树梢间回响，像是在[2]守卫者加快脚步。',
    b:[{l:'第一空',h:'统帅带领',a:'率领',o:['带领','率领','指引','号召']},{l:'第二空',h:'动物发声',a:'鸣叫',o:['声音','喧嚣','鸣叫','呐喊']},{l:'第三空',h:'提醒之意',a:'提醒',o:['督促','提醒','告知','嘱咐']}],
-   e:['"率领"有统帅之意，比"带领"更有气势。','"鸣叫"专指动物发声。','"提醒"语气自然，比"督促"更贴切。']},
+   e:['"率领"有统帅之意。','"鸣叫"专指动物发声。','"提醒"语气自然贴切。']},
   {t:'陨石[0]降临，丛林顿时[1]。雷克斯[2]，带领族群找到了一条隐蔽通道。',
    b:[{l:'第一空',h:'来势凶猛',a:'汹涌',o:['汹涌','缓慢','轻柔','平静']},{l:'第二空',h:'形容混乱',a:'大乱',o:['大乱','平静','热闹','沸腾']},{l:'第三空',h:'冷静不慌张',a:'沉着',o:['慌忙','沉着','急忙','迟疑']}],
    e:['"汹涌"形容来势凶猛。','"大乱"形容秩序混乱。','"沉着"指冷静不慌张。']},
   {t:'守卫者[0]地穿过丛林，眼前[1]出现了一座古老的石碑。石碑上[2]着神秘的文字。',
    b:[{l:'第一空',h:'小心翼翼',a:'谨慎',o:['谨慎','鲁莽','随意','大胆']},{l:'第二空',h:'突然出现',a:'猛然',o:['猛然','缓缓','渐渐','慢慢']},{l:'第三空',h:'刻上文字',a:'刻',o:['刻','画','写','印']}],
-   e:['"谨慎"表示小心仔细。','"猛然"表示突然，有意外感。','"刻"是把文字刻进石头，比"写"更准确。']},
+   e:['"谨慎"表示小心仔细。','"猛然"表示突然出现。','"刻"是把文字刻进石头。']},
   {t:'星球的[0]正在[1]消退。守卫者[2]，决定用知识的力量来对抗陨石。',
    b:[{l:'第一空',h:'保护性屏蔽',a:'屏障',o:['屏障','屏风','屏幕','屏蔽']},{l:'第二空',h:'逐渐减少',a:'逐渐',o:['逐渐','迅速','突然','快速']},{l:'第三空',h:'坚定果断',a:'毅然',o:['犹豫','迟疑','毅然','慌忙']}],
    e:['"屏障"指保护性屏蔽。','"逐渐"表示缓慢变化。','"毅然"是"犹豫"的反义词。']},
-  {t:'丛林中，一只[0]的小恐龙[1]走来，它[2]地向守卫者点了点头。',
-   b:[{l:'第一空',h:'体型不大',a:'弱小',o:['弱小','强壮','高大','威猛']},{l:'第二空',h:'走路不稳',a:'蹒跚',o:['蹒跚','飞奔','跳跃','滑行']},{l:'第三空',h:'表示友好',a:'友善',o:['友善','冷漠','愤怒','害怕']}],
-   e:['"弱小"突出小恐龙的柔弱。','"蹒跚"形容走路不稳。','"友善"表示和善友好。']},
-  {t:'守卫者来到丛林[0]，发现地面上有许多[1]的脚印。这些脚印[2]通向一个山洞。',
-   b:[{l:'第一空',h:'中心地带',a:'深处',o:['深处','边缘','入口','外围']},{l:'第二空',h:'与众不同',a:'奇特',o:['奇特','普通','熟悉','常见']},{l:'第三空',h:'笔直地',a:'径直',o:['径直','弯弯曲曲','时断时续','忽隐忽现']}],
-   e:['"深处"与"边缘"相反。','"奇特"形容与众不同。','"径直"表示笔直不转弯。']},
+  {t:'冰川区寒风[0]，守卫者们[1]前行。"[2]"，只有亲眼所见才是真实的。',
+   b:[{l:'第一空',h:'风声很大',a:'呼啸',o:['呼啸','吹拂','微风','轻柔']},{l:'第二空',h:'坚定不移',a:'坚定',o:['迟疑','犹豫','坚定','缓慢']},{l:'第三空',h:'成语',a:'耳听为虚',o:['耳听为虚','道听途说','以讹传讹','空穴来风']}],
+   e:['"呼啸"形容风声很大。','"坚定"与"犹豫"是反义词。','"耳听为虚，眼见为实"。']},
+  {t:'封印石柱散发着[0]的光芒。守卫者[1]，决定[2]地完成任务。',
+   b:[{l:'第一空',h:'光线强烈(形近字)',a:'耀眼',o:['耀眼','曜日','跃然','跃动']},{l:'第二空',h:'下定决心',a:'下定决心',o:['犹豫不决','下定决心','三心二意','举棋不定']},{l:'第三空',h:'认真负责',a:'尽心尽力',o:['马马虎虎','尽心尽力','敷衍了事','得过且过']}],
+   e:['"耀眼"光线刺眼，注意与"曜日"区分。','"下定决心"是"犹豫不决"的反义词。','"尽心尽力"与"马马虎虎"相反。']},
 ];
-
 const POEMS=[
-  {title:'春晓',author:'孟浩然',dynasty:'唐',lines:['春眠不觉晓，','处处闻啼[0]。','夜来风雨声，','花落知多[1]。'],blanks:[{i:0,a:'鸟',o:['鸟','虫','蝉','雀'],h:'春天鸟鸣'},{i:1,a:'少',o:['少','多','些','几'],h:'数量不确定'}],exps:['"处处闻啼鸟"描写鸟鸣生机。','"花落知多少"表达对落花的惋惜。'],meaning:'描写春天早晨，表达对春天的珍惜。',aQ:{q:'作者是？',o:['李白','杜甫','孟浩然','王维'],a:2},dQ:{q:'朝代是？',o:['宋','唐','元','明'],a:1}},
+  {title:'春晓',author:'孟浩然',dynasty:'唐',lines:['春眠不觉晓，','处处闻啼[0]。','夜来风雨声，','花落知多[1]。'],blanks:[{i:0,a:'鸟',o:['鸟','虫','蝉','雀'],h:'春天鸟鸣'},{i:1,a:'少',o:['少','多','些','几'],h:'数量不确定'}],exps:['处处闻啼鸟，描写鸟鸣。','花落知多少，表达惋惜。'],meaning:'描写春天早晨，表达对春天的珍惜。',aQ:{q:'作者是？',o:['李白','杜甫','孟浩然','王维'],a:2},dQ:{q:'朝代是？',o:['宋','唐','元','明'],a:1}},
   {title:'绝句',author:'杜甫',dynasty:'唐',lines:['两个黄鹂鸣[0]柳，','一行白鹭上[1]天。','窗含西岭千秋雪，','门泊东吴万里船。'],blanks:[{i:0,a:'翠',o:['翠','绿','碧','青'],h:'柳树颜色'},{i:1,a:'青',o:['蓝','青','白','碧'],h:'天空颜色'}],exps:['"翠柳"写出柳树翠绿。','"青天"与白鹭形成对比。'],meaning:'描绘草堂周围生机勃勃的春色。',aQ:{q:'作者是？',o:['李白','孟浩然','杜甫','白居易'],a:2},dQ:{q:'朝代是？',o:['宋','唐','元','清'],a:1}},
   {title:'静夜思',author:'李白',dynasty:'唐',lines:['床前明[0]光，','疑是地上[1]。','举头望明月，','低头思[2]乡。'],blanks:[{i:0,a:'月',o:['月','星','日','灯'],h:'夜晚发光'},{i:1,a:'霜',o:['霜','雪','冰','水'],h:'月光比作'},{i:2,a:'故',o:['故','家','老','远'],h:'家乡的'}],exps:['月光照在床前。','把月光比作白霜。','"思故乡"，思念家乡。'],meaning:'游子月夜思念家乡。',aQ:{q:'作者是？',o:['杜甫','白居易','孟浩然','李白'],a:3},dQ:{q:'朝代是？',o:['宋','唐','元','明'],a:1}},
   {title:'望庐山瀑布',author:'李白',dynasty:'唐',lines:['日照香炉生[0]烟，','遥看瀑布挂前川。','飞流直下三千尺，','疑是银河落[1]天。'],blanks:[{i:0,a:'紫',o:['紫','白','青','彩'],h:'烟雾颜色'},{i:1,a:'九',o:['九','三','七','十'],h:'极高之处'}],exps:['"生紫烟"写日光产生紫色烟雾。','"落九天"夸张写出瀑布气势。'],meaning:'描写庐山瀑布的壮观。',aQ:{q:'作者是？',o:['杜甫','白居易','孟浩然','李白'],a:3},dQ:{q:'朝代是？',o:['宋','唐','元','明'],a:1}},
   {title:'咏柳',author:'贺知章',dynasty:'唐',lines:['碧玉妆成一树[0]，','万条垂下绿丝[1]。','不知细叶谁[2]出，','二月春风似剪刀。'],blanks:[{i:0,a:'高',o:['高','大','长','粗'],h:'树的形态'},{i:1,a:'绦',o:['绦','带','绳','线'],h:'丝带'},{i:2,a:'裁',o:['裁','剪','割','切'],h:'裁剪'}],exps:['描写柳树高耸挺拔。','把柳条比作绿色丝带。','引出春风如剪刀的比喻。'],meaning:'赞美柳树，把春风比作剪刀。',aQ:{q:'作者是？',o:['李白','贺知章','杜甫','王维'],a:1},dQ:{q:'朝代是？',o:['宋','唐','元','明'],a:1}},
 ];
-
-const CHN2=[
-  {t:'冰川区寒风[0]，守卫者们[1]前行。"[2]"，只有亲眼所见才是真实的。',
-   b:[{l:'第一空',h:'风声很大',a:'呼啸',o:['呼啸','吹拂','微风','轻柔']},{l:'第二空',h:'坚定不移',a:'坚定',o:['迟疑','犹豫','坚定','缓慢']},{l:'第三空',h:'成语',a:'耳听为虚',o:['耳听为虚','道听途说','以讹传讹','空穴来风']}],
-   e:['"呼啸"形容风声很大。','"坚定"与"犹豫"是反义词。','"耳听为虚，眼见为实"强调亲眼所见。']},
-  {t:'封印石柱散发着[0]的光芒。守卫者[1]，决定[2]地完成任务。',
-   b:[{l:'第一空',h:'光线强烈（形近字）',a:'耀眼',o:['耀眼','曜日','跃然','跃动']},{l:'第二空',h:'下定决心',a:'下定决心',o:['犹豫不决','下定决心','三心二意','举棋不定']},{l:'第三空',h:'认真负责',a:'尽心尽力',o:['马马虎虎','尽心尽力','敷衍了事','得过且过']}],
-   e:['"耀眼"光线刺眼，注意与"曜日"区分。','"下定决心"是"犹豫不决"的反义词。','"尽心尽力"与"马马虎虎"意思相反。']},
-  {t:'"[0]"，不亲历险境就无法成功。守卫者[1]前进，终于[2]地找到了答案。',
-   b:[{l:'第一空',h:'比喻亲身实践',a:'不入虎穴焉得虎子',o:['不入虎穴焉得虎子','纸上谈兵','闭门造车','坐享其成']},{l:'第二空',h:'鼓起勇气',a:'勇敢',o:['勇敢','胆怯','退缩','犹豫']},{l:'第三空',h:'没有阻碍',a:'顺利',o:['顺利','艰难','勉强','失败']}],
-   e:['不入虎穴，焉得虎子：不亲历险境就不能获得成功。','"勇敢"与"胆怯"是反义词。','"顺利"表示没有阻碍。']},
-  {t:'[0]，近朱者赤。守卫者选择与[1]的伙伴同行，共同面对[2]的挑战。',
-   b:[{l:'第一空',h:'环境影响人',a:'近墨者黑',o:['近墨者黑','水来土掩','耳听为虚','不入虎穴']},{l:'第二空',h:'品格好的',a:'优秀',o:['优秀','平庸','懒散','消极']},{l:'第三空',h:'十分困难',a:'艰巨',o:['艰巨','简单','容易','轻松']}],
-   e:['"近朱者赤，近墨者黑"强调环境对人的影响。','"优秀"的伙伴能带来正面影响。','"艰巨"形容任务极其困难。']},
-  {t:'守卫者发现了冰龙，它[0]，令人[1]。但守卫者[2]，没有退缩。',
-   b:[{l:'第一空',h:'来势凶猛',a:'气势汹汹',o:['气势汹汹','和颜悦色','笑容满面','轻声细语']},{l:'第二空',h:'感到担忧',a:'不安',o:['不安','开心','平静','轻松']},{l:'第三空',h:'冷静沉着',a:'镇定',o:['镇定','慌张','逃跑','哭泣']}],
-   e:['"气势汹汹"形容来势凶猛。','"不安"表示心里担忧。','"镇定"与"慌张"相反。']},
+const MATH_OPEN=[
+  {sc:'基地有 <b>36</b> 片区域，每片驻守 <b>124</b> 名守卫。',q:'一共需要多少名守卫？',a:4464},
+  {sc:'飞船每小时 <b>285</b> 千米，飞行 <b>24</b> 小时到陨石带。',q:'一共飞多少千米？',a:6840},
+  {sc:'仓库有 <b>3648</b> 块能量石，平均分给 <b>12</b> 支分队。',q:'每支分队分多少块？',a:304},
+  {sc:'领地面积 <b>1248</b> 平方千米，宽 <b>24</b> 千米。',q:'领地的长是多少千米？',a:52},
+  {sc:'恐龙王每天消耗 <b>468</b> 单位，封印持续 <b>15</b> 天。',q:'总共消耗多少单位能量？',a:7020},
+  {sc:'陨石碎片 <b>4056</b> 块，用 <b>13</b> 艘飞船平均运走。',q:'每艘飞船运多少块？',a:312},
+  {sc:'步行 <b>75</b> 米/分，走了 <b>30</b> 分钟。',q:'走了多少米？',a:2250},
+  {sc:'飞船 <b>3</b> 小时飞行 <b>336</b> 千米。',q:'每小时飞多少千米？',a:112},
 ];
-
 const READ=[
   [{p:'雷克斯率领族群穿越丛林，遇到陨石袭击。面对危机，雷克斯沉着冷静，找到隐蔽通道，成功撤退。',q:'雷克斯在危机中表现出什么品质？',o:['胆小怕事','沉着冷静','莽撞行事','犹豫不决'],a:1,e:'"沉着冷静"直接描述了雷克斯的品质。'},
    {p:'族群陷入恐慌，雷克斯大声说："不要慌，跟我走！"族群跟着他找到了出路。',q:'族群为什么能找到出路？',o:['运气好','有地图','跟着雷克斯行动','陨石停了'],a:2,e:'族群跟着雷克斯走，才找到了出路。'},
-   {p:'石碑上写道："知识是最强的武器。"守卫者用英语单词击碎了陨石，丛林区恢复了平静。',q:'"知识是最强的武器"告诉我们什么？',o:['武器很重要','知识能解决问题','石碑很神奇','陨石怕英语'],a:1,e:'核心意思是知识可以帮助我们解决问题。'},
-   {p:'小恐龙蹒跚地走来，友善地向守卫者点头。守卫者把食物分给了它，小恐龙高兴地帮助守卫者找到了出路。',q:'守卫者为什么得到小恐龙的帮助？',o:['守卫者很强壮','分享了食物','认识小恐龙','会魔法'],a:1,e:'守卫者主动分享食物，获得了小恐龙的好感。'},
-   {p:'守卫者谨慎地跟着脚印走，最终在洞穴中找到了封印陨石的方法，成功保护了丛林区。',q:'守卫者找到方法的关键是什么？',o:['勇闯洞穴','谨慎跟脚印','运气好','有人帮忙'],a:1,e:'文中说守卫者"谨慎地跟着脚印走"，谨慎是关键。'},
-   {p:'雷克斯告诉族群："面对困难，要沉着，不要慌乱。慌乱只会让情况更糟。"族群齐心协力渡过了难关。',q:'这段话最想告诉我们什么？',o:['要多逃跑','遇事沉着团结','陨石很可怕','雷克斯很厉害'],a:1,e:'文章强调沉着和齐心协力，这是主要道理。'}],
-  [{p:'《春晓》是唐代孟浩然的作品，描写了春天早晨听到鸟鸣、想到昨夜风雨、不知落了多少花的情景。',q:'"花落知多少"表达了诗人什么情感？',o:['高兴','讨厌春天','对美景的惋惜','害怕落花'],a:2,e:'"知多少"表达了诗人对落花的惋惜。'},
-   {p:'杜甫《绝句》描写草堂周围的春色：黄鹂在翠绿柳树上鸣叫，白鹭飞向晴朗天空，色彩明丽。',q:'这首诗主要描写什么季节？',o:['夏天','冬天','秋天','春天'],a:3,e:'黄鹂、柳树、白鹭等都是春天的景物。'},
-   {p:'李白《静夜思》中，诗人看到床前月光，以为是白霜，抬头看见明月，低头思念故乡。',q:'诗人为什么会想到故乡？',o:['因为很饿','因为看见了明月','因为天很冷','因为想睡觉'],a:1,e:'"举头望明月"，看见月亮联想到故乡。'},
-   {p:'李白《望庐山瀑布》用"飞流直下三千尺，疑是银河落九天"描写瀑布，"三千尺""九天"都是夸张写法。',q:'"疑是银河落九天"用了什么修辞手法？',o:['比喻','夸张','拟人','排比'],a:1,e:'把高度夸大，强调瀑布气势，这是夸张手法。'},
-   {p:'贺知章《咏柳》把柳树比作"碧玉"，柳条比作"绿丝绦"，春风比作"剪刀"，生动描写柳树姿态。',q:'诗中把春风比作什么？',o:['剪刀','丝带','碧玉','绿色'],a:0,e:'"二月春风似剪刀"，诗人把春风比作剪刀。'},
-   {p:'古诗常用夸张和比喻描写自然景物，让诗句更加生动形象，让读者感受到大自然的壮观与美丽。',q:'下面哪句话使用了比喻修辞手法？',o:['花落知多少','疑是银河落九天','处处闻啼鸟','门泊东吴万里船'],a:1,e:'"疑是银河落九天"把瀑布比作银河，是比喻手法。'}],
-  [{p:'"不入虎穴，焉得虎子"比喻不亲历险境就不能获得成功，守卫者凭着实践精神深入冰川区，找到了解封印的方法。',q:'"不入虎穴，焉得虎子"的意思是？',o:['老虎很危险','不亲历险境无法成功','要去看老虎','虎穴里有宝贝'],a:1,e:'这句话比喻不亲历险境，就不能获得成功。'},
+   {p:'石碑上写道："知识是最强的武器。"守卫者用英语单词击碎了陨石，丛林区恢复了平静。',q:'"知识是最强的武器"告诉我们什么？',o:['武器很重要','知识能解决问题','石碑很神奇','陨石怕英语'],a:1,e:'核心意思是知识可以帮助解决问题。'},
+   {p:'守卫者谨慎地跟着脚印走，最终在洞穴中找到了封印陨石的方法，成功保护了丛林区。',q:'守卫者找到方法的关键是什么？',o:['勇闯洞穴','谨慎跟脚印','运气好','有人帮忙'],a:1,e:'文中说守卫者"谨慎地跟着脚印走"是关键。'},
+   {p:'雷克斯告诉族群："面对困难，要沉着，不要慌乱。"族群齐心协力渡过了难关。',q:'这段话最想告诉我们什么？',o:['要多逃跑','遇事沉着团结','陨石很可怕','雷克斯很厉害'],a:1,e:'文章强调沉着和齐心协力是主要道理。'},
+   {p:'小恐龙友善地向守卫者点头。守卫者把食物分给了它，小恐龙高兴地帮助守卫者找到了出路。',q:'守卫者为什么得到小恐龙的帮助？',o:['守卫者很强壮','分享了食物','认识小恐龙','会魔法'],a:1,e:'守卫者主动分享食物，获得了好感。'}],
+  [{p:'《春晓》是唐代孟浩然的作品，描写了春天早晨听到鸟鸣、想到昨夜风雨的情景。',q:'"花落知多少"表达了诗人什么情感？',o:['高兴','讨厌春天','对美景的惋惜','害怕落花'],a:2,e:'"知多少"表达了诗人对落花的惋惜。'},
+   {p:'杜甫《绝句》：黄鹂在翠绿柳树上鸣叫，白鹭飞向晴朗天空，色彩明丽，意境开阔。',q:'这首诗主要描写什么季节？',o:['夏天','冬天','秋天','春天'],a:3,e:'黄鹂、柳树、白鹭等都是春天的景物。'},
+   {p:'李白《静夜思》：诗人看到床前月光，以为是白霜，抬头看见明月，低头思念故乡。',q:'诗人为什么会想到故乡？',o:['因为很饿','因为看见了明月','因为天很冷','因为想睡觉'],a:1,e:'"举头望明月"，看见月亮联想到故乡。'},
+   {p:'李白《望庐山瀑布》："飞流直下三千尺，疑是银河落九天"，"三千尺""九天"都是夸张写法。',q:'"疑是银河落九天"用了什么修辞手法？',o:['比喻','夸张','拟人','排比'],a:1,e:'把高度夸大，强调瀑布气势，这是夸张手法。'},
+   {p:'贺知章《咏柳》把柳树比作碧玉，柳条比作绿丝绦，春风比作剪刀，生动描写柳树姿态。',q:'诗中把春风比作什么？',o:['剪刀','丝带','碧玉','绿色'],a:0,e:'"二月春风似剪刀"，诗人把春风比作剪刀。'},
+   {p:'古诗常用夸张和比喻描写自然景物，让诗句更加生动形象，让读者感受到大自然的壮观与美丽。',q:'下面哪句话使用了比喻修辞手法？',o:['花落知多少','疑是银河落九天','处处闻啼鸟','门泊东吴万里船'],a:1,e:'"疑是银河落九天"把瀑布比作银河，是比喻。'}],
+  [{p:'"不入虎穴，焉得虎子"比喻不亲历险境就不能获得成功，守卫者凭实践精神深入冰川区，找到了解封印的方法。',q:'"不入虎穴，焉得虎子"的意思是？',o:['老虎很危险','不亲历险境无法成功','要去看老虎','虎穴里有宝贝'],a:1,e:'这句话比喻不亲历险境，就不能获得成功。'},
    {p:'"近朱者赤，近墨者黑"说明环境对人有重要影响。守卫者选择与优秀的伙伴同行，互相鼓励，共同进步。',q:'这句话说明了什么道理？',o:['颜色很重要','环境影响人的成长','要多交朋友','红色比黑色好'],a:1,e:'这句话强调环境对人的影响。'},
-   {p:'"耳听为虚，眼见为实"告诉我们听别人说的不一定是真的，亲眼所见才可信。守卫者亲自走进冰川区，才发现了封印的秘密。',q:'守卫者为什么要亲自走进冰川区？',o:['喜欢冒险','要亲眼证实','别人叫他去','没有其他路'],a:1,e:'"耳听为虚，眼见为实"，守卫者要亲眼确认。'},
-   {p:'守卫者明白"尽心尽力"和"马马虎虎"是一对反义词。做事尽心尽力才能做好，马马虎虎则容易出错。',q:'"马马虎虎"最恰当的反义词是？',o:['尽心尽力','认认真真','仔仔细细','踏踏实实'],a:0,e:'题目中明确说"尽心尽力"和"马马虎虎"是反义词。'},
-   {p:'"水来土掩"比喻不管对方用什么手段，都有办法对付。守卫者遇到什么困难就用什么方法解决，灵活应对。',q:'"水来土掩"这个成语的意思是？',o:['用土挡水','不管什么困难都有办法','水和土不能混','遇洪水要逃跑'],a:1,e:'"水来土掩"比喻不管对方用什么手段，都有办法对付。'},
-   {p:'守卫者明白"知己知彼，百战百胜"：了解自己的长处和短处，也了解敌人的情况，才能在每次战斗中取得胜利。',q:'"知己知彼"中"知己"的意思是？',o:['了解敌人','了解自己','了解朋友','了解地图'],a:1,e:'"知己"是了解自己，"知彼"是了解敌人。'}],
+   {p:'"耳听为虚，眼见为实"告诉我们听别人说的不一定是真的，亲眼所见才可信。',q:'守卫者为什么要亲自走进冰川区？',o:['喜欢冒险','要亲眼证实','别人叫他去','没有其他路'],a:1,e:'"耳听为虚，眼见为实"，守卫者要亲眼确认。'},
+   {p:'做事"尽心尽力"才能做好，"马马虎虎"则容易出错。两者是一对反义词。',q:'"马马虎虎"最恰当的反义词是？',o:['尽心尽力','认认真真','仔仔细细','踏踏实实'],a:0,e:'题目中明确说"尽心尽力"和"马马虎虎"是反义词。'},
+   {p:'"水来土掩"比喻不管对方用什么手段，都有办法对付。守卫者遇到什么困难就用什么方法解决。',q:'"水来土掩"这个成语的意思是？',o:['用土挡水','不管什么困难都有办法','水和土不能混','遇洪水要逃跑'],a:1,e:'"水来土掩"比喻不管对方用什么手段，都有办法对付。'},
+   {p:'守卫者明白"知己知彼，百战百胜"：了解自己的长处和短处，也了解敌人，才能取胜。',q:'"知己知彼"中"知己"的意思是？',o:['了解敌人','了解自己','了解朋友','了解地图'],a:1,e:'"知己"是了解自己，"知彼"是了解敌人。'}],
 ];
-
-const LVM=[{name:'丛林区',icon:'🌿',desc:'词语填空 · 乘除应用题'},{name:'火山区',icon:'🌋',desc:'古诗填写 · 面积周长'},{name:'冰川区',icon:'❄️',desc:'成语形近字 · 路程购物'}];
+const LVM=[{name:'丛林区',icon:'🌿',desc:'语文·数学·英语全科'},{name:'火山区',icon:'🌋',desc:'语文·数学·英语全科'},{name:'冰川区',icon:'❄️',desc:'语文·数学·英语全科'}];
 
 // ══════════════════════════════════════
-// CANVAS + RESIZE
+// CANVAS
 // ══════════════════════════════════════
 const cv=document.getElementById('gc');
 const ctx=cv.getContext('2d');
 let W=0,H=0,PT=48,PB=0,QH=0;
 const STARS=Array.from({length:50},()=>({x:Math.random(),y:Math.random(),r:Math.random()*.6+.2,a:Math.random()*.4+.2,tw:Math.random()*3+1.5}));
 let starT=0;
-
 function resize(){
-  W=cv.width=window.innerWidth;
-  H=cv.height=window.innerHeight;
+  W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
   document.getElementById('gw').style.cssText=`width:${W}px;height:${H}px;`;
   layCtrl();
-  resizeSceneCanvas();
-}
-function resizeSceneCanvas(){
-  // no-op: canvas uses fixed 260x220 intrinsic size, CSS scales via width/height style
 }
 function measureQ(){
   const el=document.getElementById('qp');
-  if(!el.classList.contains('hide')){
-    QH=el.offsetHeight; PB=H-QH;
-    layCtrl(); resizeSceneCanvas();
-  }
+  if(!el.classList.contains('hide')){QH=el.offsetHeight;PB=H-QH;layCtrl();}
 }
 function layCtrl(){
   const js=Math.min(W,H)*.17;
@@ -450,15 +478,18 @@ function layCtrl(){
   document.getElementById('eb').style.cssText=`width:${es}px;height:${es}px;right:14px;bottom:${QH+10}px;`;
   document.getElementById('bfw').style.cssText=`right:14px;bottom:${QH+es+16}px;width:${es}px;`;
 }
-resize();
-window.addEventListener('resize',resize);
+resize(); window.addEventListener('resize',resize);
 
 // ══════════════════════════════════════
 // GAME STATE
 // ══════════════════════════════════════
-const G={phase:'map',lv:0,hp:100,score:0,dinos:[],hero:null,buffT:0,buffD:8,mathOk:false,mathTry:0,qs:[],qi:0,totE:0,okE:0,lvSt:[0,0,0],bonusXP:0,curQ:null};
+const G={phase:'map',lv:0,hp:100,score:0,dinos:[],eggs:[],meteors:[],hero:null,
+  buffT:0,buffD:8,mathOk:false,mathTry:0,qs:[],qi:0,totE:0,okE:0,
+  lvSt:[0,0,0],bonusXP:0,curQ:null};
 
-// ── MAP ──
+// ══════════════════════════════════════
+// MAP
+// ══════════════════════════════════════
 function buildMap(){
   const el=document.getElementById('mlevels'); el.innerHTML='';
   LVM.forEach((lv,i)=>{
@@ -471,7 +502,9 @@ function buildMap(){
 }
 function goMap(){hideAll();document.getElementById('map').classList.remove('hide');buildMap();}
 
-// ── STORY ──
+// ══════════════════════════════════════
+// STORY
+// ══════════════════════════════════════
 const SS={ans:[],sel:null,blanks:[],exps:[],poem:null,type:'fill'};
 function startLv(i){G.lv=i;G.mathOk=false;G.mathTry=0;hideAll();buildStory(i);document.getElementById('story').classList.remove('hide');}
 function buildStory(i){
@@ -486,8 +519,7 @@ function buildStory(i){
   document.getElementById('wbh').textContent='';
   SS.type=i===1?'poetry':'fill';
   if(SS.type==='fill'){
-    const db=i===0?CHN0:CHN2, hkey=i===0?'s0':'s2';
-    const [p]=pickFresh(db,hkey,1);
+    const [p]=pickFresh(CHN0,'s'+i,1);
     SS.blanks=p.b; SS.exps=p.e; SS.ans=Array(p.b.length).fill(null); SS.sel=null;
     let html='';
     p.t.split(/(\[\d\])/).forEach(s=>{
@@ -554,10 +586,12 @@ function valPoem(){
   else{fb.textContent='✗ '+errs[0].exp;fb.style.color='var(--rd)';}
 }
 
-// ── MATH ──
+// ══════════════════════════════════════
+// MATH (opening)
+// ══════════════════════════════════════
 let CM=null;
 function setupMath(){
-  [CM]=pickFresh(MATH,'math',1); G.mathTry=0;
+  [CM]=pickFresh(MATH_OPEN,'math',1); G.mathTry=0;
   document.getElementById('msc').innerHTML=CM.sc;
   document.getElementById('mq').textContent=CM.q;
   document.getElementById('mans').value='';
@@ -573,12 +607,17 @@ function chkMath(){
 }
 function goMath(){hideAll();document.getElementById('math').classList.remove('hide');setupMath();}
 
-// ── BUILD 10 Qs ──
+// ══════════════════════════════════════
+// BUILD 20 QUESTIONS
+// 5 spell + 6 prep/sent(EN) + 6 CN egg + 3 MA meteor
+// ══════════════════════════════════════
 function buildQs(){
-  const sp=pickFresh(WORDS,'spell',4).map(d=>({t:'spell',d}));
+  const sp=pickFresh(WORDS,'spell',5).map(d=>({t:'spell',d}));
   const pr=pickFresh(PREP,'prep',3).map(d=>({t:'prep',d}));
   const se=pickFresh(SENT,'sent',3).map(d=>({t:'sent',d}));
-  const qs=[...sp,...pr,...se];
+  const cn=pickFresh(CN_QS,'cnq',6).map(d=>({t:'egg',d}));
+  const ma=pickFresh(MA_QS,'maq',3).map(d=>({t:'meteor',d}));
+  const qs=[...sp,...pr,...se,...cn,...ma];
   for(let i=qs.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[qs[i],qs[j]]=[qs[j],qs[i]];}
   G.qs=qs; G.qi=0; G.hp=100; G.score=0; G.totE=0; G.okE=0; G.bonusXP=0;
   G.hero=mkHero(); if(G.mathOk) G.buffT=G.buffD;
@@ -591,87 +630,106 @@ function buildQs(){
   setTimeout(()=>{measureQ();loadQ();},60);
 }
 
+// ══════════════════════════════════════
+// LOAD QUESTION
+// ══════════════════════════════════════
 function loadQ(){
   if(G.qi>=G.qs.length){endPlay();return;}
   const q=G.qs[G.qi]; G.curQ=null;
   document.getElementById('hpg').textContent=`${G.qi}/${G.qs.length}`;
   updHUD();
+  // update type badge + eat button label
+  const typeEl=document.getElementById('htype');
+  const eblbl=document.getElementById('eblbl');
+  if(q.t==='egg'){typeEl.className='htype cn';typeEl.textContent='语文';eblbl.textContent='踩蛋';}
+  else if(q.t==='meteor'){typeEl.className='htype ma';typeEl.textContent='数学';eblbl.textContent='撞击';}
+  else{typeEl.className='htype en';typeEl.textContent='英语';eblbl.textContent='吞噬';}
   if(q.t==='spell') loadSpell(q.d);
   else if(q.t==='prep') loadPrep(q.d);
-  else loadSent(q.d);
+  else if(q.t==='sent') loadSent(q.d);
+  else if(q.t==='egg') loadEgg(q.d);
+  else if(q.t==='meteor') loadMeteor(q.d);
   setTimeout(measureQ,40);
 }
 
-// ── SPELL: correct letter multiplicity fix ──
+// ── ENGLISH SPELL ──
 function loadSpell(d){
-  // Step1: pool = exact letters of word (preserves duplicates e.g. DRESS→D,R,E,S,S)
-  const tgt = d.w.split('');
-  const pool = [...tgt]; // guaranteed to have all needed letters with correct count
-
-  // Step2: count distinct letters already in word
-  const inWord = new Set(tgt);
-
-  // Step3: add decoys — only letters NOT in the word at all
-  const decoys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(c => !inWord.has(c));
-  decoys.sort(()=>Math.random()-.5);
-  const needed = Math.max(0, 10 - pool.length);
-  for(let i=0; i<needed && i<decoys.length; i++) pool.push(decoys[i]);
-
+  const tgt=d.w.split('');
+  const pool=[...tgt];
+  const inW=new Set(tgt);
+  const dec='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(c=>!inW.has(c)).sort(()=>Math.random()-.5);
+  for(let i=0;i<Math.min(6,10-pool.length);i++) pool.push(dec[i]);
   pool.sort(()=>Math.random()-.5);
   G.curQ={t:'spell',d,filled:[],tgt};
+  G.eggs=[]; G.meteors=[];
   spawnGrid(pool);
-  document.getElementById('qtb').textContent='🔡 单词拼写 · 找正确字母按顺序吞噬';
+  document.getElementById('qtb').textContent='🔡 英语拼写 · 找到正确字母按顺序吞噬';
   document.getElementById('qt').textContent=`拼出单词：${d.zh}（${d.w.length}个字母）`;
   document.getElementById('qsc').style.display='none';
   document.getElementById('wpl').style.display='block';
   document.getElementById('wzh').textContent=d.zh;
   updSlots();
 }
-
 function updSlots(){
   const q=G.curQ; if(!q||q.t!=='spell') return;
   const sl=document.getElementById('wsl'); sl.innerHTML='';
   q.tgt.forEach((l,i)=>{const b=document.createElement('div');b.className='ws'+(i<q.filled.length?' ok':'');b.textContent=i<q.filled.length?q.filled[i]:'_';sl.appendChild(b);});
 }
 
+// ── ENGLISH PREP ──
 function loadPrep(d){
-  G.curQ={t:'prep',d,done:false};
-  document.getElementById('qtb').textContent='📍 介词填空 · 吞噬正确答案';
+  G.curQ={t:'prep',d,done:false}; G.eggs=[]; G.meteors=[];
+  document.getElementById('qtb').textContent='📍 英语介词 · 吞噬正确答案';
   document.getElementById('qt').textContent=d.s.replace('_____','（　　）');
-  const sc=document.getElementById('qsc');
-  sc.style.display='block';
-  resizeSceneCanvas(); // ensure correct size before drawing
-  drawSc(sc,d.sc);
+  const sc=document.getElementById('qsc'); sc.style.display='block'; drawSc(sc,d.sc);
   document.getElementById('wpl').style.display='none';
   spawnWord(d.o,d.a);
 }
 
+// ── ENGLISH SENT ──
 function loadSent(d){
-  G.curQ={t:'sent',d,done:false};
-  document.getElementById('qtb').textContent='📝 句子填空 · 吞噬正确答案';
+  G.curQ={t:'sent',d,done:false}; G.eggs=[]; G.meteors=[];
+  document.getElementById('qtb').textContent='📝 英语填空 · 吞噬正确答案';
   document.getElementById('qt').textContent=d.q.replace('_____','（　　）')+(d.zh?`\n提示：${d.zh}`:'');
   const sc=document.getElementById('qsc');
-  if(d.sc){sc.style.display='block';resizeSceneCanvas();drawSc(sc,d.sc);}
-  else sc.style.display='none';
+  if(d.sc){sc.style.display='block';drawSc(sc,d.sc);}else sc.style.display='none';
   document.getElementById('wpl').style.display='none';
   spawnWord(d.o,d.a);
 }
 
-// ── SCENE — fixed 260x220 intrinsic canvas, CSS shrinks to 130x110 display ──
+// ── CHINESE EGG ──
+function loadEgg(d){
+  G.curQ={t:'egg',d,done:false}; G.dinos=[]; G.meteors=[];
+  document.getElementById('qtb').textContent='🥚 语文 · 走到正确的恐龙蛋旁边踩破它';
+  document.getElementById('qt').textContent=d.q;
+  document.getElementById('qsc').style.display='none';
+  document.getElementById('wpl').style.display='none';
+  spawnEggs(d.o,d.a);
+}
+
+// ── MATH METEOR ──
+function loadMeteor(d){
+  G.curQ={t:'meteor',d,done:false}; G.dinos=[]; G.eggs=[];
+  document.getElementById('qtb').textContent='☄️ 数学 · 走到正确答案的陨石旁边撞击';
+  document.getElementById('qt').textContent=d.q;
+  document.getElementById('qsc').style.display='none';
+  document.getElementById('wpl').style.display='none';
+  spawnMeteors(d.o,d.a);
+}
+
+// ══════════════════════════════════════
+// SCENE DRAWING
+// ══════════════════════════════════════
 function drawSc(sc,name){
-  const c=sc.getContext('2d');
-  const w=260, h=220;
-  c.clearRect(0,0,w,h);
-  c.fillStyle='#f9fbe7'; c.fillRect(0,0,w,h);
+  const c=sc.getContext('2d'),w=260,h=220;
+  c.clearRect(0,0,w,h); c.fillStyle='#f9fbe7'; c.fillRect(0,0,w,h);
   c.fillStyle='#c8e6c9'; c.fillRect(0,h*.72,w,h*.28);
   c.textAlign='center'; c.textBaseline='middle';
-  // main object (tree/chair/box) font size
-  const big='72px serif';
-  const sml='52px serif';
+  const big='72px serif', sml='52px serif';
   c.font=big;
-  const mx=w*.38, my=h*.5;
-  const scenes={
-    monkey_on:    ()=>{c.fillText('🌳',mx,my);c.fillText('🐒',mx,h*.17);},
+  const mx=w*.38,my=h*.5;
+  const S={
+    monkey_on:    ()=>{c.fillText('🌳',mx,my);c.fillText('🐒',mx,h*.18);},
     cat_under:    ()=>{c.fillText('🪑',mx,h*.42);c.fillText('🐱',mx,h*.76);},
     bird_in:      ()=>{c.fillText('📦',mx,h*.56);c.font=sml;c.fillText('🐦',mx,h*.51);},
     dog_behind:   ()=>{c.fillText('🌳',w*.3,my);c.font=sml;c.fillText('🐕',w*.52,h*.65);},
@@ -683,21 +741,30 @@ function drawSc(sc,name){
     bird_nextto:  ()=>{c.fillText('🌳',w*.28,my);c.fillText('🐦',w*.64,h*.44);},
     fox_in:       ()=>{c.fillText('📦',mx,h*.56);c.font=sml;c.fillText('🦊',mx,h*.51);},
     dog_on:       ()=>{c.fillText('🪑',mx,h*.54);c.fillText('🐕',mx,h*.27);},
-    rain:         ()=>{c.fillText('🌧️',w*.5,h*.44);},
-    snow:         ()=>{c.fillText('❄️',w*.3,h*.44);c.font=sml;c.fillText('⛄',w*.68,h*.62);},
-    sunny:        ()=>{c.fillText('☀️',w*.5,h*.4);},
+    rain:()=>{c.fillText('🌧️',w*.5,h*.44);},
+    snow:()=>{c.fillText('❄️',w*.3,h*.44);c.font=sml;c.fillText('⛄',w*.68,h*.62);},
+    sunny:()=>{c.fillText('☀️',w*.5,h*.4);},
   };
-  (scenes[name]||scenes.sunny)();
+  (S[name]||S.sunny)();
 }
 
-// ── DINOS ──
+// ══════════════════════════════════════
+// ENTITY SPAWNING
+// ══════════════════════════════════════
 const DE=['🦕','🦎','🐊','🐢','🦗','🐍'];
-function mkHero(){return{x:W*.12,y:H*.45,r:Math.min(W,H)*.052,spd:130,bspd:210};}
+function mkHero(){return{x:W*.12,y:H*.45,r:Math.min(W,H)*.052,spd:220,bspd:340};}
+
+function getPlayArea(){
+  const top=PT+10, bot=(PB||H*.82)-10;
+  return {top,bot,left:10,right:W-10};
+}
+
+// English dinos (letter labels)
 function spawnGrid(labels){
   G.dinos=[];
   const r=Math.min(W,H)*.044, n=labels.length;
   const cols=Math.ceil(Math.sqrt(n*1.6)), rows=Math.ceil(n/cols);
-  const top=PT+r*1.5, bot=(PB||H*.82)-r*1.5;
+  const {top,bot}=getPlayArea();
   const cw=(W*.88)/cols, ch=(bot-top)/rows;
   [...labels].sort(()=>Math.random()-.5).forEach((lbl,i)=>{
     const col=i%cols, row=Math.floor(i/cols);
@@ -707,56 +774,75 @@ function spawnGrid(labels){
 function spawnWord(opts,ans){
   G.dinos=[];
   const r=Math.min(W,H)*.046, n=opts.length;
-  const top=PT+r*1.5, bot=(PB||H*.82)-r*1.5, sp=W/(n+1), my=(top+bot)/2;
+  const {top,bot}=getPlayArea();
+  const sp=W/(n+1), my=(top+bot)/2;
   opts.forEach((opt,i)=>{
     G.dinos.push({lbl:opt,isTarget:opt===ans,x:sp*(i+1)+(Math.random()-.5)*sp*.22,y:my+(Math.random()-.5)*(bot-top)*.38,vx:(Math.random()-.5)*28,vy:(Math.random()-.5)*28,r,e:DE[i%6],wb:Math.random()*Math.PI*2,dead:false});
   });
 }
 function addDino(lbl,isTarget){
-  const r=Math.min(W,H)*.044, top=PT+r*2, bot=(PB||H*.82)-r*2;
+  const r=Math.min(W,H)*.044; const {top,bot}=getPlayArea();
   G.dinos.push({lbl,isTarget,x:W*.1+Math.random()*W*.8,y:top+Math.random()*(bot-top),vx:(Math.random()-.5)*26,vy:(Math.random()-.5)*26,r,e:DE[Math.floor(Math.random()*6)],wb:0,dead:false});
 }
 
-// ── EAT ──
+// Eggs (Chinese)
+function spawnEggs(opts,ans){
+  G.eggs=[];
+  const n=opts.length, r=Math.min(W,H)*.06;
+  const {top,bot}=getPlayArea();
+  const sp=W/(n+1), my=(top+bot)/2;
+  const eggColors=['#ffe0b2','#f8bbd0','#dcedc8','#b3e5fc'];
+  opts.forEach((opt,i)=>{
+    G.eggs.push({lbl:opt,isTarget:opt===ans,x:sp*(i+1),y:my+(Math.random()-.5)*(bot-top)*.3,r,color:eggColors[i%4],wb:Math.random()*Math.PI*2,dead:false,hatched:false,hatchTimer:0});
+  });
+}
+
+// Meteors (Math) — static, hovering
+function spawnMeteors(opts,ans){
+  G.meteors=[];
+  const n=opts.length, r=Math.min(W,H)*.065;
+  const {top,bot}=getPlayArea();
+  const sp=W/(n+1), my=(top+bot)/2;
+  opts.forEach((opt,i)=>{
+    // gentle hover only, no falling
+    G.meteors.push({lbl:opt,isTarget:opt===ans,x:sp*(i+1),y:my+(Math.random()-.5)*(bot-top)*.35,r,wb:Math.random()*Math.PI*2,dead:false,vx:(Math.random()-.5)*8,vy:(Math.random()-.5)*8});
+  });
+}
+
+// ══════════════════════════════════════
+// ACTION — unified eat/stomp/hit
+// ══════════════════════════════════════
 const eb=document.getElementById('eb');
-eb.addEventListener('click',tryEat);
-eb.addEventListener('touchend',e=>{e.preventDefault();tryEat();});
-function tryEat(){
+eb.addEventListener('click',doAction);
+eb.addEventListener('touchend',e=>{e.preventDefault();doAction();});
+
+function doAction(){
   if(G.phase!=='play') return;
-  const h=G.hero, q=G.curQ; if(!q) return;
+  const q=G.curQ; if(!q) return;
+  const h=G.hero;
+  if(q.t==='spell')       doEat(h,q);
+  else if(q.t==='prep'||q.t==='sent') doEat(h,q);
+  else if(q.t==='egg')    doStomp(h,q);
+  else if(q.t==='meteor') doHit(h,q);
+}
+
+function doEat(h,q){
   let cl=null, bd=Infinity;
   G.dinos.forEach(d=>{if(d.dead)return;const ds=Math.hypot(h.x-d.x,h.y-d.y);if(ds<h.r+d.r+18&&ds<bd){bd=ds;cl=d;}});
-  if(!cl){eb.style.borderColor='var(--rd)';setTimeout(()=>eb.style.borderColor='var(--am)',300);return;}
+  if(!cl){flashBtn();return;}
   if(q.t==='spell'){
     const need=q.tgt[q.filled.length]; G.totE++;
     if(cl.lbl===need){
       G.okE++;cl.dead=true;spawnPts(cl.x,cl.y,'76,175,80',10);sfxEatOk();
       q.filled.push(need);G.score+=50;updSlots();
-      if(q.filled.length>=q.tgt.length){
-        G.score+=150;showPop(`✓ ${q.d.w}（${q.d.zh}）`);sfxWordDone();setTimeout(nextQ,900);
-      } else {
-        // after correct eat, replace with a pure decoy (not in word at all)
-        const inWord=new Set(q.tgt);
-        const dec='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(c=>!inWord.has(c));
-        dec.sort(()=>Math.random()-.5);
-        addDino(dec[0]||'X',false);
-      }
-    } else {
-      // WRONG eat — remove wrong dino and penalise
+      if(q.filled.length>=q.tgt.length){G.score+=150;showPop(`✓ ${q.d.w}（${q.d.zh}）`);sfxWordDone();setTimeout(nextQ,900);}
+      else{const inW=new Set(q.tgt);const dec='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(c=>!inW.has(c)).sort(()=>Math.random()-.5);addDino(dec[0]||'X',false);}
+    } else{
       cl.dead=true;spawnPts(cl.x,cl.y,'198,40,40',6);sfxEatWrong();takeDmg(15);G.score=Math.max(0,G.score-15);
-      // Check: is the next needed letter still alive on screen?
       const nextNeed=q.tgt[q.filled.length];
-      const targetAlive=G.dinos.some(d=>!d.dead && d.lbl===nextNeed);
-      if(!targetAlive){
-        // Target letter gone — respawn it so player is never stuck
-        addDino(nextNeed, false); // isTarget flag not used for spell, lbl drives logic
-      } else {
-        // Target still exists — just add a neutral decoy
-        const inWord=new Set(q.tgt);
-        const dec='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(c=>!inWord.has(c));
-        dec.sort(()=>Math.random()-.5);
-        addDino(dec[0]||'Z',false);
-      }
+      const alive=G.dinos.some(d=>!d.dead&&d.lbl===nextNeed);
+      if(!alive) addDino(nextNeed,false);
+      else{const inW=new Set(q.tgt);const dec='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(c=>!inW.has(c)).sort(()=>Math.random()-.5);addDino(dec[0]||'Z',false);}
     }
   } else {
     if(q.done) return; G.totE++;
@@ -765,12 +851,56 @@ function tryEat(){
   }
   updHUD();
 }
+
+function doStomp(h,q){
+  if(q.done) return;
+  let cl=null, bd=Infinity;
+  G.eggs.forEach(e=>{if(e.dead||e.hatched)return;const ds=Math.hypot(h.x-e.x,h.y-e.y);if(ds<h.r+e.r+16&&ds<bd){bd=ds;cl=e;}});
+  if(!cl){flashBtn();return;}
+  G.totE++;
+  if(cl.isTarget){
+    G.okE++;cl.hatched=true;cl.hatchTimer=60;q.done=true;
+    spawnPts(cl.x,cl.y,'76,175,80',14);sfxWordDone();G.score+=120;
+    showPop('✓ '+cl.lbl);
+    setTimeout(nextQ,1000);
+  } else {
+    cl.dead=true;spawnPts(cl.x,cl.y,'198,40,40',8);sfxEatWrong();takeDmg(15);G.score=Math.max(0,G.score-15);
+    // show explanation briefly
+    showPop('✗ '+q.d.e.substring(0,12)+'…');
+  }
+  updHUD();
+}
+
+function doHit(h,q){
+  if(q.done) return;
+  let cl=null, bd=Infinity;
+  G.meteors.forEach(m=>{if(m.dead)return;const ds=Math.hypot(h.x-m.x,h.y-m.y);if(ds<h.r+m.r+18&&ds<bd){bd=ds;cl=m;}});
+  if(!cl){flashBtn();return;}
+  G.totE++;
+  if(cl.isTarget){
+    G.okE++;cl.dead=true;q.done=true;
+    spawnPts(cl.x,cl.y,'76,175,80',16);sfxWordDone();G.score+=120;
+    showPop('✓ '+cl.lbl);
+    setTimeout(nextQ,900);
+  } else {
+    cl.dead=true;spawnPts(cl.x,cl.y,'198,40,40',10);sfxEatWrong();takeDmg(15);G.score=Math.max(0,G.score-15);
+    showPop('✗ 再找找！');
+    // respawn wrong meteor
+    const r=Math.min(W,H)*.065; const {top,bot}=getPlayArea();
+    G.meteors.push({lbl:cl.lbl,isTarget:false,x:W*.1+Math.random()*W*.8,y:top+Math.random()*(bot-top),r,wb:Math.random()*Math.PI*2,dead:false,vx:(Math.random()-.5)*8,vy:(Math.random()-.5)*8});
+  }
+  updHUD();
+}
+
+function flashBtn(){eb.style.borderColor='var(--rd)';setTimeout(()=>eb.style.borderColor='var(--am)',300);}
 function nextQ(){G.qi++;loadQ();}
 function endPlay(){G.phase='idle';['hud','qp','kh','jz','eb','bfw'].forEach(id=>document.getElementById(id).classList.add('hide'));showRead();}
 
-// ── READING ──
+// ══════════════════════════════════════
+// READING
+// ══════════════════════════════════════
 function showRead(){
-  const db=READ[G.lv], hkey='r'+G.lv;
+  const db=READ[G.lv],hkey='r'+G.lv;
   const [rq]=pickFresh(db,hkey,1);
   document.getElementById('rpsg').textContent=rq.p;
   document.getElementById('rq').textContent=rq.q;
@@ -809,14 +939,18 @@ function goResult(){
 }
 function replay(){startLv(G.lv);}
 
-// ── DAMAGE / PARTICLES ──
-function takeDmg(a){G.hp=Math.max(0,G.hp-a);sfxDamage();const f=document.getElementById('dmg');f.style.opacity='1';setTimeout(()=>f.style.opacity='0',150);updHUD();}
+// ══════════════════════════════════════
+// DAMAGE / PARTICLES / HUD
+// ══════════════════════════════════════
+function takeDmg(a){G.hp=Math.max(0,G.hp-a);const f=document.getElementById('dmg');f.style.opacity='1';setTimeout(()=>f.style.opacity='0',150);sfxDamage();updHUD();}
 let parts=[];
 function spawnPts(x,y,rgb,n){for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,sp=Math.random()*4+1.5;parts.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-2,r:Math.random()*5+2,life:1,rgb});}}
-function updHUD(){document.getElementById('hpf').style.width=G.hp+'%';document.getElementById('hpt').textContent=G.hp+'%';document.getElementById('hsc').textContent=G.score;}
+function updHUD(){const hpf=document.getElementById('hpf');const hpt=document.getElementById('hpt');if(hpf)hpf.style.width=G.hp+'%';if(hpt)hpt.textContent=G.hp+'%';const hsc=document.getElementById('hsc');if(hsc)hsc.textContent=G.score;}
 function showPop(t){const el=document.getElementById('wpop');el.textContent=t;el.style.opacity='1';setTimeout(()=>el.style.opacity='0',1200);}
 
-// ── JOYSTICK + KEYS ──
+// ══════════════════════════════════════
+// JOYSTICK + KEYBOARD
+// ══════════════════════════════════════
 const joy={active:false,dx:0,dy:0,sx:0,sy:0};
 const jz=document.getElementById('jz'),jk=document.getElementById('jk');
 function jD(e){e.preventDefault();const t=e.touches?e.touches[0]:e;const r=jz.getBoundingClientRect();joy.active=true;joy.sx=r.left+r.width/2;joy.sy=r.top+r.height/2;}
@@ -825,17 +959,23 @@ function jU(e){e.preventDefault();joy.active=false;joy.dx=0;joy.dy=0;jk.style.tr
 jz.addEventListener('touchstart',jD,{passive:false});jz.addEventListener('touchmove',jM,{passive:false});jz.addEventListener('touchend',jU,{passive:false});
 jz.addEventListener('mousedown',jD);document.addEventListener('mousemove',e=>{if(joy.active)jM(e);});document.addEventListener('mouseup',e=>{if(joy.active)jU(e);});
 const keys={};
-window.addEventListener('keydown',e=>{keys[e.key]=true;if((e.key===' '||e.key==='Enter')&&G.phase==='play'){e.preventDefault();tryEat();}});
-window.addEventListener('keyup',e=>{ keys[e.key]=false; });
+window.addEventListener('keydown',e=>{keys[e.key]=true;if((e.key===' '||e.key==='Enter')&&G.phase==='play'){e.preventDefault();doAction();}});
+window.addEventListener('keyup',e=>{keys[e.key]=false;});
 function kx(){let d=0;if(keys['ArrowLeft']||keys['a']||keys['A'])d-=1;if(keys['ArrowRight']||keys['d']||keys['D'])d+=1;return d;}
 function ky(){let d=0;if(keys['ArrowUp']||keys['w']||keys['W'])d-=1;if(keys['ArrowDown']||keys['s']||keys['S'])d+=1;return d;}
 
-// ── RENDER LOOP ──
+// ══════════════════════════════════════
+// RENDER LOOP
+// ══════════════════════════════════════
 let lastTs=0;
 function loop(ts){
   const dt=Math.min((ts-lastTs)/1000,.05);lastTs=ts;
   ctx.clearRect(0,0,W,H); drawBG();
-  if(G.phase==='play'){updHero(dt);updDinos(dt);drawDinos();drawHero();drawPts();updBuff(dt);updEb();}
+  if(G.phase==='play'){
+    updHero(dt);updDinos(dt);updEggs(dt);updMeteors(dt);
+    drawMeteors();drawEggs();drawDinos();drawHero();drawPts();
+    updBuff(dt);updEb();
+  }
   requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);
@@ -851,6 +991,7 @@ function drawBG(){
   for(let i=0;i<12;i++){ctx.globalAlpha=.4;ctx.font=`${H*.04}px serif`;ctx.fillText('🌿',(i/11)*W*.95+W*.025,(PB||H*.85)+H*.036);}
   ctx.globalAlpha=1;
 }
+
 function updHero(dt){
   const h=G.hero,spd=G.buffT>0?h.bspd:h.spd,dx=joy.dx||kx(),dy=joy.dy||ky();
   h.x=Math.max(h.r,Math.min(W-h.r,h.x+dx*spd*dt));
@@ -862,14 +1003,16 @@ function drawHero(){
   if(G.buffT>0){ctx.beginPath();ctx.arc(h.x,h.y,h.r+6,0,Math.PI*2);ctx.strokeStyle='rgba(230,144,10,.5)';ctx.lineWidth=2;ctx.stroke();}
   ctx.font=`${h.r*2}px serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('🦖',h.x,h.y);
 }
+
+// English dinos
 function updDinos(dt){
   G.dinos.forEach(d=>{
     if(d.dead)return; d.wb+=dt*1.8;
     if(Math.random()<.012){d.vx=(Math.random()-.5)*38;d.vy=(Math.random()-.5)*38;}
     d.x+=d.vx*dt;d.y+=d.vy*dt;
     if(d.x<d.r||d.x>W-d.r){d.vx*=-1;d.x=Math.max(d.r,Math.min(W-d.r,d.x));}
-    const top=PT+d.r,bot=(PB||H*.82)-d.r;
-    if(d.y<top||d.y>bot){d.vy*=-1;d.y=Math.max(top,Math.min(bot,d.y));}
+    const {top,bot}=getPlayArea();
+    if(d.y<top+d.r||d.y>bot-d.r){d.vy*=-1;d.y=Math.max(top+d.r,Math.min(bot-d.r,d.y));}
   });
 }
 function drawDinos(){
@@ -887,175 +1030,207 @@ function drawDinos(){
     ctx.restore();
   });
 }
+
+// Eggs (Chinese)
+function updEggs(dt){
+  const h=G.hero;
+  G.eggs.forEach(e=>{
+    if(e.dead)return;
+    e.wb+=dt*1.2;
+    if(e.hatched){e.hatchTimer--;if(e.hatchTimer<=0)e.dead=true;return;}
+    // gentle wobble, no movement
+  });
+}
+function drawEggs(){
+  const h=G.hero;
+  G.eggs.forEach(e=>{
+    if(e.dead)return;
+    const ir=Math.hypot(h.x-e.x,h.y-e.y)<h.r+e.r+16;
+    ctx.save();ctx.translate(e.x,e.y);
+    if(e.hatched){
+      // hatching animation
+      ctx.font=`${e.r*2}px serif`;ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText('🐣',0,0);
+      ctx.restore();return;
+    }
+    ctx.rotate(Math.sin(e.wb)*.06);
+    // egg body
+    ctx.beginPath();
+    ctx.ellipse(0,0,e.r*.7,e.r,0,0,Math.PI*2);
+    ctx.fillStyle=ir?'#fff9c4':e.color;
+    ctx.fill();
+    ctx.strokeStyle=ir?'#E6900A':'#a5d6a7';
+    ctx.lineWidth=ir?2.5:1.5;ctx.stroke();
+    // crack hint when in range
+    if(ir){
+      ctx.beginPath();ctx.moveTo(-4,-8);ctx.lineTo(0,-2);ctx.lineTo(4,-8);
+      ctx.strokeStyle='#C62828';ctx.lineWidth=1.5;ctx.stroke();
+    }
+    // label
+    const bs=Math.min(e.r*.75,15),tw=e.lbl.length*bs*.62+8;
+    ctx.beginPath();ctx.roundRect(-tw/2,-bs/2-2,tw,bs+4,3);
+    ctx.fillStyle='rgba(255,255,255,.92)';ctx.fill();
+    ctx.font=`bold ${bs}px sans-serif`;ctx.fillStyle='#1a3a2a';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(e.lbl,0,0);
+    ctx.restore();
+  });
+}
+
+// Meteors (Math)
+function updMeteors(dt){
+  G.meteors.forEach(m=>{
+    if(m.dead)return;
+    m.wb+=dt*1.5;
+    // gentle floating
+    m.x+=m.vx*dt; m.y+=m.vy*dt;
+    if(m.x<m.r||m.x>W-m.r){m.vx*=-1;m.x=Math.max(m.r,Math.min(W-m.r,m.x));}
+    const {top,bot}=getPlayArea();
+    if(m.y<top+m.r||m.y>bot-m.r){m.vy*=-1;m.y=Math.max(top+m.r,Math.min(bot-m.r,m.y));}
+  });
+}
+function drawMeteors(){
+  const h=G.hero;
+  G.meteors.forEach(m=>{
+    if(m.dead)return;
+    const ir=Math.hypot(h.x-m.x,h.y-m.y)<h.r+m.r+18;
+    ctx.save();ctx.translate(m.x,m.y);ctx.rotate(m.wb*.3);
+    // meteor body
+    ctx.beginPath();
+    for(let i=0;i<7;i++){
+      const a=i/7*Math.PI*2, r=i%2===0?m.r:m.r*.68;
+      i===0?ctx.moveTo(Math.cos(a)*r,Math.sin(a)*r):ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r);
+    }
+    ctx.closePath();
+    ctx.fillStyle=ir?'#fff9c4':'#b0bec5';ctx.fill();
+    ctx.strokeStyle=ir?'#E6900A':'#78909c';ctx.lineWidth=ir?2.5:1.5;ctx.stroke();
+    // glow when in range
+    if(ir){ctx.shadowBlur=12;ctx.shadowColor='rgba(230,144,10,.6)';}
+    // label
+    const bs=Math.min(m.r*.72,16),tw=m.lbl.length*bs*.7+10;
+    ctx.shadowBlur=0;
+    ctx.beginPath();ctx.roundRect(-tw/2,-bs/2-2,tw,bs+4,3);
+    ctx.fillStyle='rgba(255,255,255,.92)';ctx.fill();
+    ctx.font=`bold ${bs}px sans-serif`;ctx.fillStyle='#1a237e';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(m.lbl,0,0);
+    ctx.restore();
+  });
+}
+
 function drawPts(){
   parts=parts.filter(p=>p.life>0);
   parts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r*p.life,0,Math.PI*2);ctx.fillStyle=`rgba(${p.rgb},${p.life})`;ctx.fill();p.x+=p.vx;p.y+=p.vy;p.vy+=.18;p.life-=.034;});
 }
 function updBuff(dt){
-  if(G.buffT>0){G.buffT=Math.max(0,G.buffT-dt);document.getElementById('bff').style.width=(G.buffT/G.buffD*100)+'%';document.getElementById('hbf').textContent=G.buffT>0?`⚡${G.buffT.toFixed(1)}s`:'';}
+  if(G.buffT>0){
+    G.buffT=Math.max(0,G.buffT-dt);
+    const bff=document.getElementById('bff');
+    const hbf=document.getElementById('hbf');
+    if(bff)bff.style.width=(G.buffT/G.buffD*100)+'%';
+    if(hbf)hbf.textContent=G.buffT>0?`⚡${G.buffT.toFixed(1)}s`:'';
+  }
 }
 function updEb(){
-  const h=G.hero;let any=false;
-  G.dinos.forEach(d=>{if(!d.dead&&Math.hypot(h.x-d.x,h.y-d.y)<h.r+d.r+18)any=true;});
+  const h=G.hero; let any=false;
+  const q=G.curQ; if(!q){eb.classList.remove('rdy');return;}
+  if(q.t==='egg'){G.eggs.forEach(e=>{if(!e.dead&&!e.hatched&&Math.hypot(h.x-e.x,h.y-e.y)<h.r+e.r+16)any=true;});}
+  else if(q.t==='meteor'){G.meteors.forEach(m=>{if(!m.dead&&Math.hypot(h.x-m.x,h.y-m.y)<h.r+m.r+18)any=true;});}
+  else{G.dinos.forEach(d=>{if(!d.dead&&Math.hypot(h.x-d.x,h.y-d.y)<h.r+d.r+18)any=true;});}
   eb.classList.toggle('rdy',any);
+}
+
+// ══════════════════════════════════════
+// AUDIO ENGINE — iOS Safari compatible
+// Pre-render all audio into AudioBuffers
+// ══════════════════════════════════════
+let AC=null,musicOn=false,_bgSrc=null,_bgBuf=null;
+function initAC(){}
+function makeToneBuf(freq,type,dur,vol){
+  if(!AC)return null;
+  const sr=AC.sampleRate,len=Math.ceil(sr*dur);
+  const buf=AC.createBuffer(1,len,sr);
+  const d=buf.getChannelData(0);
+  for(let i=0;i<len;i++){
+    let s=0;
+    if(type==='sine') s=Math.sin(2*Math.PI*freq*i/sr);
+    else if(type==='sq') s=Math.sin(2*Math.PI*freq*i/sr)>0?1:-1;
+    else if(type==='tri') s=2*Math.abs(2*(i/sr*freq-Math.floor(i/sr*freq+0.5)))-1;
+    else s=(Math.random()*2-1);
+    const env=Math.min(1,i/(sr*0.01))*Math.max(0,1-(i/(len*0.7)));
+    d[i]=s*vol*env;
+  }
+  return buf;
+}
+function playBuf(buf,when){
+  if(!AC||!musicOn||!buf)return;
+  const src=AC.createBufferSource();
+  const g=AC.createGain();g.gain.value=0.3;
+  src.buffer=buf;src.connect(g);g.connect(AC.destination);
+  src.start(when);
+}
+let _sfx={};
+function buildSfx(){
+  if(!AC)return;
+  _sfx.eatOk=[makeToneBuf(523,'sine',0.07,0.6),makeToneBuf(659,'sine',0.07,0.6)];
+  _sfx.eatWrong=[makeToneBuf(220,'sq',0.1,0.4),makeToneBuf(180,'sq',0.12,0.3)];
+  _sfx.word=[makeToneBuf(523,'sine',0.1,0.5),makeToneBuf(659,'sine',0.1,0.5),makeToneBuf(784,'sine',0.1,0.5),makeToneBuf(1046,'sine',0.15,0.5)];
+  _sfx.dmg=[makeToneBuf(0,'noise',0.15,0.5)];
+  _sfx.start=[makeToneBuf(392,'sq',0.12,0.35),makeToneBuf(494,'sq',0.12,0.35),makeToneBuf(587,'sq',0.12,0.35),makeToneBuf(784,'sq',0.18,0.4)];
+  _sfx.correct=[makeToneBuf(784,'sine',0.1,0.45),makeToneBuf(1046,'sine',0.14,0.45)];
+  _sfx.wrong=[makeToneBuf(294,'tri',0.18,0.35)];
+}
+function playSfx(arr,spacing=0.08){
+  if(!AC||!musicOn)return;
+  let t=AC.currentTime+0.01;
+  arr.forEach(b=>{playBuf(b,t);t+=spacing;});
+}
+function sfxEatOk(){playSfx(_sfx.eatOk||[]);}
+function sfxEatWrong(){playSfx(_sfx.eatWrong||[]);}
+function sfxWordDone(){playSfx(_sfx.word||[],0.07);}
+function sfxDamage(){playSfx(_sfx.dmg||[]);}
+function sfxLevelStart(){playSfx(_sfx.start||[],0.12);}
+function sfxCorrect(){playSfx(_sfx.correct||[],0.1);}
+function sfxWrong(){playSfx(_sfx.wrong||[]);}
+
+const BG_NOTES=[[523,.15],[587,.15],[659,.15],[784,.15],[880,.15],[784,.15],[659,.15],[587,.15],[523,.15],[523,.15],[659,.15],[784,.15],[880,.3],[784,.15],[659,.15],[659,.15],[587,.15],[523,.15],[494,.15],[523,.3],[587,.15],[659,.15],[784,.15],[880,.15],[784,.15],[659,.15],[523,.3],[587,.15],[523,.3]];
+const BG_BASS=[[131,.6],[196,.6],[165,.6],[147,.6],[131,.6],[196,.6],[165,.6],[147,.6]];
+function buildBGBuffer(){
+  if(!AC)return null;
+  const sr=AC.sampleRate;
+  const totalDur=BG_NOTES.reduce((s,[,d])=>s+d,0);
+  const len=Math.ceil(sr*totalDur);
+  const buf=AC.createBuffer(1,len,sr);
+  const out=buf.getChannelData(0);
+  let pos=0;
+  BG_NOTES.forEach(([freq,dur])=>{const nl=Math.ceil(sr*dur);for(let i=0;i<nl&&pos+i<len;i++){const env=Math.min(1,i/(sr*0.01))*Math.max(0,1-i/(nl*0.85));out[pos+i]+=Math.sin(2*Math.PI*freq*i/sr)*0.12*env;}pos+=nl;});
+  let bp=0;
+  BG_BASS.forEach(([freq,dur])=>{const nl=Math.ceil(sr*dur);for(let i=0;i<nl&&bp+i<len;i++){const env=Math.min(1,i/(sr*0.02))*Math.max(0,1-i/(nl*0.8));out[bp+i]+=Math.sin(2*Math.PI*freq*i/sr)*0.08*env;}bp+=nl;});
+  return buf;
+}
+function startBGMusic(){
+  if(!AC||!musicOn)return;
+  stopBGMusic();
+  if(!_bgBuf)_bgBuf=buildBGBuffer();
+  if(!_bgBuf)return;
+  const src=AC.createBufferSource();
+  const g=AC.createGain();g.gain.value=0.6;
+  src.buffer=_bgBuf;src.loop=true;
+  src.connect(g);g.connect(AC.destination);
+  src.start(0);_bgSrc=src;
+}
+function stopBGMusic(){if(_bgSrc){try{_bgSrc.stop();}catch(e){}_bgSrc=null;}}
+function toggleMusic(){
+  const btn=document.getElementById('music-btn');
+  if(!AC){try{AC=new(window.AudioContext||window.webkitAudioContext)();}catch(e){return;}}
+  if(AC.state==='suspended')AC.resume();
+  musicOn=!musicOn;
+  if(musicOn){btn.textContent='🔊 音乐开';btn.style.background='#f0faf5';buildSfx();startBGMusic();}
+  else{btn.textContent='🔇 音乐关';btn.style.background='#fff';stopBGMusic();}
 }
 
 function hideAll(){
   ['map','story','math','reading','result'].forEach(id=>document.getElementById(id).classList.add('hide'));
   ['hud','qp','kh','jz','eb','bfw'].forEach(id=>document.getElementById(id).classList.add('hide'));
   G.phase='idle';
-}
-
-// ══════════════════════════════════════
-// AUDIO ENGINE (Web Audio API, no files)
-// ══════════════════════════════════════
-let AC=null, musicOn=false, bgNodes=[], bgInterval=null;
-
-function initAC(){
-  // no-op: AC is now created only inside toggleMusic (user gesture) for iOS compat
-}
-
-// ── Master gain ──
-function getMaster(){
-  if(!AC) return null;
-  if(!AC._master){
-    const g=AC.createGain(); g.gain.value=0.28;
-    g.connect(AC.destination); AC._master=g;
-  }
-  return AC._master;
-}
-
-// ── Tone primitive ──
-function playTone(freq,type,startT,dur,vol,fadeDur){
-  if(!AC) return;
-  const o=AC.createOscillator(), g=AC.createGain();
-  o.type=type; o.frequency.value=freq;
-  g.gain.setValueAtTime(vol,startT);
-  if(fadeDur) g.gain.exponentialRampToValueAtTime(0.001,startT+dur);
-  o.connect(g); g.connect(getMaster());
-  o.start(startT); o.stop(startT+dur+(fadeDur||0));
-}
-
-// ── Noise burst (damage) ──
-function playNoise(startT,dur,vol){
-  if(!AC) return;
-  const buf=AC.createBuffer(1,AC.sampleRate*dur,AC.sampleRate);
-  const d=buf.getChannelData(0);
-  for(let i=0;i<d.length;i++) d[i]=(Math.random()*2-1);
-  const s=AC.createBufferSource(), g=AC.createGain(), f=AC.createBiquadFilter();
-  f.type='bandpass'; f.frequency.value=180; f.Q.value=0.8;
-  g.gain.setValueAtTime(vol,startT);
-  g.gain.exponentialRampToValueAtTime(0.001,startT+dur);
-  s.buffer=buf; s.connect(f); f.connect(g); g.connect(getMaster());
-  s.start(startT); s.stop(startT+dur+0.01);
-}
-
-// ── SOUND EFFECTS ──
-function sfxEatOk(){
-  if(!AC||!musicOn) return;
-  const t=AC.currentTime;
-  playTone(523,'sine',t,0.08,0.5,true);
-  playTone(659,'sine',t+0.07,0.08,0.5,true);
-}
-function sfxEatWrong(){
-  if(!AC||!musicOn) return;
-  const t=AC.currentTime;
-  playTone(220,'sawtooth',t,0.12,0.35,true);
-  playTone(180,'sawtooth',t+0.08,0.15,0.3,true);
-}
-function sfxWordDone(){
-  if(!AC||!musicOn) return;
-  const t=AC.currentTime;
-  [523,659,784,1046].forEach((f,i)=>playTone(f,'sine',t+i*0.07,0.15,0.45,true));
-}
-function sfxDamage(){
-  if(!AC||!musicOn) return;
-  playNoise(AC.currentTime,0.18,0.6);
-}
-function sfxLevelStart(){
-  if(!AC||!musicOn) return;
-  const t=AC.currentTime;
-  [[392,0],[494,0.1],[587,0.2],[784,0.32]].forEach(([f,d])=>playTone(f,'square',t+d,0.18,0.3,true));
-}
-function sfxCorrect(){
-  if(!AC||!musicOn) return;
-  const t=AC.currentTime;
-  playTone(784,'sine',t,0.1,0.4,true);
-  playTone(1046,'sine',t+0.09,0.14,0.4,true);
-}
-function sfxWrong(){
-  if(!AC||!musicOn) return;
-  const t=AC.currentTime;
-  playTone(294,'triangle',t,0.2,0.3,true);
-}
-
-// ── BACKGROUND MUSIC ──
-// 8-bit style melody loop in C major: fun, light, adventure feel
-const BG_MELODY=[
-  [523,0.15],[587,0.15],[659,0.15],[784,0.15],
-  [880,0.15],[784,0.15],[659,0.15],[587,0.15],
-  [523,0.15],[523,0.15],[659,0.15],[784,0.15],
-  [880,0.3],[880,0.15],[784,0.15],
-  [659,0.15],[587,0.15],[523,0.15],[494,0.15],
-  [523,0.3],[523,0.15],[587,0.15],
-  [659,0.15],[784,0.15],[880,0.15],[784,0.15],
-  [659,0.3],[587,0.15],[523,0.15],
-];
-const BG_BASS=[
-  [131,0.3],[196,0.3],[165,0.3],[147,0.3],
-  [131,0.3],[196,0.3],[165,0.3],[147,0.3],
-];
-
-function scheduleMelody(){
-  if(!AC||!musicOn) return;
-  let t=AC.currentTime+0.05;
-  BG_MELODY.forEach(([f,d])=>{
-    playTone(f,'square',t,d*0.82,0.12,true);
-    t+=d;
-  });
-  BG_BASS.forEach(([f,d])=>{
-    playTone(f,'triangle',AC.currentTime+0.05+(BG_BASS.indexOf([f,d])*0.3*BG_MELODY.length/BG_BASS.length)*0,d*0.85,0.08,true);
-  });
-  // Bass separate timing
-  let bt=AC.currentTime+0.05;
-  BG_BASS.forEach(([f,d])=>{
-    playTone(f,'triangle',bt,d*0.85,0.08,true);
-    bt+=d;
-  });
-  const totalDur=BG_MELODY.reduce((s,[,d])=>s+d,0)*1000;
-  return totalDur;
-}
-
-function startBGMusic(){
-  if(!AC||!musicOn) return;
-  if(AC.state==='suspended') AC.resume();
-  const dur=scheduleMelody();
-  bgInterval=setInterval(()=>{if(musicOn) scheduleMelody();},dur+50);
-}
-function stopBGMusic(){
-  if(bgInterval){clearInterval(bgInterval);bgInterval=null;}
-}
-
-function toggleMusic(){
-  const btn=document.getElementById('music-btn');
-  // iOS Safari: MUST create AudioContext synchronously inside user gesture
-  if(!AC){
-    try{
-      AC = new (window.AudioContext||window.webkitAudioContext)();
-    }catch(e){ console.warn('AudioContext failed',e); return; }
-  }
-  // iOS Safari: MUST call resume() synchronously inside user gesture
-  if(AC.state==='suspended') AC.resume();
-  musicOn=!musicOn;
-  if(musicOn){
-    btn.textContent='🔊 音乐开';
-    btn.style.background='#f0faf5';
-    startBGMusic();
-  } else {
-    btn.textContent='🔇 音乐关';
-    btn.style.background='#fff';
-    stopBGMusic();
-  }
 }
 
 loadStars();
