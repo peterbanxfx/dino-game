@@ -661,7 +661,7 @@ function loadSpell(d){
   for(let i=0;i<Math.min(6,10-pool.length);i++) pool.push(dec[i]);
   pool.sort(()=>Math.random()-.5);
   G.curQ={t:'spell',d,filled:[],tgt};
-  G.eggs=[]; G.meteors=[];
+  G.eggs=[]; G.meteors=[]; G.dinos=[];
   spawnGrid(pool);
   document.getElementById('qtb').textContent='🔡 英语拼写 · 找到正确字母按顺序吞噬';
   document.getElementById('qt').textContent=`拼出单词：${d.zh}（${d.w.length}个字母）`;
@@ -678,7 +678,7 @@ function updSlots(){
 
 // ── ENGLISH PREP ──
 function loadPrep(d){
-  G.curQ={t:'prep',d,done:false}; G.eggs=[]; G.meteors=[];
+  G.curQ={t:'prep',d,done:false}; G.eggs=[]; G.meteors=[]; G.dinos=[];
   document.getElementById('qtb').textContent='📍 英语介词 · 吞噬正确答案';
   document.getElementById('qt').textContent=d.s.replace('_____','（　　）');
   const sc=document.getElementById('qsc'); sc.style.display='block'; drawSc(sc,d.sc);
@@ -688,7 +688,7 @@ function loadPrep(d){
 
 // ── ENGLISH SENT ──
 function loadSent(d){
-  G.curQ={t:'sent',d,done:false}; G.eggs=[]; G.meteors=[];
+  G.curQ={t:'sent',d,done:false}; G.eggs=[]; G.meteors=[]; G.dinos=[];
   document.getElementById('qtb').textContent='📝 英语填空 · 吞噬正确答案';
   document.getElementById('qt').textContent=d.q.replace('_____','（　　）')+(d.zh?`\n提示：${d.zh}`:'');
   const sc=document.getElementById('qsc');
@@ -865,8 +865,9 @@ function doStomp(h,q){
     setTimeout(nextQ,1000);
   } else {
     cl.dead=true;spawnPts(cl.x,cl.y,'198,40,40',8);sfxEatWrong();takeDmg(15);G.score=Math.max(0,G.score-15);
-    // show explanation briefly
-    showPop('✗ '+q.d.e.substring(0,12)+'…');
+    // show full explanation in question area
+    document.getElementById('qtb').textContent='✗ 踩错了！看看解析：';
+    document.getElementById('qt').textContent=q.d.e;
   }
   updHUD();
 }
@@ -884,7 +885,8 @@ function doHit(h,q){
     setTimeout(nextQ,900);
   } else {
     cl.dead=true;spawnPts(cl.x,cl.y,'198,40,40',10);sfxEatWrong();takeDmg(15);G.score=Math.max(0,G.score-15);
-    showPop('✗ 再找找！');
+    document.getElementById('qtb').textContent='✗ 撞错了！看看解析：';
+    document.getElementById('qt').textContent=q.d.e;
     // respawn wrong meteor
     const r=Math.min(W,H)*.065; const {top,bot}=getPlayArea();
     G.meteors.push({lbl:cl.lbl,isTarget:false,x:W*.1+Math.random()*W*.8,y:top+Math.random()*(bot-top),r,wb:Math.random()*Math.PI*2,dead:false,vx:(Math.random()-.5)*8,vy:(Math.random()-.5)*8});
