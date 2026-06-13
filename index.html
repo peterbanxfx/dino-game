@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 <title>恐龙星球守卫战</title>
+<!-- VERSION: v1.3.0 | 2026-06-13 | fix: 题目重复bug - 改为内存+localStorage双层去重，session内绝不重复 -->
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;}
 html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;}
@@ -292,15 +293,29 @@ if (!CanvasRenderingContext2D.prototype.roundRect) {
 }
 
 // ══════ HISTORY ══════
+// 双层去重：内存history（session内绝不重复）+ localStorage（跨session持久化）
 const HMAX=8;
-function hLoad(k){try{return JSON.parse(localStorage.getItem('dg_h_'+k)||'[]');}catch(e){return[];}}
-function hSave(k,a){try{localStorage.setItem('dg_h_'+k,JSON.stringify(a));}catch(e){}}
+const _memH={};  // 内存历史，session级别，优先级最高
+function hLoad(k){
+  if(_memH[k]) return _memH[k];  // 优先读内存
+  try{const s=localStorage.getItem('dg_h_'+k);return s?JSON.parse(s):[];}catch(e){return[];}
+}
+function hSave(k,a){
+  _memH[k]=[...a];  // 同步写内存
+  try{localStorage.setItem('dg_h_'+k,JSON.stringify(a));}catch(e){}
+}
 function pickFresh(pool,hkey,n){
   let h=hLoad(hkey);
-  let idx=pool.map((_,i)=>i).filter(i=>!h.includes(i));
-  if(idx.length<n) idx=pool.map((_,i)=>i);
-  idx.sort(()=>Math.random()-.5);
-  const ch=idx.slice(0,n);
+  let avail=pool.map((_,i)=>i).filter(i=>!h.includes(i));
+  // 可用题不足时：优先保留最近HMAX/2道，释放更早的
+  if(avail.length<n){
+    const keep=Math.ceil(HMAX/2);
+    h=h.slice(-keep);  // 只保留最近一半历史，而不是完全重置
+    avail=pool.map((_,i)=>i).filter(i=>!h.includes(i));
+    if(avail.length<n) avail=pool.map((_,i)=>i);  // 极端情况才全量
+  }
+  avail.sort(()=>Math.random()-.5);
+  const ch=avail.slice(0,n);
   ch.forEach(i=>{h.push(i);if(h.length>HMAX)h.shift();});
   hSave(hkey,h);
   return ch.map(i=>pool[i]);
@@ -1253,20 +1268,20 @@ function makeToneBuf(freq,type,dur,vol){
 function playBuf(buf,when){
   if(!AC||!musicOn||!buf)return;
   const src=AC.createBufferSource();
-  const g=AC.createGain();g.gain.value=0.15;
+  const g=AC.createGain();g.gain.value=0.08;
   src.buffer=buf;src.connect(g);g.connect(AC.destination);
   src.start(when);
 }
 let _sfx={};
 function buildSfx(){
   if(!AC)return;
-  _sfx.eatOk=[makeToneBuf(523,'sine',0.07,0.6),makeToneBuf(659,'sine',0.07,0.6)];
-  _sfx.eatWrong=[makeToneBuf(220,'sq',0.1,0.4),makeToneBuf(180,'sq',0.12,0.3)];
-  _sfx.word=[makeToneBuf(523,'sine',0.1,0.5),makeToneBuf(659,'sine',0.1,0.5),makeToneBuf(784,'sine',0.1,0.5),makeToneBuf(1046,'sine',0.15,0.5)];
-  _sfx.dmg=[makeToneBuf(0,'noise',0.15,0.5)];
-  _sfx.start=[makeToneBuf(392,'sq',0.12,0.35),makeToneBuf(494,'sq',0.12,0.35),makeToneBuf(587,'sq',0.12,0.35),makeToneBuf(784,'sq',0.18,0.4)];
-  _sfx.correct=[makeToneBuf(784,'sine',0.1,0.45),makeToneBuf(1046,'sine',0.14,0.45)];
-  _sfx.wrong=[makeToneBuf(294,'tri',0.18,0.35)];
+  _sfx.eatOk=[makeToneBuf(523,'sine',0.07,0.4),makeToneBuf(659,'sine',0.07,0.4)];
+  _sfx.eatWrong=[makeToneBuf(220,'sq',0.1,0.28),makeToneBuf(180,'sq',0.12,0.22)];
+  _sfx.word=[makeToneBuf(523,'sine',0.1,0.35),makeToneBuf(659,'sine',0.1,0.35),makeToneBuf(784,'sine',0.1,0.35),makeToneBuf(784,'sine',0.15,0.35)];
+  _sfx.dmg=[makeToneBuf(0,'noise',0.15,0.3)];
+  _sfx.start=[makeToneBuf(392,'sq',0.12,0.22),makeToneBuf(494,'sq',0.12,0.22),makeToneBuf(587,'sq',0.12,0.22),makeToneBuf(659,'sq',0.18,0.25)];
+  _sfx.correct=[makeToneBuf(659,'sine',0.1,0.3),makeToneBuf(784,'sine',0.14,0.3)];
+  _sfx.wrong=[makeToneBuf(294,'tri',0.18,0.25)];
 }
 function playSfx(arr,spacing=0.08){
   if(!AC||!musicOn||!arr||!arr.length)return;
@@ -1281,8 +1296,8 @@ function sfxLevelStart(){playSfx(_sfx.start||[],0.12);}
 function sfxCorrect(){playSfx(_sfx.correct,0.1);}
 function sfxWrong(){playSfx(_sfx.wrong);}
 
-const BG_NOTES=[[523,.15],[587,.15],[659,.15],[784,.15],[880,.15],[784,.15],[659,.15],[587,.15],[523,.15],[523,.15],[659,.15],[784,.15],[880,.3],[784,.15],[659,.15],[659,.15],[587,.15],[523,.15],[494,.15],[523,.3],[587,.15],[659,.15],[784,.15],[880,.15],[784,.15],[659,.15],[523,.3],[587,.15],[523,.3]];
-const BG_BASS=[[131,.6],[196,.6],[165,.6],[147,.6],[131,.6],[196,.6],[165,.6],[147,.6]];
+const BG_NOTES=[[523,.22],[587,.22],[659,.22],[784,.22],[880,.22],[784,.22],[659,.22],[587,.22],[523,.22],[523,.22],[659,.22],[784,.22],[880,.45],[784,.22],[659,.22],[659,.22],[587,.22],[523,.22],[494,.22],[523,.45],[587,.22],[659,.22],[784,.22],[880,.22],[784,.22],[659,.22],[523,.45],[587,.22],[523,.45]];
+const BG_BASS=[[131,.9],[196,.9],[165,.9],[147,.9],[131,.9],[196,.9],[165,.9],[147,.9]];
 function buildBGBuffer(){
   if(!AC)return null;
   const sr=AC.sampleRate;
@@ -1310,7 +1325,7 @@ function startBGMusic(){
   if(!_bgBuf)_bgBuf=buildBGBuffer();
   if(!_bgBuf)return;
   const src=AC.createBufferSource();
-  const g=AC.createGain();g.gain.value=0.12;
+  const g=AC.createGain();g.gain.value=0.07;
   src.buffer=_bgBuf;src.loop=true;
   src.connect(g);g.connect(AC.destination);
   src.start(0);_bgSrc=src;
