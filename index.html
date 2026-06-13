@@ -15,7 +15,6 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 .hide{display:none!important;}
 :root{--g:#1B8A5A;--am:#E6900A;--bl:#1565C0;--pu:#5E35B1;--rd:#C62828;}
 
-/* MAP */
 #map{background:linear-gradient(135deg,#e0f7fa,#f1f8e9);}
 .mwrap{width:90%;max-width:780px;text-align:center;padding:20px 0;}
 .mtitle{font-size:26px;font-weight:800;color:var(--g);margin-bottom:6px;}
@@ -29,7 +28,6 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 .lvd{font-size:11px;color:#5a7a5a;margin-top:3px;line-height:1.5;}
 .lvs{font-size:18px;margin-top:6px;letter-spacing:3px;}
 
-/* STORY */
 #story{background:linear-gradient(135deg,#f1f8e9,#e3f2fd);}
 .swrap{width:90%;max-width:740px;display:flex;flex-direction:column;gap:10px;padding:16px 0;}
 .shdr{display:flex;align-items:center;gap:14px;}
@@ -61,7 +59,6 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 .sbtn{padding:10px 28px;border-radius:10px;background:var(--g);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;align-self:flex-start;}
 .sbtn.show{opacity:1;pointer-events:all;}
 
-/* MATH */
 #math{background:linear-gradient(135deg,#e3f2fd,#e8eaf6);}
 .mathwrap{width:88%;max-width:540px;display:flex;flex-direction:column;gap:14px;padding:16px 0;}
 .mathcard{background:#fff;border:1.5px solid #90caf9;border-radius:16px;padding:20px;}
@@ -80,21 +77,19 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 .nb:active{background:#e3f2fd;}
 .nb.go{background:var(--bl);color:#fff;}
 
-/* HUD */
-#hud{position:absolute;top:0;left:0;right:0;height:48px;background:rgba(255,255,255,.92);border-bottom:1px solid #c8e6c9;display:flex;align-items:center;padding:0 14px;gap:12px;pointer-events:none;}
+#hud{position:absolute;top:0;left:0;right:0;height:48px;background:rgba(255,255,255,.92);border-bottom:1px solid #c8e6c9;display:flex;align-items:center;padding:0 10px;gap:8px;pointer-events:none;}
+.hud-btn{pointer-events:all;width:32px;height:32px;border-radius:50%;border:1.5px solid #a5d6a7;background:#fff;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .hz{font-size:12px;color:var(--g);font-weight:700;}
-.hpb{width:80px;height:8px;background:#e0e0e0;border-radius:4px;overflow:hidden;}
+.hpb{width:70px;height:8px;background:#e0e0e0;border-radius:4px;overflow:hidden;}
 .hpf{height:100%;background:#43A87A;border-radius:4px;transition:width .3s;}
 .hpt{font-size:10px;color:var(--g);}
 .hsc{font-size:12px;color:var(--bl);font-weight:700;}
 .hpg{font-size:11px;color:var(--am);font-weight:700;}
-/* type badge in HUD */
 .htype{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600;}
 .htype.en{background:#e3f2fd;color:var(--bl);}
 .htype.cn{background:#f3e5f5;color:var(--pu);}
 .htype.ma{background:#fff8e1;color:#e65100;}
 
-/* Q PANEL bottom */
 #qp{position:absolute;bottom:0;left:0;right:0;background:rgba(255,255,255,.96);border-top:2px solid #c8e6c9;padding:10px 16px 12px;pointer-events:none;box-shadow:0 -3px 12px rgba(0,0,0,.08);}
 #qtb{font-size:10px;color:#5a7a5a;margin-bottom:3px;font-weight:600;}
 #qrow{display:flex;align-items:center;gap:12px;}
@@ -106,7 +101,6 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 .ws.ok{border-color:var(--g);color:var(--g);background:#f0faf5;}
 #wzh{font-size:11px;color:#5a7a5a;margin-top:3px;}
 
-/* CONTROLS */
 #jz{position:absolute;pointer-events:all;}
 #jb{position:absolute;inset:0;border-radius:50%;background:rgba(27,138,90,.12);border:2px solid rgba(27,138,90,.3);}
 #jk{position:absolute;width:50px;height:50px;border-radius:50%;background:rgba(27,138,90,.55);border:2px solid var(--g);top:50%;left:50%;transform:translate(-50%,-50%);}
@@ -118,9 +112,8 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 #bff{height:100%;background:var(--am);border-radius:3px;width:0%;}
 #kh{position:absolute;top:52px;right:14px;font-size:10px;color:#9e9e9e;line-height:1.8;pointer-events:none;text-align:right;}
 #dmg{position:absolute;inset:0;background:rgba(198,40,40,.22);pointer-events:none;opacity:0;transition:opacity .12s;}
-#wpop{position:absolute;top:35%;left:50%;transform:translate(-50%,-50%);font-size:24px;font-weight:800;color:var(--g);pointer-events:none;opacity:0;white-space:nowrap;transition:opacity .2s;}
+#wpop{position:absolute;top:35%;left:50%;transform:translate(-50%,-50%);font-size:22px;font-weight:800;color:var(--g);pointer-events:none;opacity:0;white-space:nowrap;transition:opacity .2s;text-shadow:0 2px 8px rgba(0,0,0,.15);}
 
-/* READING */
 #reading{background:linear-gradient(135deg,#f3e5f5,#e8eaf6);}
 .rpanel{background:#fff;border:2px solid #ce93d8;border-radius:16px;padding:22px;width:86%;max-width:560px;}
 .rtag{font-size:12px;color:var(--pu);margin-bottom:10px;font-weight:700;}
@@ -135,7 +128,6 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 .rnxt{margin-top:14px;width:100%;padding:11px;border-radius:10px;background:var(--g);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;}
 .rnxt.show{opacity:1;pointer-events:all;}
 
-/* RESULT */
 #result{background:linear-gradient(135deg,#e8f5e9,#fff9c4);}
 .rsp{background:#fff;border:2px solid #a5d6a7;border-radius:20px;padding:22px 26px;width:82%;max-width:500px;text-align:center;}
 .rdi{font-size:52px;margin-bottom:6px;}
@@ -162,13 +154,18 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 <div id="ui">
 
 <div id="hud" class="hide">
+  <button class="hud-btn" onclick="goMap()">🗺</button>
+  <button class="hud-btn" id="hud-music-btn" onclick="toggleMusic()">🔊</button>
   <span class="hz" id="hz">🌿</span>
-  <div style="display:flex;align-items:center;gap:5px;"><div class="hpb"><div class="hpf" id="hpf" style="width:100%"></div></div><span class="hpt" id="hpt">100%</span></div>
+  <div style="display:flex;align-items:center;gap:5px;">
+    <div class="hpb"><div class="hpf" id="hpf" style="width:100%"></div></div>
+    <span class="hpt" id="hpt">100%</span>
+  </div>
   <div style="flex:1"></div>
   <span class="htype" id="htype"></span>
   <span class="hpg" id="hpg">0/20</span>
   <span class="hsc">⭐<span id="hsc">0</span></span>
-  <span id="hbf" style="font-size:11px;color:var(--am);display:none"></span>
+  <span id="hbf" style="font-size:11px;color:var(--am);"></span>
 </div>
 
 <div id="qp" class="hide">
@@ -184,9 +181,12 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
   </div>
 </div>
 
-<div id="kh" class="hide">WASD 移动 · 空格 吞噬/踩蛋/撞陨石</div>
+<div id="kh" class="hide">WASD 移动 · 空格 操作</div>
 <div id="jz" class="hide"><div id="jb"></div><div id="jk"></div></div>
-<div id="eb" class="hide"><div style="font-size:28px">👄</div><div style="font-size:10px;color:var(--am);font-weight:700;margin-top:2px" id="eblbl">吞噬</div></div>
+<div id="eb" class="hide">
+  <div style="font-size:28px">👄</div>
+  <div style="font-size:10px;color:var(--am);font-weight:700;margin-top:2px" id="eblbl">吞噬</div>
+</div>
 <div id="bfw" class="hide">⚡加速<div id="bfb"><div id="bff"></div></div></div>
 <div id="dmg"></div>
 <div id="wpop"></div>
@@ -197,7 +197,7 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
     <div class="mtitle">🌍 恐龙星球守卫战</div>
     <div class="msub">语文·数学·英语 · 每次随机不重复</div>
     <div class="mlevels" id="mlevels"></div>
-    <button id="music-btn" onclick="toggleMusic()" style="padding:8px 20px;border-radius:20px;border:1.5px solid #a5d6a7;background:#fff;color:#1B8A5A;font-size:13px;font-weight:600;cursor:pointer;">🔊 开启音乐</button>
+    <button id="music-btn" onclick="toggleMusic()" style="padding:8px 24px;border-radius:20px;border:1.5px solid #a5d6a7;background:#fff;color:#1B8A5A;font-size:13px;font-weight:600;cursor:pointer;">🔊 开启音乐</button>
   </div>
 </div>
 
@@ -270,10 +270,28 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
 </div>
 
 </div></div></div>
+
 <script>
-// ══════════════════════════════════════
-// HISTORY (localStorage, anti-repeat)
-// ══════════════════════════════════════
+// ══════ POLYFILL: roundRect ══════
+if (!CanvasRenderingContext2D.prototype.roundRect) {
+  CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+    if (w < 2*r) r = w/2;
+    if (h < 2*r) r = h/2;
+    this.moveTo(x+r, y);
+    this.lineTo(x+w-r, y);
+    this.quadraticCurveTo(x+w, y, x+w, y+r);
+    this.lineTo(x+w, y+h-r);
+    this.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
+    this.lineTo(x+r, y+h);
+    this.quadraticCurveTo(x, y+h, x, y+h-r);
+    this.lineTo(x, y+r);
+    this.quadraticCurveTo(x, y, x+r, y);
+    this.closePath();
+    return this;
+  };
+}
+
+// ══════ HISTORY ══════
 const HMAX=8;
 function hLoad(k){try{return JSON.parse(localStorage.getItem('dg_h_'+k)||'[]');}catch(e){return[];}}
 function hSave(k,a){try{localStorage.setItem('dg_h_'+k,JSON.stringify(a));}catch(e){}}
@@ -290,9 +308,7 @@ function pickFresh(pool,hkey,n){
 function saveStars(){try{localStorage.setItem('dg_stars',JSON.stringify(G.lvSt));}catch(e){}}
 function loadStars(){try{const s=JSON.parse(localStorage.getItem('dg_stars')||'[0,0,0]');G.lvSt=s;}catch(e){}}
 
-// ══════════════════════════════════════
-// DATA — ENGLISH
-// ══════════════════════════════════════
+// ══════ DATA ══════
 const WORDS=[
   {w:'TIGER',zh:'老虎'},{w:'LION',zh:'狮子'},{w:'PANDA',zh:'熊猫'},{w:'MONKEY',zh:'猴子'},
   {w:'FOX',zh:'狐狸'},{w:'HORSE',zh:'马'},{w:'ZEBRA',zh:'斑马'},{w:'BEAR',zh:'熊'},
@@ -336,84 +352,53 @@ const SENT=[
   {q:'The ball is _____. It looks just like the moon.',zh:'球是什么形状',sc:null,a:'ROUND',o:['ROUND','STAR','HARD','SOFT']},
   {q:'I like _____ best. I love flowers and warm rain.',zh:'最喜欢花和雨',sc:'rain',a:'SPRING',o:['SPRING','SUMMER','AUTUMN','WINTER']},
 ];
-
-// ══════════════════════════════════════
-// DATA — CHINESE (蛋踩题，4选1)
-// ══════════════════════════════════════
 const CN_QS=[
-  // 近义词
   {q:'"耐心"的近义词是？',a:'耐烦',o:['耐烦','急躁','焦虑','烦躁'],e:'"耐心"与"耐烦"意思相近，都表示能忍耐等待。'},
-  {q:'"凶猛"的近义词是？',a:'凶狠',o:['凶狠','温顺','善良','温和'],e:'"凶猛"与"凶狠"意思相近，都形容凶恶猛烈。'},
+  {q:'"凶猛"的近义词是？',a:'凶狠',o:['凶狠','温顺','善良','温和'],e:'"凶猛"与"凶狠"都形容凶恶猛烈。'},
   {q:'"镇静"的近义词是？',a:'镇定',o:['镇定','慌张','焦急','紧张'],e:'"镇静"与"镇定"都表示冷静不慌乱。'},
   {q:'"蔓延"的近义词是？',a:'扩散',o:['扩散','收缩','聚集','缩小'],e:'"蔓延"与"扩散"都表示向四周扩展。'},
-  // 反义词
-  {q:'"耐心"的反义词是？',a:'急躁',o:['急躁','冷静','温和','平静'],e:'"耐心"的反义词是"急躁"，表示不能忍耐等待。'},
+  {q:'"耐心"的反义词是？',a:'急躁',o:['急躁','冷静','温和','平静'],e:'"耐心"的反义词是"急躁"，表示不能忍耐。'},
   {q:'"凶猛"的反义词是？',a:'温顺',o:['温顺','强壮','勇敢','坚强'],e:'"凶猛"的反义词是"温顺"，表示温和驯服。'},
-  {q:'"昏暗"的反义词是？',a:'明亮',o:['明亮','暗淡','模糊','朦胧'],e:'"昏暗"的反义词是"明亮"，表示光线充足。'},
+  {q:'"昏暗"的反义词是？',a:'明亮',o:['明亮','暗淡','模糊','朦胧'],e:'"昏暗"的反义词是"明亮"，光线充足。'},
   {q:'"奖励"的反义词是？',a:'批评',o:['批评','表扬','夸奖','称赞'],e:'"奖励"的反义词是"批评"，一褒一贬。'},
-  // 形近字
-  {q:'选出正确的字：他善于（辨/辩/辫）别真假。',a:'辨',o:['辨','辩','辫','办'],e:'"辨"是辨别的辨，"辩"是辩论的辩，"辫"是辫子的辫。'},
+  {q:'选出正确的字：他善于（辨/辩/辫）别真假。',a:'辨',o:['辨','辩','辫','办'],e:'"辨"是辨别，"辩"是辩论，"辫"是辫子。'},
   {q:'选出正确的字：他们进行了一场精彩的（辨/辩/辫）论。',a:'辩',o:['辩','辨','辫','办'],e:'"辩论"用"辩"，表示用语言争论。'},
-  {q:'选出正确的字：这匹马身形（骏/俊/峻）美。',a:'俊',o:['俊','骏','峻','竣'],e:'"俊美"用"俊"，"骏马"用"骏"，"峻岭"用"峻"。'},
-  {q:'选出正确的字：（骏/俊/峻）马奔腾在草原上。',a:'骏',o:['骏','俊','峻','竣'],e:'"骏马"用"骏"，专指好马。'},
-  // 词语搭配
-  {q:'（　　）的春装，括号里填什么？',a:'漂亮',o:['漂亮','蔓延','凶猛','昏暗'],e:'"漂亮的春装"是正确搭配，形容词修饰名词。'},
+  {q:'（　　）的春装，括号里填什么？',a:'漂亮',o:['漂亮','蔓延','凶猛','昏暗'],e:'"漂亮的春装"是正确搭配。'},
   {q:'（　　）的天空，括号里填什么？',a:'蔚蓝',o:['蔚蓝','漂亮','镇静','凶猛'],e:'"蔚蓝的天空"是常见词语搭配。'},
-  {q:'（　　）地躲藏，括号里填什么？',a:'悄悄',o:['悄悄','漂亮','蔚蓝','凶猛'],e:'"悄悄地躲藏"，副词修饰动词。'},
-  // 成语/日积月累
-  {q:'"水来___掩"，横线填什么？',a:'土',o:['土','石','木','草'],e:'"水来土掩"比喻不管什么困难都有办法对付。'},
+  {q:'"水来___掩"，横线填什么？',a:'土',o:['土','石','木','草'],e:'"水来土掩"比喻什么困难都有办法对付。'},
   {q:'"不入虎穴，焉得___子"，横线填什么？',a:'虎',o:['虎','兔','狐','狼'],e:'"不入虎穴，焉得虎子"比喻不亲历险境就无法成功。'},
   {q:'"耳听为___，眼见为实"，横线填什么？',a:'虚',o:['虚','空','假','幻'],e:'"耳听为虚，眼见为实"强调亲眼所见才可信。'},
   {q:'"近朱者赤，近___者黑"，横线填什么？',a:'墨',o:['墨','水','火','土'],e:'"近朱者赤，近墨者黑"说明环境对人的影响。'},
-  // 多音字/易错字
   {q:'"脊背"的"脊"怎么读？',a:'jǐ',o:['jǐ','jí','jì','jī'],e:'"脊背"读jǐbèi，"脊"字读第三声。'},
   {q:'"颠倒"的"颠"怎么读？',a:'diān',o:['diān','diǎn','diàn','dián'],e:'"颠倒"读diāndǎo，"颠"字读第一声。'},
+  {q:'（　　）地躲藏，括号里填什么？',a:'悄悄',o:['悄悄','漂亮','蔚蓝','凶猛'],e:'"悄悄地躲藏"，副词修饰动词。'},
+  {q:'"骏马"的"骏"是什么意思？',a:'好马',o:['好马','高山','英俊','结束'],e:'"骏"专指良马，"骏马"是指好马、快马。'},
+  {q:'选出正确的字：工程终于（骏/俊/峻/竣）工了。',a:'竣',o:['竣','骏','俊','峻'],e:'"竣工"表示工程完成，用"竣"字。'},
 ];
-
-// ══════════════════════════════════════
-// DATA — MATH (陨石题，4选1)
-// verified answers
-// ══════════════════════════════════════
 const MA_QS=[
   {q:'6/9里面有几个1/9？',a:'6',o:['6','9','3','4'],e:'6/9里面有6个1/9，分子就是份数。'},
-  {q:'72棵树的5/8是多少棵？',a:'45',o:['45','40','36','48'],e:'72×5÷8=45棵。'},// 72×5/8=45 ✓
-  {q:'花店共40束花，玫瑰32束，百合占总数的几分之几？',a:'1/5',o:['1/5','1/4','2/5','1/8'],e:'百合=40-32=8束，8/40=1/5。'},// 8/40=1/5 ✓
-  {q:'正方形周长28m，面积是多少平方米？',a:'49',o:['49','56','64','36'],e:'边长=28÷4=7，面积=7×7=49平方米。'},// 7×7=49 ✓
-  {q:'长方形周长44km，长12km，面积是多少平方千米？',a:'120',o:['120','100','132','110'],e:'宽=(44-24)÷2=10，面积=12×10=120。'},// 120 ✓
-  {q:'36cm铁丝围长方形，最大面积是多少cm²？',a:'81',o:['81','72','90','64'],e:'长=宽=9cm时面积最大，9×9=81。'},// 9×9=81 ✓
-  {q:'甲车3小时216km，乙车4小时260km，哪辆更快？',a:'甲车',o:['甲车','乙车','一样快','无法比'],e:'甲：216÷3=72km/h，乙：260÷4=65km/h，甲更快。'},// 72>65 ✓
-  {q:'小明每分钟跑200m，3分钟能跑多少米？',a:'600',o:['600','500','400','300'],e:'200×3=600米。'},// ✓
-  {q:'132人坐船，每船25人，最少需要几条船？',a:'6',o:['6','5','7','4'],e:'132÷25=5余7，需要6条船。'},// ⌈132/25⌉=6 ✓
-  {q:'工厂每天150个，12天完成；改为每天180个，提前几天？',a:'2',o:['2','3','1','4'],e:'总量=1800，1800÷180=10天，提前2天。'},// ✓
-  {q:'水果店苹果125个，橙子是苹果的3倍，橙子多少个？',a:'375',o:['375','300','350','400'],e:'125×3=375个。'},// ✓
-  {q:'猎豹3小时跑336km，每小时跑多少千米？',a:'112',o:['112','100','120','96'],e:'336÷3=112km/h。'},// ✓
-  {q:'一个正方形边长扩大到原来2倍，面积扩大到原来几倍？',a:'4',o:['4','2','6','8'],e:'面积=边长²，边长×2则面积×4。'},// ✓
-  {q:'5个1/7是多少？',a:'5/7',o:['5/7','1/7','7/5','2/7'],e:'5个1/7就是5/7。'},// ✓
-  {q:'把6个边长2cm正方形拼成长方形，周长最小是多少cm？',a:'28',o:['28','24','32','20'],e:'拼成3×2排列，长6cm宽4cm，周长=2×(6+4)×2÷2，最优长12宽4，周长2×(12+4)=32，最优2×6×1排，长12宽2周长=28。'},// 2×(12+2)=28 ✓
+  {q:'72棵树的5/8是多少棵？',a:'45',o:['45','40','36','48'],e:'72×5÷8=45棵。'},
+  {q:'花店共40束花，玫瑰32束，百合占总数的几分之几？',a:'1/5',o:['1/5','1/4','2/5','1/8'],e:'百合=40-32=8束，8/40=1/5。'},
+  {q:'正方形周长28m，面积是多少平方米？',a:'49',o:['49','56','64','36'],e:'边长=28÷4=7，面积=7×7=49。'},
+  {q:'长方形周长44km，长12km，面积多少平方千米？',a:'120',o:['120','100','132','110'],e:'宽=(44-24)÷2=10，面积=12×10=120。'},
+  {q:'36cm铁丝围长方形，最大面积是多少cm²？',a:'81',o:['81','72','90','64'],e:'长=宽=9cm时面积最大，9×9=81。'},
+  {q:'甲车3小时216km，乙车4小时260km，哪辆更快？',a:'甲车',o:['甲车','乙车','一样快','无法比'],e:'甲：216÷3=72，乙：260÷4=65，甲更快。'},
+  {q:'小明每分钟跑200m，3分钟能跑多少米？',a:'600',o:['600','500','400','300'],e:'200×3=600米。'},
+  {q:'132人坐船，每船25人，最少需要几条船？',a:'6',o:['6','5','7','4'],e:'132÷25=5余7，需要6条船。'},
+  {q:'原每天150个12天完成，改为每天180个，提前几天？',a:'2',o:['2','3','1','4'],e:'总量=1800，1800÷180=10天，提前2天。'},
+  {q:'苹果125个，橙子是苹果的3倍，橙子多少个？',a:'375',o:['375','300','350','400'],e:'125×3=375个。'},
+  {q:'猎豹3小时跑336km，每小时跑多少千米？',a:'112',o:['112','100','120','96'],e:'336÷3=112。'},
+  {q:'正方形边长扩大2倍，面积扩大几倍？',a:'4',o:['4','2','6','8'],e:'面积=边长²，边长×2则面积×4。'},
+  {q:'5个1/7是多少？',a:'5/7',o:['5/7','1/7','7/5','2/7'],e:'5个1/7就是5/7。'},
+  {q:'一个长方形长增加3cm面积增加21cm²，宽减少5cm面积减少45cm²，原面积是多少？',a:'63',o:['63','70','45','90'],e:'长=21÷3=7，宽=45÷5=9，面积=7×9=63。'},
 ];
-
-// ══════════════════════════════════════
-// DATA — STORY / READING
-// ══════════════════════════════════════
 const CHN0=[
-  {t:'雷克斯[0]族群，踏上了穿越丛林的征途。丛林深处，恐龙的[1]在树梢间回响，像是在[2]守卫者加快脚步。',
-   b:[{l:'第一空',h:'统帅带领',a:'率领',o:['带领','率领','指引','号召']},{l:'第二空',h:'动物发声',a:'鸣叫',o:['声音','喧嚣','鸣叫','呐喊']},{l:'第三空',h:'提醒之意',a:'提醒',o:['督促','提醒','告知','嘱咐']}],
-   e:['"率领"有统帅之意。','"鸣叫"专指动物发声。','"提醒"语气自然贴切。']},
-  {t:'陨石[0]降临，丛林顿时[1]。雷克斯[2]，带领族群找到了一条隐蔽通道。',
-   b:[{l:'第一空',h:'来势凶猛',a:'汹涌',o:['汹涌','缓慢','轻柔','平静']},{l:'第二空',h:'形容混乱',a:'大乱',o:['大乱','平静','热闹','沸腾']},{l:'第三空',h:'冷静不慌张',a:'沉着',o:['慌忙','沉着','急忙','迟疑']}],
-   e:['"汹涌"形容来势凶猛。','"大乱"形容秩序混乱。','"沉着"指冷静不慌张。']},
-  {t:'守卫者[0]地穿过丛林，眼前[1]出现了一座古老的石碑。石碑上[2]着神秘的文字。',
-   b:[{l:'第一空',h:'小心翼翼',a:'谨慎',o:['谨慎','鲁莽','随意','大胆']},{l:'第二空',h:'突然出现',a:'猛然',o:['猛然','缓缓','渐渐','慢慢']},{l:'第三空',h:'刻上文字',a:'刻',o:['刻','画','写','印']}],
-   e:['"谨慎"表示小心仔细。','"猛然"表示突然出现。','"刻"是把文字刻进石头。']},
-  {t:'星球的[0]正在[1]消退。守卫者[2]，决定用知识的力量来对抗陨石。',
-   b:[{l:'第一空',h:'保护性屏蔽',a:'屏障',o:['屏障','屏风','屏幕','屏蔽']},{l:'第二空',h:'逐渐减少',a:'逐渐',o:['逐渐','迅速','突然','快速']},{l:'第三空',h:'坚定果断',a:'毅然',o:['犹豫','迟疑','毅然','慌忙']}],
-   e:['"屏障"指保护性屏蔽。','"逐渐"表示缓慢变化。','"毅然"是"犹豫"的反义词。']},
-  {t:'冰川区寒风[0]，守卫者们[1]前行。"[2]"，只有亲眼所见才是真实的。',
-   b:[{l:'第一空',h:'风声很大',a:'呼啸',o:['呼啸','吹拂','微风','轻柔']},{l:'第二空',h:'坚定不移',a:'坚定',o:['迟疑','犹豫','坚定','缓慢']},{l:'第三空',h:'成语',a:'耳听为虚',o:['耳听为虚','道听途说','以讹传讹','空穴来风']}],
-   e:['"呼啸"形容风声很大。','"坚定"与"犹豫"是反义词。','"耳听为虚，眼见为实"。']},
-  {t:'封印石柱散发着[0]的光芒。守卫者[1]，决定[2]地完成任务。',
-   b:[{l:'第一空',h:'光线强烈(形近字)',a:'耀眼',o:['耀眼','曜日','跃然','跃动']},{l:'第二空',h:'下定决心',a:'下定决心',o:['犹豫不决','下定决心','三心二意','举棋不定']},{l:'第三空',h:'认真负责',a:'尽心尽力',o:['马马虎虎','尽心尽力','敷衍了事','得过且过']}],
-   e:['"耀眼"光线刺眼，注意与"曜日"区分。','"下定决心"是"犹豫不决"的反义词。','"尽心尽力"与"马马虎虎"相反。']},
+  {t:'雷克斯[0]族群，踏上了穿越丛林的征途。丛林深处，恐龙的[1]在树梢间回响，像是在[2]守卫者加快脚步。',b:[{l:'第一空',h:'统帅带领',a:'率领',o:['带领','率领','指引','号召']},{l:'第二空',h:'动物发声',a:'鸣叫',o:['声音','喧嚣','鸣叫','呐喊']},{l:'第三空',h:'提醒之意',a:'提醒',o:['督促','提醒','告知','嘱咐']}],e:['"率领"有统帅之意。','"鸣叫"专指动物发声。','"提醒"语气自然贴切。']},
+  {t:'陨石[0]降临，丛林顿时[1]。雷克斯[2]，带领族群找到了隐蔽通道。',b:[{l:'第一空',h:'来势凶猛',a:'汹涌',o:['汹涌','缓慢','轻柔','平静']},{l:'第二空',h:'形容混乱',a:'大乱',o:['大乱','平静','热闹','沸腾']},{l:'第三空',h:'冷静不慌张',a:'沉着',o:['慌忙','沉着','急忙','迟疑']}],e:['"汹涌"形容来势凶猛。','"大乱"形容秩序混乱。','"沉着"指冷静不慌张。']},
+  {t:'守卫者[0]地穿过丛林，眼前[1]出现了一座古老的石碑。石碑上[2]着神秘的文字。',b:[{l:'第一空',h:'小心翼翼',a:'谨慎',o:['谨慎','鲁莽','随意','大胆']},{l:'第二空',h:'突然出现',a:'猛然',o:['猛然','缓缓','渐渐','慢慢']},{l:'第三空',h:'刻上文字',a:'刻',o:['刻','画','写','印']}],e:['"谨慎"表示小心仔细。','"猛然"表示突然。','"刻"是把文字刻进石头。']},
+  {t:'星球的[0]正在[1]消退。守卫者[2]，决定用知识的力量来对抗陨石。',b:[{l:'第一空',h:'保护性屏蔽',a:'屏障',o:['屏障','屏风','屏幕','屏蔽']},{l:'第二空',h:'逐渐减少',a:'逐渐',o:['逐渐','迅速','突然','快速']},{l:'第三空',h:'坚定果断',a:'毅然',o:['犹豫','迟疑','毅然','慌忙']}],e:['"屏障"指保护性屏蔽。','"逐渐"表示缓慢变化。','"毅然"是"犹豫"的反义词。']},
+  {t:'冰川区寒风[0]，守卫者们[1]前行。"[2]"，只有亲眼所见才是真实的。',b:[{l:'第一空',h:'风声很大',a:'呼啸',o:['呼啸','吹拂','微风','轻柔']},{l:'第二空',h:'坚定不移',a:'坚定',o:['迟疑','犹豫','坚定','缓慢']},{l:'第三空',h:'成语',a:'耳听为虚',o:['耳听为虚','道听途说','以讹传讹','空穴来风']}],e:['"呼啸"形容风声很大。','"坚定"与"犹豫"是反义词。','"耳听为虚，眼见为实"。']},
+  {t:'封印石柱散发着[0]的光芒。守卫者[1]，决定[2]地完成任务。',b:[{l:'第一空',h:'光线强烈(形近字)',a:'耀眼',o:['耀眼','曜日','跃然','跃动']},{l:'第二空',h:'下定决心',a:'下定决心',o:['犹豫不决','下定决心','三心二意','举棋不定']},{l:'第三空',h:'认真负责',a:'尽心尽力',o:['马马虎虎','尽心尽力','敷衍了事','得过且过']}],e:['"耀眼"光线刺眼，注意与"曜日"区分。','"下定决心"是"犹豫不决"的反义词。','"尽心尽力"与"马马虎虎"相反。']},
 ];
 const POEMS=[
   {title:'春晓',author:'孟浩然',dynasty:'唐',lines:['春眠不觉晓，','处处闻啼[0]。','夜来风雨声，','花落知多[1]。'],blanks:[{i:0,a:'鸟',o:['鸟','虫','蝉','雀'],h:'春天鸟鸣'},{i:1,a:'少',o:['少','多','些','几'],h:'数量不确定'}],exps:['处处闻啼鸟，描写鸟鸣。','花落知多少，表达惋惜。'],meaning:'描写春天早晨，表达对春天的珍惜。',aQ:{q:'作者是？',o:['李白','杜甫','孟浩然','王维'],a:2},dQ:{q:'朝代是？',o:['宋','唐','元','明'],a:1}},
@@ -442,28 +427,28 @@ const READ=[
   [{p:'《春晓》是唐代孟浩然的作品，描写了春天早晨听到鸟鸣、想到昨夜风雨的情景。',q:'"花落知多少"表达了诗人什么情感？',o:['高兴','讨厌春天','对美景的惋惜','害怕落花'],a:2,e:'"知多少"表达了诗人对落花的惋惜。'},
    {p:'杜甫《绝句》：黄鹂在翠绿柳树上鸣叫，白鹭飞向晴朗天空，色彩明丽，意境开阔。',q:'这首诗主要描写什么季节？',o:['夏天','冬天','秋天','春天'],a:3,e:'黄鹂、柳树、白鹭等都是春天的景物。'},
    {p:'李白《静夜思》：诗人看到床前月光，以为是白霜，抬头看见明月，低头思念故乡。',q:'诗人为什么会想到故乡？',o:['因为很饿','因为看见了明月','因为天很冷','因为想睡觉'],a:1,e:'"举头望明月"，看见月亮联想到故乡。'},
-   {p:'李白《望庐山瀑布》："飞流直下三千尺，疑是银河落九天"，"三千尺""九天"都是夸张写法。',q:'"疑是银河落九天"用了什么修辞手法？',o:['比喻','夸张','拟人','排比'],a:1,e:'把高度夸大，强调瀑布气势，这是夸张手法。'},
+   {p:'李白《望庐山瀑布》："飞流直下三千尺，疑是银河落九天"，都是夸张写法。',q:'"疑是银河落九天"用了什么修辞手法？',o:['比喻','夸张','拟人','排比'],a:1,e:'把高度夸大，强调瀑布气势，这是夸张手法。'},
    {p:'贺知章《咏柳》把柳树比作碧玉，柳条比作绿丝绦，春风比作剪刀，生动描写柳树姿态。',q:'诗中把春风比作什么？',o:['剪刀','丝带','碧玉','绿色'],a:0,e:'"二月春风似剪刀"，诗人把春风比作剪刀。'},
-   {p:'古诗常用夸张和比喻描写自然景物，让诗句更加生动形象，让读者感受到大自然的壮观与美丽。',q:'下面哪句话使用了比喻修辞手法？',o:['花落知多少','疑是银河落九天','处处闻啼鸟','门泊东吴万里船'],a:1,e:'"疑是银河落九天"把瀑布比作银河，是比喻。'}],
-  [{p:'"不入虎穴，焉得虎子"比喻不亲历险境就不能获得成功，守卫者凭实践精神深入冰川区，找到了解封印的方法。',q:'"不入虎穴，焉得虎子"的意思是？',o:['老虎很危险','不亲历险境无法成功','要去看老虎','虎穴里有宝贝'],a:1,e:'这句话比喻不亲历险境，就不能获得成功。'},
-   {p:'"近朱者赤，近墨者黑"说明环境对人有重要影响。守卫者选择与优秀的伙伴同行，互相鼓励，共同进步。',q:'这句话说明了什么道理？',o:['颜色很重要','环境影响人的成长','要多交朋友','红色比黑色好'],a:1,e:'这句话强调环境对人的影响。'},
+   {p:'古诗常用夸张和比喻描写自然景物，让诗句更加生动，让读者感受到大自然的壮观与美丽。',q:'下面哪句话使用了比喻修辞手法？',o:['花落知多少','疑是银河落九天','处处闻啼鸟','门泊东吴万里船'],a:1,e:'"疑是银河落九天"把瀑布比作银河，是比喻。'}],
+  [{p:'"不入虎穴，焉得虎子"比喻不亲历险境就不能获得成功，守卫者凭实践精神深入冰川区找到了方法。',q:'"不入虎穴，焉得虎子"的意思是？',o:['老虎很危险','不亲历险境无法成功','要去看老虎','虎穴里有宝贝'],a:1,e:'这句话比喻不亲历险境，就不能获得成功。'},
+   {p:'"近朱者赤，近墨者黑"说明环境对人有重要影响。守卫者选择与优秀的伙伴同行，共同进步。',q:'这句话说明了什么道理？',o:['颜色很重要','环境影响人的成长','要多交朋友','红色比黑色好'],a:1,e:'这句话强调环境对人的影响。'},
    {p:'"耳听为虚，眼见为实"告诉我们听别人说的不一定是真的，亲眼所见才可信。',q:'守卫者为什么要亲自走进冰川区？',o:['喜欢冒险','要亲眼证实','别人叫他去','没有其他路'],a:1,e:'"耳听为虚，眼见为实"，守卫者要亲眼确认。'},
    {p:'做事"尽心尽力"才能做好，"马马虎虎"则容易出错。两者是一对反义词。',q:'"马马虎虎"最恰当的反义词是？',o:['尽心尽力','认认真真','仔仔细细','踏踏实实'],a:0,e:'题目中明确说"尽心尽力"和"马马虎虎"是反义词。'},
-   {p:'"水来土掩"比喻不管对方用什么手段，都有办法对付。守卫者遇到什么困难就用什么方法解决。',q:'"水来土掩"这个成语的意思是？',o:['用土挡水','不管什么困难都有办法','水和土不能混','遇洪水要逃跑'],a:1,e:'"水来土掩"比喻不管对方用什么手段，都有办法对付。'},
+   {p:'"水来土掩"比喻不管对方用什么手段，都有办法对付。守卫者遇到困难就用对应方法解决。',q:'"水来土掩"这个成语的意思是？',o:['用土挡水','不管什么困难都有办法','水和土不能混','遇洪水要逃跑'],a:1,e:'"水来土掩"比喻不管对方用什么手段，都有办法对付。'},
    {p:'守卫者明白"知己知彼，百战百胜"：了解自己的长处和短处，也了解敌人，才能取胜。',q:'"知己知彼"中"知己"的意思是？',o:['了解敌人','了解自己','了解朋友','了解地图'],a:1,e:'"知己"是了解自己，"知彼"是了解敌人。'}],
 ];
 const LVM=[{name:'丛林区',icon:'🌿',desc:'语文·数学·英语全科'},{name:'火山区',icon:'🌋',desc:'语文·数学·英语全科'},{name:'冰川区',icon:'❄️',desc:'语文·数学·英语全科'}];
 
-// ══════════════════════════════════════
-// CANVAS
-// ══════════════════════════════════════
+// ══════ CANVAS ══════
 const cv=document.getElementById('gc');
 const ctx=cv.getContext('2d');
 let W=0,H=0,PT=48,PB=0,QH=0;
 const STARS=Array.from({length:50},()=>({x:Math.random(),y:Math.random(),r:Math.random()*.6+.2,a:Math.random()*.4+.2,tw:Math.random()*3+1.5}));
 let starT=0;
+
 function resize(){
-  W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+  W=cv.width=window.innerWidth;
+  H=cv.height=window.innerHeight;
   document.getElementById('gw').style.cssText=`width:${W}px;height:${H}px;`;
   layCtrl();
 }
@@ -478,20 +463,22 @@ function layCtrl(){
   document.getElementById('eb').style.cssText=`width:${es}px;height:${es}px;right:14px;bottom:${QH+10}px;`;
   document.getElementById('bfw').style.cssText=`right:14px;bottom:${QH+es+16}px;width:${es}px;`;
 }
-resize(); window.addEventListener('resize',resize);
+resize();
+window.addEventListener('resize',resize);
 
-// ══════════════════════════════════════
-// GAME STATE
-// ══════════════════════════════════════
-const G={phase:'map',lv:0,hp:100,score:0,dinos:[],eggs:[],meteors:[],hero:null,
-  buffT:0,buffD:8,mathOk:false,mathTry:0,qs:[],qi:0,totE:0,okE:0,
-  lvSt:[0,0,0],bonusXP:0,curQ:null};
+// ══════ STATE ══════
+const G={
+  phase:'map',lv:0,hp:100,score:0,
+  dinos:[],eggs:[],meteors:[],
+  hero:null,buffT:0,buffD:8,
+  mathOk:false,mathTry:0,
+  qs:[],qi:0,totE:0,okE:0,
+  lvSt:[0,0,0],bonusXP:0,curQ:null
+};
 
-// ══════════════════════════════════════
-// MAP
-// ══════════════════════════════════════
+// ══════ MAP ══════
 function buildMap(){
-  const el=document.getElementById('mlevels'); el.innerHTML='';
+  const el=document.getElementById('mlevels');el.innerHTML='';
   LVM.forEach((lv,i)=>{
     const d=document.createElement('div');
     d.className='mlv'+(i>0&&G.lvSt[i-1]===0?' locked':'');
@@ -500,15 +487,20 @@ function buildMap(){
     el.appendChild(d);
   });
 }
-function goMap(){hideAll();document.getElementById('map').classList.remove('hide');buildMap();}
+function goMap(){
+  hideAll();
+  document.getElementById('map').classList.remove('hide');
+  buildMap();
+}
 
-// ══════════════════════════════════════
-// STORY
-// ══════════════════════════════════════
+// ══════ STORY ══════
 const SS={ans:[],sel:null,blanks:[],exps:[],poem:null,type:'fill'};
 function startLv(i){G.lv=i;G.mathOk=false;G.mathTry=0;hideAll();buildStory(i);document.getElementById('story').classList.remove('hide');}
+
 function buildStory(i){
-  const dinos=['🦖','🐉','🦕'],titles=['丛林危机！','火山警报！','冰川封印！'],subs=['恐龙星球·丛林区','恐龙星球·火山区','恐龙星球·冰川区'];
+  const dinos=['🦖','🐉','🦕'];
+  const titles=['丛林危机！','火山警报！','冰川封印！'];
+  const subs=['恐龙星球·丛林区','恐龙星球·火山区','恐龙星球·冰川区'];
   document.getElementById('sdino').textContent=dinos[i];
   document.getElementById('stitle').textContent=titles[i];
   document.getElementById('ssub').textContent=subs[i];
@@ -520,97 +512,142 @@ function buildStory(i){
   SS.type=i===1?'poetry':'fill';
   if(SS.type==='fill'){
     const [p]=pickFresh(CHN0,'s'+i,1);
-    SS.blanks=p.b; SS.exps=p.e; SS.ans=Array(p.b.length).fill(null); SS.sel=null;
+    SS.blanks=p.b;SS.exps=p.e;SS.ans=Array(p.b.length).fill(null);SS.sel=null;
     let html='';
     p.t.split(/(\[\d\])/).forEach(s=>{
-      if(/^\[\d\]$/.test(s)){const k=parseInt(s[1]);html+=`<span class="bl" id="bl${k}" onclick="selBl(${k})">${'　'.repeat(Math.max(2,SS.blanks[k].a.length))}</span>`;}
-      else html+=s;
+      if(/^\[\d\]$/.test(s)){
+        const k=parseInt(s[1]);
+        html+=`<span class="bl" id="bl${k}" onclick="selBl(${k})">${'　'.repeat(Math.max(2,SS.blanks[k].a.length))}</span>`;
+      } else html+=s;
     });
     document.getElementById('scontent').innerHTML=`<div class="spass">${html}</div>`;
   } else {
     const [poem]=pickFresh(POEMS,'s1',1);
-    SS.poem=poem; SS.ans=Array(poem.blanks.length+2).fill(null); SS.sel=null;
+    SS.poem=poem;SS.ans=Array(poem.blanks.length+2).fill(null);SS.sel=null;
     let lh=poem.lines.map(l=>l.replace(/\[(\d)\]/g,(_,k)=>`<span class="pbl" id="pbl${k}" onclick="selPbl(${k})">　</span>`)).join('<br>');
     document.getElementById('scontent').innerHTML=`<div class="pbox"><div class="pmeta">《${poem.title}》&nbsp;&nbsp;作者：<span class="pbl" id="pbla" onclick="selPbl('a')" style="min-width:52px">${'　'.repeat(3)}</span>&nbsp;&nbsp;朝代：<span class="pbl" id="pbld" onclick="selPbl('d')" style="min-width:26px">　</span>代</div><div class="pline">${lh}</div><div style="font-size:11px;color:#7986cb;margin-top:8px">诗意：${poem.meaning}</div></div>`;
   }
 }
+
 function selBl(k){
-  SS.sel=k; document.querySelectorAll('.bl').forEach(b=>b.classList.remove('sel'));
+  SS.sel=k;
+  document.querySelectorAll('.bl').forEach(b=>b.classList.remove('sel'));
   document.getElementById(`bl${k}`)?.classList.add('sel');
-  const b=SS.blanks[k]; document.getElementById('wbp').textContent=b.l+'：'; document.getElementById('wbh').textContent=b.h;
-  const opts=document.getElementById('wbo'); opts.innerHTML='';
-  b.o.forEach(w=>{const c=document.createElement('button');c.className='wc';c.textContent=w;if(SS.ans.includes(w))c.classList.add('used');c.onclick=()=>fillBl(k,w);opts.appendChild(c);});
+  const b=SS.blanks[k];
+  document.getElementById('wbp').textContent=b.l+'：';
+  document.getElementById('wbh').textContent=b.h;
+  const opts=document.getElementById('wbo');opts.innerHTML='';
+  b.o.forEach(w=>{
+    const c=document.createElement('button');c.className='wc';c.textContent=w;
+    if(SS.ans.includes(w))c.classList.add('used');
+    c.onclick=()=>fillBl(k,w);opts.appendChild(c);
+  });
 }
 function fillBl(k,word){
-  SS.ans.forEach((a,i)=>{if(a===word&&i!==k){SS.ans[i]=null;const e=document.getElementById(`bl${i}`);if(e){e.textContent='　'.repeat(Math.max(2,SS.blanks[i].a.length));e.classList.remove('ok');}}});
-  SS.ans[k]=word; const el=document.getElementById(`bl${k}`);
+  SS.ans.forEach((a,i)=>{
+    if(a===word&&i!==k){SS.ans[i]=null;const e=document.getElementById(`bl${i}`);if(e){e.textContent='　'.repeat(Math.max(2,SS.blanks[i].a.length));e.classList.remove('ok');}}
+  });
+  SS.ans[k]=word;
+  const el=document.getElementById(`bl${k}`);
   if(el){el.textContent=word;el.classList.remove('sel','err');el.classList.add('ok');}
-  SS.sel=null; document.getElementById('wbp').textContent='请点击空格选词'; document.getElementById('wbh').textContent=''; document.getElementById('wbo').innerHTML='';
+  SS.sel=null;
+  document.getElementById('wbp').textContent='请点击空格选词';
+  document.getElementById('wbh').textContent='';
+  document.getElementById('wbo').innerHTML='';
   if(SS.ans.every(a=>a!==null)) valFill();
 }
 function valFill(){
-  let ok=true; const errs=[];
-  SS.blanks.forEach((b,i)=>{if(SS.ans[i]!==b.a){ok=false;errs.push(i);document.getElementById(`bl${i}`)?.classList.add('err');setTimeout(()=>{SS.ans[i]=null;const e=document.getElementById(`bl${i}`);if(e){e.textContent='　'.repeat(Math.max(2,b.a.length));e.classList.remove('ok','err');}},500);}});
+  let ok=true;const errs=[];
+  SS.blanks.forEach((b,i)=>{
+    if(SS.ans[i]!==b.a){
+      ok=false;errs.push(i);
+      document.getElementById(`bl${i}`)?.classList.add('err');
+      setTimeout(()=>{SS.ans[i]=null;const e=document.getElementById(`bl${i}`);if(e){e.textContent='　'.repeat(Math.max(2,b.a.length));e.classList.remove('ok','err');}},500);
+    }
+  });
   const fb=document.getElementById('sfb');
   if(ok){fb.textContent='✓ 全部正确！防御系统激活！';fb.style.color='var(--g)';document.getElementById('snxt').classList.add('show');}
   else{fb.textContent='✗ '+SS.exps[errs[0]];fb.style.color='var(--rd)';}
 }
 function selPbl(k){
-  SS.sel=k; document.querySelectorAll('.pbl').forEach(b=>b.classList.remove('sel'));
+  SS.sel=k;
+  document.querySelectorAll('.pbl').forEach(b=>b.classList.remove('sel'));
   document.getElementById(`pbl${k}`)?.classList.add('sel');
-  const p=SS.poem; let opts=[],hint='',label='';
+  const p=SS.poem;let opts=[],hint='',label='';
   if(k==='a'){label='作者';hint='选择这首诗的作者';opts=p.aQ.o;}
   else if(k==='d'){label='朝代';hint='选择作者所在朝代';opts=p.dQ.o;}
   else{const b=p.blanks[k];label=`第${parseInt(k)+1}空`;hint=b.h;opts=b.o;}
-  document.getElementById('wbp').textContent=label+'：'; document.getElementById('wbh').textContent=hint;
-  const oe=document.getElementById('wbo'); oe.innerHTML='';
+  document.getElementById('wbp').textContent=label+'：';
+  document.getElementById('wbh').textContent=hint;
+  const oe=document.getElementById('wbo');oe.innerHTML='';
   opts.forEach(w=>{const c=document.createElement('button');c.className='wc';c.textContent=w;c.onclick=()=>fillPbl(k,w);oe.appendChild(c);});
 }
 function fillPbl(k,word){
-  const p=SS.poem; const el=document.getElementById(`pbl${k}`);
+  const p=SS.poem;
+  const el=document.getElementById(`pbl${k}`);
   if(el){el.textContent=word;el.classList.remove('sel','err');el.classList.add('ok');}
   const km={'a':p.blanks.length,'d':p.blanks.length+1};
   SS.ans[typeof k==='number'?k:km[k]]=word;
-  SS.sel=null; document.getElementById('wbp').textContent='请点击空格选词'; document.getElementById('wbh').textContent=''; document.getElementById('wbo').innerHTML='';
+  SS.sel=null;
+  document.getElementById('wbp').textContent='请点击空格选词';
+  document.getElementById('wbh').textContent='';
+  document.getElementById('wbo').innerHTML='';
   if(SS.ans.every(a=>a!==null)) valPoem();
 }
 function valPoem(){
-  const p=SS.poem; let ok=true; const errs=[];
-  p.blanks.forEach((b,i)=>{if(SS.ans[i]!==b.a){ok=false;errs.push({exp:p.exps[i]});document.getElementById(`pbl${i}`)?.classList.add('err');setTimeout(()=>{SS.ans[i]=null;const e=document.getElementById(`pbl${i}`);if(e){e.textContent='　';e.classList.remove('ok','err');}},500);}});
+  const p=SS.poem;let ok=true;const errs=[];
+  p.blanks.forEach((b,i)=>{
+    if(SS.ans[i]!==b.a){
+      ok=false;errs.push({exp:p.exps[i]});
+      document.getElementById(`pbl${i}`)?.classList.add('err');
+      setTimeout(()=>{SS.ans[i]=null;const e=document.getElementById(`pbl${i}`);if(e){e.textContent='　';e.classList.remove('ok','err');}},500);
+    }
+  });
   const aA=p.aQ.o[p.aQ.a];
-  if(SS.ans[p.blanks.length]!==aA){ok=false;errs.push({exp:`《${p.title}》的作者是${p.author}。`});document.getElementById('pbla')?.classList.add('err');setTimeout(()=>{SS.ans[p.blanks.length]=null;const e=document.getElementById('pbla');if(e){e.textContent='　'.repeat(3);e.classList.remove('ok','err');}},500);}
+  if(SS.ans[p.blanks.length]!==aA){
+    ok=false;errs.push({exp:`《${p.title}》的作者是${p.author}。`});
+    document.getElementById('pbla')?.classList.add('err');
+    setTimeout(()=>{SS.ans[p.blanks.length]=null;const e=document.getElementById('pbla');if(e){e.textContent='　'.repeat(3);e.classList.remove('ok','err');}},500);
+  }
   const dA=p.dQ.o[p.dQ.a];
-  if(SS.ans[p.blanks.length+1]!==dA){ok=false;if(!errs.find(e=>e.exp.includes('作者')))errs.push({exp:`${p.author}是${p.dynasty}代诗人。`});document.getElementById('pbld')?.classList.add('err');setTimeout(()=>{SS.ans[p.blanks.length+1]=null;const e=document.getElementById('pbld');if(e){e.textContent='　';e.classList.remove('ok','err');}},500);}
+  if(SS.ans[p.blanks.length+1]!==dA){
+    ok=false;
+    if(!errs.find(e=>e.exp.includes('作者'))) errs.push({exp:`${p.author}是${p.dynasty}代诗人。`});
+    document.getElementById('pbld')?.classList.add('err');
+    setTimeout(()=>{SS.ans[p.blanks.length+1]=null;const e=document.getElementById('pbld');if(e){e.textContent='　';e.classList.remove('ok','err');}},500);
+  }
   const fb=document.getElementById('sfb');
   if(ok){fb.textContent='✓ 全部正确！';fb.style.color='var(--g)';document.getElementById('snxt').classList.add('show');}
   else{fb.textContent='✗ '+errs[0].exp;fb.style.color='var(--rd)';}
 }
 
-// ══════════════════════════════════════
-// MATH (opening)
-// ══════════════════════════════════════
+// ══════ MATH OPENING ══════
 let CM=null;
 function setupMath(){
-  [CM]=pickFresh(MATH_OPEN,'math',1); G.mathTry=0;
+  [CM]=pickFresh(MATH_OPEN,'math',1);G.mathTry=0;
   document.getElementById('msc').innerHTML=CM.sc;
   document.getElementById('mq').textContent=CM.q;
   document.getElementById('mans').value='';
-  document.getElementById('mfb').textContent=''; document.getElementById('mfb').className='mfb';
+  document.getElementById('mfb').textContent='';document.getElementById('mfb').className='mfb';
   document.getElementById('mat').textContent='';
 }
 function nb(v){const i=document.getElementById('mans');if(v==='del')i.value=i.value.slice(0,-1);else if(i.value.length<6)i.value+=v;}
 function chkMath(){
   const val=parseInt(document.getElementById('mans').value)||0;
-  const fb=document.getElementById('mfb'); G.mathTry++;
-  if(val===CM.a){fb.textContent=`✓ 正确！答案 ${CM.a}，获得加速！`;fb.className='mfb ok';G.mathOk=true;setTimeout(buildQs,1200);}
-  else{const hint=G.mathTry>=2?`（答案：${CM.a}）`:'';fb.textContent=`✗ 再算一次！${hint}`;fb.className='mfb err';document.getElementById('mat').textContent=`已尝试 ${G.mathTry} 次`;document.getElementById('mans').value='';if(G.mathTry>=3){fb.textContent=`答案是 ${CM.a}，直接进入游戏。`;G.mathOk=false;setTimeout(buildQs,1800);}}
+  const fb=document.getElementById('mfb');G.mathTry++;
+  if(val===CM.a){
+    fb.textContent=`✓ 正确！答案 ${CM.a}，获得加速！`;fb.className='mfb ok';G.mathOk=true;setTimeout(buildQs,1200);
+  } else {
+    const hint=G.mathTry>=2?`（答案：${CM.a}）`:'';
+    fb.textContent=`✗ 再算一次！${hint}`;fb.className='mfb err';
+    document.getElementById('mat').textContent=`已尝试 ${G.mathTry} 次`;
+    document.getElementById('mans').value='';
+    if(G.mathTry>=3){fb.textContent=`答案是 ${CM.a}，直接进入游戏。`;G.mathOk=false;setTimeout(buildQs,1800);}
+  }
 }
 function goMath(){hideAll();document.getElementById('math').classList.remove('hide');setupMath();}
 
-// ══════════════════════════════════════
-// BUILD 20 QUESTIONS
-// 5 spell + 6 prep/sent(EN) + 6 CN egg + 3 MA meteor
-// ══════════════════════════════════════
+// ══════ BUILD 20 QUESTIONS ══════
 function buildQs(){
   const sp=pickFresh(WORDS,'spell',5).map(d=>({t:'spell',d}));
   const pr=pickFresh(PREP,'prep',3).map(d=>({t:'prep',d}));
@@ -619,31 +656,31 @@ function buildQs(){
   const ma=pickFresh(MA_QS,'maq',3).map(d=>({t:'meteor',d}));
   const qs=[...sp,...pr,...se,...cn,...ma];
   for(let i=qs.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[qs[i],qs[j]]=[qs[j],qs[i]];}
-  G.qs=qs; G.qi=0; G.hp=100; G.score=0; G.totE=0; G.okE=0; G.bonusXP=0;
-  G.hero=mkHero(); if(G.mathOk) G.buffT=G.buffD;
+  G.qs=qs;G.qi=0;G.hp=100;G.score=0;G.totE=0;G.okE=0;G.bonusXP=0;
+  G.hero=mkHero();if(G.mathOk)G.buffT=G.buffD;
   parts=[];
   hideAll();
   ['hud','qp','kh','jz','eb','bfw'].forEach(id=>document.getElementById(id).classList.remove('hide'));
   document.getElementById('hz').textContent=LVM[G.lv].icon+' '+LVM[G.lv].name;
+  // sync music button in HUD
+  const hb=document.getElementById('hud-music-btn');
+  if(hb) hb.textContent=musicOn?'🔊':'🔇';
   G.phase='play';
   sfxLevelStart();
   setTimeout(()=>{measureQ();loadQ();},60);
 }
 
-// ══════════════════════════════════════
-// LOAD QUESTION
-// ══════════════════════════════════════
+// ══════ LOAD QUESTION ══════
 function loadQ(){
   if(G.qi>=G.qs.length){endPlay();return;}
-  const q=G.qs[G.qi]; G.curQ=null;
+  const q=G.qs[G.qi];G.curQ=null;
   document.getElementById('hpg').textContent=`${G.qi}/${G.qs.length}`;
   updHUD();
-  // update type badge + eat button label
   const typeEl=document.getElementById('htype');
   const eblbl=document.getElementById('eblbl');
-  if(q.t==='egg'){typeEl.className='htype cn';typeEl.textContent='语文';eblbl.textContent='踩蛋';}
-  else if(q.t==='meteor'){typeEl.className='htype ma';typeEl.textContent='数学';eblbl.textContent='撞击';}
-  else{typeEl.className='htype en';typeEl.textContent='英语';eblbl.textContent='吞噬';}
+  if(q.t==='egg'){typeEl.className='htype cn';typeEl.textContent='语文';if(eblbl)eblbl.textContent='踩蛋';}
+  else if(q.t==='meteor'){typeEl.className='htype ma';typeEl.textContent='数学';if(eblbl)eblbl.textContent='撞击';}
+  else{typeEl.className='htype en';typeEl.textContent='英语';if(eblbl)eblbl.textContent='吞噬';}
   if(q.t==='spell') loadSpell(q.d);
   else if(q.t==='prep') loadPrep(q.d);
   else if(q.t==='sent') loadSent(q.d);
@@ -652,16 +689,17 @@ function loadQ(){
   setTimeout(measureQ,40);
 }
 
-// ── ENGLISH SPELL ──
+// ── SPELL ──
 function loadSpell(d){
   const tgt=d.w.split('');
-  const pool=[...tgt];
   const inW=new Set(tgt);
+  const pool=[...tgt]; // all needed letters with correct multiplicity
   const dec='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(c=>!inW.has(c)).sort(()=>Math.random()-.5);
-  for(let i=0;i<Math.min(6,10-pool.length);i++) pool.push(dec[i]);
+  const extra=Math.min(5,12-pool.length);
+  for(let i=0;i<extra;i++) pool.push(dec[i]);
   pool.sort(()=>Math.random()-.5);
-  G.curQ={t:'spell',d,filled:[],tgt};
-  G.eggs=[]; G.meteors=[]; G.dinos=[];
+  G.curQ={t:'spell',d,filled:[],tgt,inWord:inW};
+  G.eggs=[];G.meteors=[];G.dinos=[];
   spawnGrid(pool);
   document.getElementById('qtb').textContent='🔡 英语拼写 · 找到正确字母按顺序吞噬';
   document.getElementById('qt').textContent=`拼出单词：${d.zh}（${d.w.length}个字母）`;
@@ -670,25 +708,52 @@ function loadSpell(d){
   document.getElementById('wzh').textContent=d.zh;
   updSlots();
 }
-function updSlots(){
-  const q=G.curQ; if(!q||q.t!=='spell') return;
-  const sl=document.getElementById('wsl'); sl.innerHTML='';
-  q.tgt.forEach((l,i)=>{const b=document.createElement('div');b.className='ws'+(i<q.filled.length?' ok':'');b.textContent=i<q.filled.length?q.filled[i]:'_';sl.appendChild(b);});
+
+// Ensure all remaining needed letters exist on screen
+function ensureNeededLetters(q){
+  if(!q||q.t!=='spell') return;
+  const remaining=q.tgt.slice(q.filled.length);
+  const alive={};
+  G.dinos.forEach(d=>{if(!d.dead) alive[d.lbl]=(alive[d.lbl]||0)+1;});
+  const needed={};
+  remaining.forEach(l=>{needed[l]=(needed[l]||0)+1;});
+  // spawn any missing needed letters
+  Object.entries(needed).forEach(([letter,count])=>{
+    const have=alive[letter]||0;
+    for(let i=have;i<count;i++) addDino(letter,false);
+  });
+  // keep screen populated with decoys
+  const liveCount=G.dinos.filter(d=>!d.dead).length;
+  if(liveCount<5){
+    const dec='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(c=>!q.inWord.has(c)).sort(()=>Math.random()-.5);
+    addDino(dec[0]||'X',false);
+  }
 }
 
-// ── ENGLISH PREP ──
+function updSlots(){
+  const q=G.curQ;if(!q||q.t!=='spell') return;
+  const sl=document.getElementById('wsl');sl.innerHTML='';
+  q.tgt.forEach((l,i)=>{
+    const b=document.createElement('div');
+    b.className='ws'+(i<q.filled.length?' ok':'');
+    b.textContent=i<q.filled.length?q.filled[i]:'_';
+    sl.appendChild(b);
+  });
+}
+
+// ── PREP ──
 function loadPrep(d){
-  G.curQ={t:'prep',d,done:false}; G.eggs=[]; G.meteors=[]; G.dinos=[];
+  G.curQ={t:'prep',d,done:false};G.eggs=[];G.meteors=[];G.dinos=[];
   document.getElementById('qtb').textContent='📍 英语介词 · 吞噬正确答案';
   document.getElementById('qt').textContent=d.s.replace('_____','（　　）');
-  const sc=document.getElementById('qsc'); sc.style.display='block'; drawSc(sc,d.sc);
+  const sc=document.getElementById('qsc');sc.style.display='block';drawSc(sc,d.sc);
   document.getElementById('wpl').style.display='none';
   spawnWord(d.o,d.a);
 }
 
-// ── ENGLISH SENT ──
+// ── SENT ──
 function loadSent(d){
-  G.curQ={t:'sent',d,done:false}; G.eggs=[]; G.meteors=[]; G.dinos=[];
+  G.curQ={t:'sent',d,done:false};G.eggs=[];G.meteors=[];G.dinos=[];
   document.getElementById('qtb').textContent='📝 英语填空 · 吞噬正确答案';
   document.getElementById('qt').textContent=d.q.replace('_____','（　　）')+(d.zh?`\n提示：${d.zh}`:'');
   const sc=document.getElementById('qsc');
@@ -697,19 +762,19 @@ function loadSent(d){
   spawnWord(d.o,d.a);
 }
 
-// ── CHINESE EGG ──
+// ── EGG ──
 function loadEgg(d){
-  G.curQ={t:'egg',d,done:false}; G.dinos=[]; G.meteors=[];
-  document.getElementById('qtb').textContent='🥚 语文 · 走到正确的恐龙蛋旁边踩破它';
+  G.curQ={t:'egg',d,done:false};G.dinos=[];G.meteors=[];
+  document.getElementById('qtb').textContent='🥚 语文 · 走到正确恐龙蛋旁边踩破它';
   document.getElementById('qt').textContent=d.q;
   document.getElementById('qsc').style.display='none';
   document.getElementById('wpl').style.display='none';
   spawnEggs(d.o,d.a);
 }
 
-// ── MATH METEOR ──
+// ── METEOR ──
 function loadMeteor(d){
-  G.curQ={t:'meteor',d,done:false}; G.dinos=[]; G.eggs=[];
+  G.curQ={t:'meteor',d,done:false};G.dinos=[];G.eggs=[];
   document.getElementById('qtb').textContent='☄️ 数学 · 走到正确答案的陨石旁边撞击';
   document.getElementById('qt').textContent=d.q;
   document.getElementById('qsc').style.display='none';
@@ -717,30 +782,28 @@ function loadMeteor(d){
   spawnMeteors(d.o,d.a);
 }
 
-// ══════════════════════════════════════
-// SCENE DRAWING
-// ══════════════════════════════════════
+// ══════ SCENE ══════
 function drawSc(sc,name){
   const c=sc.getContext('2d'),w=260,h=220;
-  c.clearRect(0,0,w,h); c.fillStyle='#f9fbe7'; c.fillRect(0,0,w,h);
-  c.fillStyle='#c8e6c9'; c.fillRect(0,h*.72,w,h*.28);
-  c.textAlign='center'; c.textBaseline='middle';
-  const big='72px serif', sml='52px serif';
+  c.clearRect(0,0,w,h);c.fillStyle='#f9fbe7';c.fillRect(0,0,w,h);
+  c.fillStyle='#c8e6c9';c.fillRect(0,h*.72,w,h*.28);
+  c.textAlign='center';c.textBaseline='middle';
+  const big='72px serif',sml='52px serif';
   c.font=big;
   const mx=w*.38,my=h*.5;
   const S={
-    monkey_on:    ()=>{c.fillText('🌳',mx,my);c.fillText('🐒',mx,h*.18);},
-    cat_under:    ()=>{c.fillText('🪑',mx,h*.42);c.fillText('🐱',mx,h*.76);},
-    bird_in:      ()=>{c.fillText('📦',mx,h*.56);c.font=sml;c.fillText('🐦',mx,h*.51);},
-    dog_behind:   ()=>{c.fillText('🌳',w*.3,my);c.font=sml;c.fillText('🐕',w*.52,h*.65);},
-    cat_nextto:   ()=>{c.fillText('📦',w*.24,h*.56);c.fillText('🐱',w*.62,h*.58);},
-    bird_on:      ()=>{c.fillText('🪑',mx,h*.56);c.font=sml;c.fillText('🐦',mx*.92,h*.28);},
-    fox_under:    ()=>{c.fillText('🌳',mx,my);c.fillText('🦊',mx,h*.78);},
+    monkey_on:()=>{c.fillText('🌳',mx,my);c.fillText('🐒',mx,h*.18);},
+    cat_under:()=>{c.fillText('🪑',mx,h*.42);c.fillText('🐱',mx,h*.76);},
+    bird_in:()=>{c.fillText('📦',mx,h*.56);c.font=sml;c.fillText('🐦',mx,h*.51);},
+    dog_behind:()=>{c.fillText('🌳',w*.3,my);c.font=sml;c.fillText('🐕',w*.52,h*.65);},
+    cat_nextto:()=>{c.fillText('📦',w*.24,h*.56);c.fillText('🐱',w*.62,h*.58);},
+    bird_on:()=>{c.fillText('🪑',mx,h*.56);c.font=sml;c.fillText('🐦',mx*.92,h*.28);},
+    fox_under:()=>{c.fillText('🌳',mx,my);c.fillText('🦊',mx,h*.78);},
     monkey_behind:()=>{c.fillText('📦',w*.25,h*.56);c.font=sml;c.fillText('🐒',w*.5,h*.5);},
-    cat_on:       ()=>{c.fillText('📦',mx,h*.6);c.fillText('🐱',mx,h*.3);},
-    bird_nextto:  ()=>{c.fillText('🌳',w*.28,my);c.fillText('🐦',w*.64,h*.44);},
-    fox_in:       ()=>{c.fillText('📦',mx,h*.56);c.font=sml;c.fillText('🦊',mx,h*.51);},
-    dog_on:       ()=>{c.fillText('🪑',mx,h*.54);c.fillText('🐕',mx,h*.27);},
+    cat_on:()=>{c.fillText('📦',mx,h*.6);c.fillText('🐱',mx,h*.3);},
+    bird_nextto:()=>{c.fillText('🌳',w*.28,my);c.fillText('🐦',w*.64,h*.44);},
+    fox_in:()=>{c.fillText('📦',mx,h*.56);c.font=sml;c.fillText('🦊',mx,h*.51);},
+    dog_on:()=>{c.fillText('🪑',mx,h*.54);c.fillText('🐕',mx,h*.27);},
     rain:()=>{c.fillText('🌧️',w*.5,h*.44);},
     snow:()=>{c.fillText('❄️',w*.3,h*.44);c.font=sml;c.fillText('⛄',w*.68,h*.62);},
     sunny:()=>{c.fillText('☀️',w*.5,h*.4);},
@@ -748,124 +811,110 @@ function drawSc(sc,name){
   (S[name]||S.sunny)();
 }
 
-// ══════════════════════════════════════
-// ENTITY SPAWNING
-// ══════════════════════════════════════
+// ══════ ENTITY SPAWNING ══════
 const DE=['🦕','🦎','🐊','🐢','🦗','🐍'];
 function mkHero(){return{x:W*.12,y:H*.45,r:Math.min(W,H)*.052,spd:220,bspd:340};}
+function getPlayArea(){return{top:PT+10,bot:(PB||H*.82)-10};}
 
-function getPlayArea(){
-  const top=PT+10, bot=(PB||H*.82)-10;
-  return {top,bot,left:10,right:W-10};
-}
-
-// English dinos (letter labels)
 function spawnGrid(labels){
   G.dinos=[];
-  const r=Math.min(W,H)*.044, n=labels.length;
-  const cols=Math.ceil(Math.sqrt(n*1.6)), rows=Math.ceil(n/cols);
+  const r=Math.min(W,H)*.044,n=labels.length;
+  const cols=Math.ceil(Math.sqrt(n*1.6)),rows=Math.ceil(n/cols);
   const {top,bot}=getPlayArea();
-  const cw=(W*.88)/cols, ch=(bot-top)/rows;
+  const cw=(W*.88)/cols,ch=(bot-top)/rows;
   [...labels].sort(()=>Math.random()-.5).forEach((lbl,i)=>{
-    const col=i%cols, row=Math.floor(i/cols);
+    const col=i%cols,row=Math.floor(i/cols);
     G.dinos.push({lbl,x:W*.06+col*cw+cw*.15+Math.random()*cw*.7,y:top+row*ch+ch*.1+Math.random()*ch*.65,vx:(Math.random()-.5)*26,vy:(Math.random()-.5)*26,r,e:DE[i%6],wb:Math.random()*Math.PI*2,dead:false});
   });
 }
 function spawnWord(opts,ans){
   G.dinos=[];
-  const r=Math.min(W,H)*.046, n=opts.length;
+  const r=Math.min(W,H)*.046,n=opts.length;
   const {top,bot}=getPlayArea();
-  const sp=W/(n+1), my=(top+bot)/2;
+  const sp=W/(n+1),my=(top+bot)/2;
   opts.forEach((opt,i)=>{
     G.dinos.push({lbl:opt,isTarget:opt===ans,x:sp*(i+1)+(Math.random()-.5)*sp*.22,y:my+(Math.random()-.5)*(bot-top)*.38,vx:(Math.random()-.5)*28,vy:(Math.random()-.5)*28,r,e:DE[i%6],wb:Math.random()*Math.PI*2,dead:false});
   });
 }
 function addDino(lbl,isTarget){
-  const r=Math.min(W,H)*.044; const {top,bot}=getPlayArea();
+  const r=Math.min(W,H)*.044;const {top,bot}=getPlayArea();
   G.dinos.push({lbl,isTarget,x:W*.1+Math.random()*W*.8,y:top+Math.random()*(bot-top),vx:(Math.random()-.5)*26,vy:(Math.random()-.5)*26,r,e:DE[Math.floor(Math.random()*6)],wb:0,dead:false});
 }
-
-// Eggs (Chinese)
 function spawnEggs(opts,ans){
   G.eggs=[];
-  const n=opts.length, r=Math.min(W,H)*.06;
+  const n=opts.length,r=Math.min(W,H)*.06;
   const {top,bot}=getPlayArea();
-  const sp=W/(n+1), my=(top+bot)/2;
-  const eggColors=['#ffe0b2','#f8bbd0','#dcedc8','#b3e5fc'];
+  const sp=W/(n+1),my=(top+bot)/2;
+  const colors=['#ffe0b2','#f8bbd0','#dcedc8','#b3e5fc'];
   opts.forEach((opt,i)=>{
-    G.eggs.push({lbl:opt,isTarget:opt===ans,x:sp*(i+1),y:my+(Math.random()-.5)*(bot-top)*.3,r,color:eggColors[i%4],wb:Math.random()*Math.PI*2,dead:false,hatched:false,hatchTimer:0});
+    G.eggs.push({lbl:opt,isTarget:opt===ans,x:sp*(i+1),y:my+(Math.random()-.5)*(bot-top)*.3,r,color:colors[i%4],wb:Math.random()*Math.PI*2,dead:false,hatched:false,hatchTimer:0});
   });
 }
-
-// Meteors (Math) — static, hovering
 function spawnMeteors(opts,ans){
   G.meteors=[];
-  const n=opts.length, r=Math.min(W,H)*.065;
+  const n=opts.length,r=Math.min(W,H)*.065;
   const {top,bot}=getPlayArea();
-  const sp=W/(n+1), my=(top+bot)/2;
+  const sp=W/(n+1),my=(top+bot)/2;
   opts.forEach((opt,i)=>{
-    // gentle hover only, no falling
     G.meteors.push({lbl:opt,isTarget:opt===ans,x:sp*(i+1),y:my+(Math.random()-.5)*(bot-top)*.35,r,wb:Math.random()*Math.PI*2,dead:false,vx:(Math.random()-.5)*8,vy:(Math.random()-.5)*8});
   });
 }
 
-// ══════════════════════════════════════
-// ACTION — unified eat/stomp/hit
-// ══════════════════════════════════════
+// ══════ ACTIONS ══════
 const eb=document.getElementById('eb');
 eb.addEventListener('click',doAction);
 eb.addEventListener('touchend',e=>{e.preventDefault();doAction();});
 
 function doAction(){
   if(G.phase!=='play') return;
-  const q=G.curQ; if(!q) return;
+  const q=G.curQ;if(!q) return;
   const h=G.hero;
-  if(q.t==='spell')       doEat(h,q);
-  else if(q.t==='prep'||q.t==='sent') doEat(h,q);
-  else if(q.t==='egg')    doStomp(h,q);
+  if(q.t==='spell'||q.t==='prep'||q.t==='sent') doEat(h,q);
+  else if(q.t==='egg') doStomp(h,q);
   else if(q.t==='meteor') doHit(h,q);
 }
 
 function doEat(h,q){
-  let cl=null, bd=Infinity;
+  let cl=null,bd=Infinity;
   G.dinos.forEach(d=>{if(d.dead)return;const ds=Math.hypot(h.x-d.x,h.y-d.y);if(ds<h.r+d.r+18&&ds<bd){bd=ds;cl=d;}});
   if(!cl){flashBtn();return;}
   if(q.t==='spell'){
-    const need=q.tgt[q.filled.length]; G.totE++;
+    const need=q.tgt[q.filled.length];G.totE++;
     if(cl.lbl===need){
       G.okE++;cl.dead=true;spawnPts(cl.x,cl.y,'76,175,80',10);sfxEatOk();
       q.filled.push(need);G.score+=50;updSlots();
-      if(q.filled.length>=q.tgt.length){G.score+=150;showPop(`✓ ${q.d.w}（${q.d.zh}）`);sfxWordDone();setTimeout(nextQ,900);}
-      else{const inW=new Set(q.tgt);const dec='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(c=>!inW.has(c)).sort(()=>Math.random()-.5);addDino(dec[0]||'X',false);}
-    } else{
+      if(q.filled.length>=q.tgt.length){
+        G.score+=150;showPop(`✓ ${q.d.w}（${q.d.zh}）`);sfxWordDone();setTimeout(nextQ,900);
+      } else {
+        ensureNeededLetters(q);
+      }
+    } else {
       cl.dead=true;spawnPts(cl.x,cl.y,'198,40,40',6);sfxEatWrong();takeDmg(15);G.score=Math.max(0,G.score-15);
-      const nextNeed=q.tgt[q.filled.length];
-      const alive=G.dinos.some(d=>!d.dead&&d.lbl===nextNeed);
-      if(!alive) addDino(nextNeed,false);
-      else{const inW=new Set(q.tgt);const dec='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(c=>!inW.has(c)).sort(()=>Math.random()-.5);addDino(dec[0]||'Z',false);}
+      ensureNeededLetters(q);
     }
   } else {
-    if(q.done) return; G.totE++;
-    if(cl.isTarget){G.okE++;cl.dead=true;q.done=true;spawnPts(cl.x,cl.y,'76,175,80',12);sfxWordDone();G.score+=120;showPop('✓ Correct!');setTimeout(nextQ,900);}
-    else{cl.dead=true;spawnPts(cl.x,cl.y,'198,40,40',8);sfxEatWrong();takeDmg(20);G.score=Math.max(0,G.score-20);addDino(cl.lbl,false);}
+    if(q.done) return;G.totE++;
+    if(cl.isTarget){
+      G.okE++;cl.dead=true;q.done=true;spawnPts(cl.x,cl.y,'76,175,80',12);sfxWordDone();G.score+=120;showPop('✓ Correct!');setTimeout(nextQ,900);
+    } else {
+      cl.dead=true;spawnPts(cl.x,cl.y,'198,40,40',8);sfxEatWrong();takeDmg(20);G.score=Math.max(0,G.score-20);addDino(cl.lbl,false);
+    }
   }
   updHUD();
 }
 
 function doStomp(h,q){
   if(q.done) return;
-  let cl=null, bd=Infinity;
+  let cl=null,bd=Infinity;
   G.eggs.forEach(e=>{if(e.dead||e.hatched)return;const ds=Math.hypot(h.x-e.x,h.y-e.y);if(ds<h.r+e.r+16&&ds<bd){bd=ds;cl=e;}});
   if(!cl){flashBtn();return;}
   G.totE++;
   if(cl.isTarget){
     G.okE++;cl.hatched=true;cl.hatchTimer=60;q.done=true;
     spawnPts(cl.x,cl.y,'76,175,80',14);sfxWordDone();G.score+=120;
-    showPop('✓ '+cl.lbl);
-    setTimeout(nextQ,1000);
+    showPop('✓ '+cl.lbl);setTimeout(nextQ,1000);
   } else {
     cl.dead=true;spawnPts(cl.x,cl.y,'198,40,40',8);sfxEatWrong();takeDmg(15);G.score=Math.max(0,G.score-15);
-    // show full explanation in question area
     document.getElementById('qtb').textContent='✗ 踩错了！看看解析：';
     document.getElementById('qt').textContent=q.d.e;
   }
@@ -874,21 +923,18 @@ function doStomp(h,q){
 
 function doHit(h,q){
   if(q.done) return;
-  let cl=null, bd=Infinity;
+  let cl=null,bd=Infinity;
   G.meteors.forEach(m=>{if(m.dead)return;const ds=Math.hypot(h.x-m.x,h.y-m.y);if(ds<h.r+m.r+18&&ds<bd){bd=ds;cl=m;}});
   if(!cl){flashBtn();return;}
   G.totE++;
   if(cl.isTarget){
-    G.okE++;cl.dead=true;q.done=true;
-    spawnPts(cl.x,cl.y,'76,175,80',16);sfxWordDone();G.score+=120;
-    showPop('✓ '+cl.lbl);
-    setTimeout(nextQ,900);
+    G.okE++;cl.dead=true;q.done=true;spawnPts(cl.x,cl.y,'76,175,80',16);sfxWordDone();G.score+=120;
+    showPop('✓ '+cl.lbl);setTimeout(nextQ,900);
   } else {
     cl.dead=true;spawnPts(cl.x,cl.y,'198,40,40',10);sfxEatWrong();takeDmg(15);G.score=Math.max(0,G.score-15);
     document.getElementById('qtb').textContent='✗ 撞错了！看看解析：';
     document.getElementById('qt').textContent=q.d.e;
-    // respawn wrong meteor
-    const r=Math.min(W,H)*.065; const {top,bot}=getPlayArea();
+    const r=Math.min(W,H)*.065;const {top,bot}=getPlayArea();
     G.meteors.push({lbl:cl.lbl,isTarget:false,x:W*.1+Math.random()*W*.8,y:top+Math.random()*(bot-top),r,wb:Math.random()*Math.PI*2,dead:false,vx:(Math.random()-.5)*8,vy:(Math.random()-.5)*8});
   }
   updHUD();
@@ -896,21 +942,27 @@ function doHit(h,q){
 
 function flashBtn(){eb.style.borderColor='var(--rd)';setTimeout(()=>eb.style.borderColor='var(--am)',300);}
 function nextQ(){G.qi++;loadQ();}
-function endPlay(){G.phase='idle';['hud','qp','kh','jz','eb','bfw'].forEach(id=>document.getElementById(id).classList.add('hide'));showRead();}
+function endPlay(){
+  G.phase='idle';
+  ['hud','qp','kh','jz','eb','bfw'].forEach(id=>document.getElementById(id).classList.add('hide'));
+  showRead();
+}
 
-// ══════════════════════════════════════
-// READING
-// ══════════════════════════════════════
+// ══════ READING ══════
 function showRead(){
   const db=READ[G.lv],hkey='r'+G.lv;
   const [rq]=pickFresh(db,hkey,1);
   document.getElementById('rpsg').textContent=rq.p;
   document.getElementById('rq').textContent=rq.q;
-  const ow=document.getElementById('rowrap'); ow.innerHTML='';
-  rq.o.forEach((o,i)=>{const b=document.createElement('button');b.className='ro';b.textContent=`${['A','B','C','D'][i]}. ${o}`;b.onclick=()=>ansR(b,i,rq);ow.appendChild(b);});
+  const ow=document.getElementById('rowrap');ow.innerHTML='';
+  rq.o.forEach((o,i)=>{
+    const b=document.createElement('button');b.className='ro';
+    b.textContent=`${['A','B','C','D'][i]}. ${o}`;
+    b.onclick=()=>ansR(b,i,rq);ow.appendChild(b);
+  });
   document.getElementById('rfb').textContent='';
   document.getElementById('rnxt').classList.remove('show');
-  hideAll(); document.getElementById('reading').classList.remove('hide');
+  hideAll();document.getElementById('reading').classList.remove('hide');
 }
 function ansR(btn,idx,rq){
   document.querySelectorAll('.ro').forEach(b=>b.onclick=null);
@@ -930,7 +982,7 @@ function goResult(){
   document.getElementById('rdi').textContent='🏆';
   document.getElementById('rti').textContent='守卫成功！';
   document.getElementById('rsu').textContent=LVM[G.lv].icon+' '+LVM[G.lv].name+'完成！';
-  const se=document.getElementById('rst'); se.innerHTML='';
+  const se=document.getElementById('rst');se.innerHTML='';
   for(let i=0;i<3;i++){const s=document.createElement('span');s.className='sa';s.textContent=i<stars?'⭐':'☆';s.style.animationDelay=i*.2+'s';se.appendChild(s);}
   document.getElementById('rsc').textContent=G.score;
   document.getElementById('rac').textContent=acc+'%';
@@ -941,38 +993,49 @@ function goResult(){
 }
 function replay(){startLv(G.lv);}
 
-// ══════════════════════════════════════
-// DAMAGE / PARTICLES / HUD
-// ══════════════════════════════════════
-function takeDmg(a){G.hp=Math.max(0,G.hp-a);const f=document.getElementById('dmg');f.style.opacity='1';setTimeout(()=>f.style.opacity='0',150);sfxDamage();updHUD();}
+// ══════ DAMAGE / PARTICLES ══════
+function takeDmg(a){
+  G.hp=Math.max(0,G.hp-a);
+  const f=document.getElementById('dmg');f.style.opacity='1';setTimeout(()=>f.style.opacity='0',150);
+  sfxDamage();updHUD();
+}
 let parts=[];
-function spawnPts(x,y,rgb,n){for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,sp=Math.random()*4+1.5;parts.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-2,r:Math.random()*5+2,life:1,rgb});}}
-function updHUD(){const hpf=document.getElementById('hpf');const hpt=document.getElementById('hpt');if(hpf)hpf.style.width=G.hp+'%';if(hpt)hpt.textContent=G.hp+'%';const hsc=document.getElementById('hsc');if(hsc)hsc.textContent=G.score;}
-function showPop(t){const el=document.getElementById('wpop');el.textContent=t;el.style.opacity='1';setTimeout(()=>el.style.opacity='0',1200);}
+function spawnPts(x,y,rgb,n){
+  for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,sp=Math.random()*4+1.5;parts.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-2,r:Math.random()*5+2,life:1,rgb});}
+}
+function updHUD(){
+  const hpf=document.getElementById('hpf');const hpt=document.getElementById('hpt');
+  if(hpf) hpf.style.width=G.hp+'%';if(hpt) hpt.textContent=G.hp+'%';
+  const hsc=document.getElementById('hsc');if(hsc) hsc.textContent=G.score;
+}
+function showPop(t){
+  const el=document.getElementById('wpop');el.textContent=t;el.style.opacity='1';
+  setTimeout(()=>el.style.opacity='0',1200);
+}
 
-// ══════════════════════════════════════
-// JOYSTICK + KEYBOARD
-// ══════════════════════════════════════
+// ══════ JOYSTICK + KEYBOARD ══════
 const joy={active:false,dx:0,dy:0,sx:0,sy:0};
 const jz=document.getElementById('jz'),jk=document.getElementById('jk');
 function jD(e){e.preventDefault();const t=e.touches?e.touches[0]:e;const r=jz.getBoundingClientRect();joy.active=true;joy.sx=r.left+r.width/2;joy.sy=r.top+r.height/2;}
 function jM(e){e.preventDefault();if(!joy.active)return;const t=e.touches?e.touches[0]:e;const dx=t.clientX-joy.sx,dy=t.clientY-joy.sy;const d=Math.hypot(dx,dy),a=Math.atan2(dy,dx);joy.dx=d>6?Math.cos(a):0;joy.dy=d>6?Math.sin(a):0;const cl=Math.min(d,40);jk.style.transform=`translate(calc(-50% + ${Math.cos(a)*cl}px),calc(-50% + ${Math.sin(a)*cl}px))`;}
 function jU(e){e.preventDefault();joy.active=false;joy.dx=0;joy.dy=0;jk.style.transform='translate(-50%,-50%)';}
-jz.addEventListener('touchstart',jD,{passive:false});jz.addEventListener('touchmove',jM,{passive:false});jz.addEventListener('touchend',jU,{passive:false});
-jz.addEventListener('mousedown',jD);document.addEventListener('mousemove',e=>{if(joy.active)jM(e);});document.addEventListener('mouseup',e=>{if(joy.active)jU(e);});
+jz.addEventListener('touchstart',jD,{passive:false});
+jz.addEventListener('touchmove',jM,{passive:false});
+jz.addEventListener('touchend',jU,{passive:false});
+jz.addEventListener('mousedown',jD);
+document.addEventListener('mousemove',e=>{if(joy.active)jM(e);});
+document.addEventListener('mouseup',e=>{if(joy.active)jU(e);});
 const keys={};
 window.addEventListener('keydown',e=>{keys[e.key]=true;if((e.key===' '||e.key==='Enter')&&G.phase==='play'){e.preventDefault();doAction();}});
 window.addEventListener('keyup',e=>{keys[e.key]=false;});
 function kx(){let d=0;if(keys['ArrowLeft']||keys['a']||keys['A'])d-=1;if(keys['ArrowRight']||keys['d']||keys['D'])d+=1;return d;}
 function ky(){let d=0;if(keys['ArrowUp']||keys['w']||keys['W'])d-=1;if(keys['ArrowDown']||keys['s']||keys['S'])d+=1;return d;}
 
-// ══════════════════════════════════════
-// RENDER LOOP
-// ══════════════════════════════════════
+// ══════ RENDER LOOP ══════
 let lastTs=0;
 function loop(ts){
   const dt=Math.min((ts-lastTs)/1000,.05);lastTs=ts;
-  ctx.clearRect(0,0,W,H); drawBG();
+  ctx.clearRect(0,0,W,H);drawBG();
   if(G.phase==='play'){
     updHero(dt);updDinos(dt);updEggs(dt);updMeteors(dt);
     drawMeteors();drawEggs();drawDinos();drawHero();drawPts();
@@ -993,7 +1056,6 @@ function drawBG(){
   for(let i=0;i<12;i++){ctx.globalAlpha=.4;ctx.font=`${H*.04}px serif`;ctx.fillText('🌿',(i/11)*W*.95+W*.025,(PB||H*.85)+H*.036);}
   ctx.globalAlpha=1;
 }
-
 function updHero(dt){
   const h=G.hero,spd=G.buffT>0?h.bspd:h.spd,dx=joy.dx||kx(),dy=joy.dy||ky();
   h.x=Math.max(h.r,Math.min(W-h.r,h.x+dx*spd*dt));
@@ -1005,11 +1067,9 @@ function drawHero(){
   if(G.buffT>0){ctx.beginPath();ctx.arc(h.x,h.y,h.r+6,0,Math.PI*2);ctx.strokeStyle='rgba(230,144,10,.5)';ctx.lineWidth=2;ctx.stroke();}
   ctx.font=`${h.r*2}px serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('🦖',h.x,h.y);
 }
-
-// English dinos
 function updDinos(dt){
   G.dinos.forEach(d=>{
-    if(d.dead)return; d.wb+=dt*1.8;
+    if(d.dead)return;d.wb+=dt*1.8;
     if(Math.random()<.012){d.vx=(Math.random()-.5)*38;d.vy=(Math.random()-.5)*38;}
     d.x+=d.vx*dt;d.y+=d.vy*dt;
     if(d.x<d.r||d.x>W-d.r){d.vx*=-1;d.x=Math.max(d.r,Math.min(W-d.r,d.x));}
@@ -1028,19 +1088,16 @@ function drawDinos(){
     const bs=Math.min(d.r*.82,13),tw=d.lbl.length*bs*.68+8;
     ctx.beginPath();ctx.roundRect(d.r*.45-tw/2,-d.r*.55-bs/2-4,tw,bs+8,4);
     ctx.fillStyle='#fff';ctx.fill();ctx.strokeStyle='#a5d6a7';ctx.lineWidth=1.2;ctx.stroke();
-    ctx.font=`bold ${bs}px monospace`;ctx.fillStyle='#1B8A5A';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(d.lbl,d.r*.45,-d.r*.55);
+    ctx.font=`bold ${bs}px monospace`;ctx.fillStyle='#1B8A5A';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(d.lbl,d.r*.45,-d.r*.55);
     ctx.restore();
   });
 }
-
-// Eggs (Chinese)
 function updEggs(dt){
-  const h=G.hero;
   G.eggs.forEach(e=>{
     if(e.dead)return;
     e.wb+=dt*1.2;
-    if(e.hatched){e.hatchTimer--;if(e.hatchTimer<=0)e.dead=true;return;}
-    // gentle wobble, no movement
+    if(e.hatched){e.hatchTimer--;if(e.hatchTimer<=0)e.dead=true;}
   });
 }
 function drawEggs(){
@@ -1050,41 +1107,54 @@ function drawEggs(){
     const ir=Math.hypot(h.x-e.x,h.y-e.y)<h.r+e.r+16;
     ctx.save();ctx.translate(e.x,e.y);
     if(e.hatched){
-      // hatching animation
-      ctx.font=`${e.r*2}px serif`;ctx.textAlign='center';ctx.textBaseline='middle';
-      ctx.fillText('🐣',0,0);
-      ctx.restore();return;
+      ctx.font=`${e.r*2.2}px serif`;ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText('🐣',0,0);ctx.restore();return;
     }
-    ctx.rotate(Math.sin(e.wb)*.06);
-    // egg body
+    ctx.rotate(Math.sin(e.wb)*.05);
+    if(ir){ctx.shadowBlur=20;ctx.shadowColor='rgba(230,144,10,.7)';}
+    // egg gradient body
+    const grad=ctx.createRadialGradient(-e.r*.2,-e.r*.25,e.r*.05,0,0,e.r);
+    grad.addColorStop(0,'#ffffff');
+    grad.addColorStop(0.4,e.color);
+    grad.addColorStop(1,e.color+'88');
     ctx.beginPath();
-    ctx.ellipse(0,0,e.r*.7,e.r,0,0,Math.PI*2);
-    ctx.fillStyle=ir?'#fff9c4':e.color;
-    ctx.fill();
-    ctx.strokeStyle=ir?'#E6900A':'#a5d6a7';
-    ctx.lineWidth=ir?2.5:1.5;ctx.stroke();
-    // crack hint when in range
+    ctx.moveTo(0,-e.r);
+    ctx.bezierCurveTo(e.r*.6,-e.r,e.r*.8,-e.r*.2,e.r*.7,e.r*.4);
+    ctx.bezierCurveTo(e.r*.6,e.r,e.r*.4,e.r,0,e.r);
+    ctx.bezierCurveTo(-e.r*.4,e.r,-e.r*.6,e.r,-e.r*.7,e.r*.4);
+    ctx.bezierCurveTo(-e.r*.8,-e.r*.2,-e.r*.6,-e.r,0,-e.r);
+    ctx.closePath();
+    ctx.fillStyle=grad;ctx.fill();
+    ctx.strokeStyle=ir?'#E6900A':'rgba(0,0,0,.15)';ctx.lineWidth=ir?2.5:1.5;ctx.stroke();
+    ctx.shadowBlur=0;
+    // polka dots
+    ctx.globalAlpha=0.22;ctx.fillStyle='#fff';
+    [[0,-e.r*.38,e.r*.11],[e.r*.28,e.r*.1,e.r*.08],[-e.r*.24,e.r*.18,e.r*.09]].forEach(([dx,dy,dr])=>{
+      ctx.beginPath();ctx.arc(dx,dy,dr,0,Math.PI*2);ctx.fill();
+    });
+    ctx.globalAlpha=1;
+    // cracks when in range
     if(ir){
-      ctx.beginPath();ctx.moveTo(-4,-8);ctx.lineTo(0,-2);ctx.lineTo(4,-8);
-      ctx.strokeStyle='#C62828';ctx.lineWidth=1.5;ctx.stroke();
+      ctx.strokeStyle='rgba(140,40,40,.65)';ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.moveTo(-3,-12);ctx.lineTo(0,-4);ctx.lineTo(5,-10);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(0,-4);ctx.lineTo(-4,0);ctx.stroke();
     }
     // label
-    const bs=Math.min(e.r*.75,15),tw=e.lbl.length*bs*.62+8;
-    ctx.beginPath();ctx.roundRect(-tw/2,-bs/2-2,tw,bs+4,3);
+    const bs=Math.min(e.r*.7,14),tw=e.lbl.length*bs*.65+10;
+    ctx.beginPath();ctx.roundRect(-tw/2,e.r*.12,tw,bs+7,4);
     ctx.fillStyle='rgba(255,255,255,.92)';ctx.fill();
-    ctx.font=`bold ${bs}px sans-serif`;ctx.fillStyle='#1a3a2a';ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText(e.lbl,0,0);
+    ctx.strokeStyle='rgba(0,0,0,.08)';ctx.lineWidth=1;ctx.stroke();
+    ctx.font=`bold ${bs}px sans-serif`;ctx.fillStyle='#1a3a2a';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(e.lbl,0,e.r*.12+bs/2+3);
     ctx.restore();
   });
 }
-
-// Meteors (Math)
 function updMeteors(dt){
   G.meteors.forEach(m=>{
     if(m.dead)return;
     m.wb+=dt*1.5;
-    // gentle floating
-    m.x+=m.vx*dt; m.y+=m.vy*dt;
+    m.x+=m.vx*dt;m.y+=m.vy*dt;
     if(m.x<m.r||m.x>W-m.r){m.vx*=-1;m.x=Math.max(m.r,Math.min(W-m.r,m.x));}
     const {top,bot}=getPlayArea();
     if(m.y<top+m.r||m.y>bot-m.r){m.vy*=-1;m.y=Math.max(top+m.r,Math.min(bot-m.r,m.y));}
@@ -1095,55 +1165,73 @@ function drawMeteors(){
   G.meteors.forEach(m=>{
     if(m.dead)return;
     const ir=Math.hypot(h.x-m.x,h.y-m.y)<h.r+m.r+18;
-    ctx.save();ctx.translate(m.x,m.y);ctx.rotate(m.wb*.3);
-    // meteor body
+    ctx.save();ctx.translate(m.x,m.y);ctx.rotate(m.wb*.25);
+    if(ir){ctx.shadowBlur=24;ctx.shadowColor='rgba(255,160,0,.8)';}
+    else{ctx.shadowBlur=8;ctx.shadowColor='rgba(100,100,150,.4)';}
+    // irregular rock shape
     ctx.beginPath();
-    for(let i=0;i<7;i++){
-      const a=i/7*Math.PI*2, r=i%2===0?m.r:m.r*.68;
+    const pts=9;
+    for(let i=0;i<pts;i++){
+      const a=i/pts*Math.PI*2-Math.PI/2;
+      const noise=0.75+0.25*Math.sin(i*2.3+m.wb);
+      const r=m.r*noise;
       i===0?ctx.moveTo(Math.cos(a)*r,Math.sin(a)*r):ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r);
     }
     ctx.closePath();
-    ctx.fillStyle=ir?'#fff9c4':'#b0bec5';ctx.fill();
-    ctx.strokeStyle=ir?'#E6900A':'#78909c';ctx.lineWidth=ir?2.5:1.5;ctx.stroke();
-    // glow when in range
-    if(ir){ctx.shadowBlur=12;ctx.shadowColor='rgba(230,144,10,.6)';}
-    // label
-    const bs=Math.min(m.r*.72,16),tw=m.lbl.length*bs*.7+10;
+    const grad=ctx.createRadialGradient(-m.r*.3,-m.r*.3,m.r*.1,0,0,m.r);
+    grad.addColorStop(0,ir?'#fff8e1':'#cfd8dc');
+    grad.addColorStop(0.5,ir?'#ffcc02':'#90a4ae');
+    grad.addColorStop(1,ir?'#e65100':'#546e7a');
+    ctx.fillStyle=grad;ctx.fill();
+    ctx.strokeStyle=ir?'rgba(255,160,0,.9)':'rgba(84,110,122,.6)';
+    ctx.lineWidth=ir?3:1.5;ctx.stroke();
     ctx.shadowBlur=0;
-    ctx.beginPath();ctx.roundRect(-tw/2,-bs/2-2,tw,bs+4,3);
-    ctx.fillStyle='rgba(255,255,255,.92)';ctx.fill();
-    ctx.font=`bold ${bs}px sans-serif`;ctx.fillStyle='#1a237e';ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText(m.lbl,0,0);
+    // craters
+    ctx.globalAlpha=0.18;ctx.fillStyle='#000';
+    [[m.r*.25,m.r*.1,m.r*.12],[-(m.r*.3),-(m.r*.2),m.r*.08],[m.r*.1,-(m.r*.35),m.r*.07]].forEach(([dx,dy,dr])=>{
+      ctx.beginPath();ctx.arc(dx,dy,dr,0,Math.PI*2);ctx.fill();
+    });
+    ctx.globalAlpha=1;
+    // tail
+    ctx.globalAlpha=0.14;ctx.fillStyle=ir?'#ff6f00':'#78909c';
+    ctx.beginPath();ctx.ellipse(-m.r*.6,0,m.r*.5,m.r*.2,0,0,Math.PI*2);ctx.fill();
+    ctx.globalAlpha=1;
+    // label
+    const bs=Math.min(m.r*.72,16),tw=m.lbl.length*bs*.72+12;
+    ctx.beginPath();ctx.roundRect(-tw/2,-bs/2-3,tw,bs+6,4);
+    ctx.fillStyle='rgba(255,255,255,.93)';ctx.fill();
+    ctx.strokeStyle=ir?'rgba(230,144,10,.8)':'rgba(0,0,0,.1)';ctx.lineWidth=ir?1.5:1;ctx.stroke();
+    ctx.font=`bold ${bs}px monospace`;ctx.fillStyle=ir?'#bf360c':'#1a237e';
+    ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(m.lbl,0,0);
     ctx.restore();
   });
 }
-
 function drawPts(){
   parts=parts.filter(p=>p.life>0);
-  parts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r*p.life,0,Math.PI*2);ctx.fillStyle=`rgba(${p.rgb},${p.life})`;ctx.fill();p.x+=p.vx;p.y+=p.vy;p.vy+=.18;p.life-=.034;});
+  parts.forEach(p=>{
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r*p.life,0,Math.PI*2);
+    ctx.fillStyle=`rgba(${p.rgb},${p.life})`;ctx.fill();
+    p.x+=p.vx;p.y+=p.vy;p.vy+=.18;p.life-=.034;
+  });
 }
 function updBuff(dt){
   if(G.buffT>0){
     G.buffT=Math.max(0,G.buffT-dt);
-    const bff=document.getElementById('bff');
-    const hbf=document.getElementById('hbf');
+    const bff=document.getElementById('bff');const hbf=document.getElementById('hbf');
     if(bff)bff.style.width=(G.buffT/G.buffD*100)+'%';
     if(hbf)hbf.textContent=G.buffT>0?`⚡${G.buffT.toFixed(1)}s`:'';
   }
 }
 function updEb(){
-  const h=G.hero; let any=false;
-  const q=G.curQ; if(!q){eb.classList.remove('rdy');return;}
+  const h=G.hero;let any=false;
+  const q=G.curQ;if(!q){eb.classList.remove('rdy');return;}
   if(q.t==='egg'){G.eggs.forEach(e=>{if(!e.dead&&!e.hatched&&Math.hypot(h.x-e.x,h.y-e.y)<h.r+e.r+16)any=true;});}
   else if(q.t==='meteor'){G.meteors.forEach(m=>{if(!m.dead&&Math.hypot(h.x-m.x,h.y-m.y)<h.r+m.r+18)any=true;});}
   else{G.dinos.forEach(d=>{if(!d.dead&&Math.hypot(h.x-d.x,h.y-d.y)<h.r+d.r+18)any=true;});}
   eb.classList.toggle('rdy',any);
 }
 
-// ══════════════════════════════════════
-// AUDIO ENGINE — iOS Safari compatible
-// Pre-render all audio into AudioBuffers
-// ══════════════════════════════════════
+// ══════ AUDIO — iOS Safari compatible ══════
 let AC=null,musicOn=false,_bgSrc=null,_bgBuf=null;
 function initAC(){}
 function makeToneBuf(freq,type,dur,vol){
@@ -1165,7 +1253,7 @@ function makeToneBuf(freq,type,dur,vol){
 function playBuf(buf,when){
   if(!AC||!musicOn||!buf)return;
   const src=AC.createBufferSource();
-  const g=AC.createGain();g.gain.value=0.3;
+  const g=AC.createGain();g.gain.value=0.15;
   src.buffer=buf;src.connect(g);g.connect(AC.destination);
   src.start(when);
 }
@@ -1181,17 +1269,17 @@ function buildSfx(){
   _sfx.wrong=[makeToneBuf(294,'tri',0.18,0.35)];
 }
 function playSfx(arr,spacing=0.08){
-  if(!AC||!musicOn)return;
+  if(!AC||!musicOn||!arr||!arr.length)return;
   let t=AC.currentTime+0.01;
   arr.forEach(b=>{playBuf(b,t);t+=spacing;});
 }
-function sfxEatOk(){playSfx(_sfx.eatOk||[]);}
-function sfxEatWrong(){playSfx(_sfx.eatWrong||[]);}
-function sfxWordDone(){playSfx(_sfx.word||[],0.07);}
-function sfxDamage(){playSfx(_sfx.dmg||[]);}
+function sfxEatOk(){playSfx(_sfx.eatOk);}
+function sfxEatWrong(){playSfx(_sfx.eatWrong);}
+function sfxWordDone(){playSfx(_sfx.word,0.07);}
+function sfxDamage(){playSfx(_sfx.dmg);}
 function sfxLevelStart(){playSfx(_sfx.start||[],0.12);}
-function sfxCorrect(){playSfx(_sfx.correct||[],0.1);}
-function sfxWrong(){playSfx(_sfx.wrong||[]);}
+function sfxCorrect(){playSfx(_sfx.correct,0.1);}
+function sfxWrong(){playSfx(_sfx.wrong);}
 
 const BG_NOTES=[[523,.15],[587,.15],[659,.15],[784,.15],[880,.15],[784,.15],[659,.15],[587,.15],[523,.15],[523,.15],[659,.15],[784,.15],[880,.3],[784,.15],[659,.15],[659,.15],[587,.15],[523,.15],[494,.15],[523,.3],[587,.15],[659,.15],[784,.15],[880,.15],[784,.15],[659,.15],[523,.3],[587,.15],[523,.3]];
 const BG_BASS=[[131,.6],[196,.6],[165,.6],[147,.6],[131,.6],[196,.6],[165,.6],[147,.6]];
@@ -1203,9 +1291,17 @@ function buildBGBuffer(){
   const buf=AC.createBuffer(1,len,sr);
   const out=buf.getChannelData(0);
   let pos=0;
-  BG_NOTES.forEach(([freq,dur])=>{const nl=Math.ceil(sr*dur);for(let i=0;i<nl&&pos+i<len;i++){const env=Math.min(1,i/(sr*0.01))*Math.max(0,1-i/(nl*0.85));out[pos+i]+=Math.sin(2*Math.PI*freq*i/sr)*0.12*env;}pos+=nl;});
+  BG_NOTES.forEach(([freq,dur])=>{
+    const nl=Math.ceil(sr*dur);
+    for(let i=0;i<nl&&pos+i<len;i++){const env=Math.min(1,i/(sr*0.01))*Math.max(0,1-i/(nl*0.85));out[pos+i]+=Math.sin(2*Math.PI*freq*i/sr)*0.12*env;}
+    pos+=nl;
+  });
   let bp=0;
-  BG_BASS.forEach(([freq,dur])=>{const nl=Math.ceil(sr*dur);for(let i=0;i<nl&&bp+i<len;i++){const env=Math.min(1,i/(sr*0.02))*Math.max(0,1-i/(nl*0.8));out[bp+i]+=Math.sin(2*Math.PI*freq*i/sr)*0.08*env;}bp+=nl;});
+  BG_BASS.forEach(([freq,dur])=>{
+    const nl=Math.ceil(sr*dur);
+    for(let i=0;i<nl&&bp+i<len;i++){const env=Math.min(1,i/(sr*0.02))*Math.max(0,1-i/(nl*0.8));out[bp+i]+=Math.sin(2*Math.PI*freq*i/sr)*0.08*env;}
+    bp+=nl;
+  });
   return buf;
 }
 function startBGMusic(){
@@ -1214,21 +1310,31 @@ function startBGMusic(){
   if(!_bgBuf)_bgBuf=buildBGBuffer();
   if(!_bgBuf)return;
   const src=AC.createBufferSource();
-  const g=AC.createGain();g.gain.value=0.6;
+  const g=AC.createGain();g.gain.value=0.12;
   src.buffer=_bgBuf;src.loop=true;
   src.connect(g);g.connect(AC.destination);
   src.start(0);_bgSrc=src;
 }
 function stopBGMusic(){if(_bgSrc){try{_bgSrc.stop();}catch(e){}_bgSrc=null;}}
+
 function toggleMusic(){
-  const btn=document.getElementById('music-btn');
   if(!AC){try{AC=new(window.AudioContext||window.webkitAudioContext)();}catch(e){return;}}
   if(AC.state==='suspended')AC.resume();
   musicOn=!musicOn;
-  if(musicOn){btn.textContent='🔊 音乐开';btn.style.background='#f0faf5';buildSfx();startBGMusic();}
-  else{btn.textContent='🔇 音乐关';btn.style.background='#fff';stopBGMusic();}
+  const btn=document.getElementById('music-btn');
+  const hbtn=document.getElementById('hud-music-btn');
+  if(musicOn){
+    if(btn){btn.textContent='🔊 音乐开';btn.style.background='#f0faf5';}
+    if(hbtn)hbtn.textContent='🔊';
+    buildSfx();startBGMusic();
+  } else {
+    if(btn){btn.textContent='🔇 音乐关';btn.style.background='#fff';}
+    if(hbtn)hbtn.textContent='🔇';
+    stopBGMusic();
+  }
 }
 
+// ══════ UTILS ══════
 function hideAll(){
   ['map','story','math','reading','result'].forEach(id=>document.getElementById(id).classList.add('hide'));
   ['hud','qp','kh','jz','eb','bfw'].forEach(id=>document.getElementById(id).classList.add('hide'));
