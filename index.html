@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 <title>恐龙星球守卫战</title>
-<!-- VERSION: v1.3.0 | 2026-06-13 | fix: 题目重复bug - 改为内存+localStorage双层去重，session内绝不重复 -->
+<!-- VERSION: v1.4.0 | 2026-06-14 | feat: 洗牌发牌算法(10局零重复) + 题库扩充(WORDS/PREP/SENT/CN_QS/MA_QS/MATH_OPEN) + 原创史诗冒险风BGM，旧版dg_stars等数据完整保留 -->
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;}
 html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;}
@@ -292,33 +292,56 @@ if (!CanvasRenderingContext2D.prototype.roundRect) {
   };
 }
 
-// ══════ HISTORY ══════
-// 双层去重：内存history（session内绝不重复）+ localStorage（跨session持久化）
-const HMAX=8;
-const _memH={};  // 内存历史，session级别，优先级最高
-function hLoad(k){
-  if(_memH[k]) return _memH[k];  // 优先读内存
-  try{const s=localStorage.getItem('dg_h_'+k);return s?JSON.parse(s):[];}catch(e){return[];}
+// ══════ SHUFFLE BAG 洗牌发牌去重 ══════
+// 原理：把题库整体打乱成一摞"牌"，按顺序发牌不放回；发完一摞后重新洗牌，
+// 并避免新一摞的第一张与上一摞最后一张相同。只要题库总数 >= 每局抽取数，
+// 同一摞内绝不重复；摞与摞之间也不会出现"刚抽完又抽到"的情况。
+// 存储：内存_memBag（session内优先）+ localStorage 'dg_bag_'+key（跨session持久化）。
+// 注意：使用全新的key命名空间('dg_bag_'前缀)，不触碰旧版'dg_h_'前缀数据，
+// 也完全不影响'dg_stars'等已有数据。
+const _memBag={};
+function bagLoad(k){
+  if(_memBag[k]) return _memBag[k];
+  try{
+    const s=localStorage.getItem('dg_bag_'+k);
+    const obj=s?JSON.parse(s):null;
+    if(obj&&Array.isArray(obj.deck)) return obj;
+  }catch(e){}
+  return {deck:[],last:-1};
 }
-function hSave(k,a){
-  _memH[k]=[...a];  // 同步写内存
-  try{localStorage.setItem('dg_h_'+k,JSON.stringify(a));}catch(e){}
+function bagSave(k,obj){
+  _memBag[k]=obj;
+  try{localStorage.setItem('dg_bag_'+k,JSON.stringify(obj));}catch(e){}
+}
+function shuffleArr(a){
+  const r=[...a];
+  for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}
+  return r;
+}
+function newDeck(poolLen,avoidFirst){
+  const d=shuffleArr(Array.from({length:poolLen},(_,i)=>i));
+  // 避免新一摞的第一张和上一摞最后一张相同
+  if(poolLen>1&&d[0]===avoidFirst){
+    const j=1+Math.floor(Math.random()*(poolLen-1));
+    [d[0],d[j]]=[d[j],d[0]];
+  }
+  return d;
 }
 function pickFresh(pool,hkey,n){
-  let h=hLoad(hkey);
-  let avail=pool.map((_,i)=>i).filter(i=>!h.includes(i));
-  // 可用题不足时：优先保留最近HMAX/2道，释放更早的
-  if(avail.length<n){
-    const keep=Math.ceil(HMAX/2);
-    h=h.slice(-keep);  // 只保留最近一半历史，而不是完全重置
-    avail=pool.map((_,i)=>i).filter(i=>!h.includes(i));
-    if(avail.length<n) avail=pool.map((_,i)=>i);  // 极端情况才全量
+  let st=bagLoad(hkey);
+  let deck=st.deck.slice();
+  // 题库改版导致索引越界时，整摞重建
+  if(deck.some(i=>i>=pool.length)) deck=[];
+  const out=[];
+  for(let k=0;k<n;k++){
+    if(deck.length===0) deck=newDeck(pool.length,st.last);
+    const idx=deck.shift();
+    out.push(pool[idx]);
+    st.last=idx;
   }
-  avail.sort(()=>Math.random()-.5);
-  const ch=avail.slice(0,n);
-  ch.forEach(i=>{h.push(i);if(h.length>HMAX)h.shift();});
-  hSave(hkey,h);
-  return ch.map(i=>pool[i]);
+  st.deck=deck;
+  bagSave(hkey,st);
+  return out;
 }
 function saveStars(){try{localStorage.setItem('dg_stars',JSON.stringify(G.lvSt));}catch(e){}}
 function loadStars(){try{const s=JSON.parse(localStorage.getItem('dg_stars')||'[0,0,0]');G.lvSt=s;}catch(e){}}
@@ -335,6 +358,9 @@ const WORDS=[
   {w:'ROUND',zh:'圆形'},{w:'ROBOT',zh:'机器人'},{w:'RIVER',zh:'河流'},{w:'BEACH',zh:'海滩'},
   {w:'GRASS',zh:'草'},{w:'JUMP',zh:'跳'},{w:'SWIM',zh:'游泳'},{w:'CLIMB',zh:'爬'},
   {w:'ROUGH',zh:'粗糙的'},{w:'SMOOTH',zh:'光滑的'},{w:'HUNGRY',zh:'饿的'},{w:'STRONG',zh:'强壮的'},
+  {w:'RABBIT',zh:'兔子'},{w:'GIRAFFE',zh:'长颈鹿'},{w:'ELEPHANT',zh:'大象'},{w:'SQUARE',zh:'正方形'},
+  {w:'TRIANGLE',zh:'三角形'},{w:'HEAD',zh:'头'},{w:'ARM',zh:'手臂'},{w:'LEG',zh:'腿'},
+  {w:'EAR',zh:'耳朵'},{w:'NOSE',zh:'鼻子'},
 ];
 const PREP=[
   {sc:'monkey_on',s:'The monkey is _____ the tree.',a:'ON',o:['ON','IN','UNDER','BEHIND']},
@@ -349,6 +375,24 @@ const PREP=[
   {sc:'bird_nextto',s:'The bird is _____ the tree.',a:'NEXT TO',o:['ON','NEXT TO','BEHIND','IN']},
   {sc:'fox_in',s:'The fox is _____ the box.',a:'IN',o:['ON','IN','BEHIND','UNDER']},
   {sc:'dog_on',s:'The dog is _____ the chair.',a:'ON',o:['ON','IN','UNDER','NEXT TO']},
+  {sc:'rabbit_on',s:'The rabbit is _____ the box.',a:'ON',o:['ON','IN','UNDER','BEHIND']},
+  {sc:'rabbit_in',s:'The rabbit is _____ the box.',a:'IN',o:['ON','IN','BEHIND','UNDER']},
+  {sc:'rabbit_under',s:'The rabbit is _____ the chair.',a:'UNDER',o:['ON','IN','UNDER','NEXT TO']},
+  {sc:'bear_behind',s:'The bear is _____ the tree.',a:'BEHIND',o:['ON','IN','BEHIND','UNDER']},
+  {sc:'bear_nextto',s:'The bear is _____ the box.',a:'NEXT TO',o:['ON','NEXT TO','BEHIND','IN']},
+  {sc:'bear_on',s:'The bear is _____ the chair.',a:'ON',o:['ON','IN','UNDER','NEXT TO']},
+  {sc:'monkey_in',s:'The monkey is _____ the box.',a:'IN',o:['ON','IN','BEHIND','UNDER']},
+  {sc:'monkey_under',s:'The monkey is _____ the tree.',a:'UNDER',o:['ON','UNDER','BEHIND','IN']},
+  {sc:'monkey_nextto',s:'The monkey is _____ the chair.',a:'NEXT TO',o:['ON','NEXT TO','BEHIND','IN']},
+  {sc:'cat_behind',s:'The cat is _____ the tree.',a:'BEHIND',o:['ON','IN','BEHIND','UNDER']},
+  {sc:'cat_in',s:'The cat is _____ the box.',a:'IN',o:['ON','IN','UNDER','NEXT TO']},
+  {sc:'dog_under',s:'The dog is _____ the tree.',a:'UNDER',o:['ON','UNDER','BEHIND','IN']},
+  {sc:'dog_in',s:'The dog is _____ the box.',a:'IN',o:['ON','IN','BEHIND','UNDER']},
+  {sc:'dog_nextto',s:'The dog is _____ the tree.',a:'NEXT TO',o:['ON','NEXT TO','BEHIND','IN']},
+  {sc:'fox_on',s:'The fox is _____ the chair.',a:'ON',o:['ON','IN','UNDER','NEXT TO']},
+  {sc:'fox_behind',s:'The fox is _____ the tree.',a:'BEHIND',o:['ON','IN','BEHIND','UNDER']},
+  {sc:'fox_nextto',s:'The fox is _____ the box.',a:'NEXT TO',o:['ON','NEXT TO','BEHIND','IN']},
+  {sc:'bird_under',s:'The bird is _____ the chair.',a:'UNDER',o:['ON','UNDER','BEHIND','NEXT TO']},
 ];
 const SENT=[
   {q:'It is _____ today. The sun is shining brightly.',zh:'阳光灿烂',sc:'sunny',a:'SUNNY',o:['RAINY','SUNNY','SNOWY','WINDY']},
@@ -366,6 +410,21 @@ const SENT=[
   {q:'In autumn, the leaves _____ and fall from trees.',zh:'秋天树叶会',sc:null,a:'FALL',o:['GROW','FALL','SWIM','JUMP']},
   {q:'The ball is _____. It looks just like the moon.',zh:'球是什么形状',sc:null,a:'ROUND',o:['ROUND','STAR','HARD','SOFT']},
   {q:'I like _____ best. I love flowers and warm rain.',zh:'最喜欢花和雨',sc:'rain',a:'SPRING',o:['SPRING','SUMMER','AUTUMN','WINTER']},
+  {q:'The sky is _____. I can see white clouds floating in it.',zh:'天空的颜色',sc:'sunny',a:'BLUE',o:['BLUE','RED','GREEN','YELLOW']},
+  {q:'Grass and leaves are _____. They grow well in spring.',zh:'草和叶子的颜色',sc:null,a:'GREEN',o:['GREEN','BLUE','RED','BROWN']},
+  {q:'This book is _____. It has four straight sides and four corners.',zh:'书的形状',sc:null,a:'SQUARE',o:['SQUARE','ROUND','TRIANGLE','STAR']},
+  {q:'I can _____ with my eyes. I can see colours and shapes.',zh:'用眼睛能做什么',sc:null,a:'SEE',o:['SEE','HEAR','SMELL','TASTE']},
+  {q:'I can _____ with my ears. I can hear music and birds singing.',zh:'用耳朵能做什么',sc:null,a:'HEAR',o:['HEAR','SEE','SMELL','TOUCH']},
+  {q:'There are seven days in a _____.',zh:'一周有七天',sc:null,a:'WEEK',o:['WEEK','MONTH','YEAR','DAY']},
+  {q:'There are twelve months in a _____.',zh:'一年有十二个月',sc:null,a:'YEAR',o:['YEAR','WEEK','DAY','MONTH']},
+  {q:'Look! _____ many books on the desk.',zh:'那里有许多书',sc:null,a:'THERE ARE',o:['THERE ARE','THERE IS','THERE WAS','THERE AM']},
+  {q:'_____ a cat under the table.',zh:'桌子下有一只猫',sc:'cat_under',a:'THERE IS',o:['THERE IS','THERE ARE','THERE WAS','THERE WERE']},
+  {q:'It is windy today. I need to wear a _____.',zh:'风大了要戴什么',sc:null,a:'SCARF',o:['SCARF','DRESS','SKIRT','SHORTS']},
+  {q:'I like _____ best. The leaves turn yellow and red and fall.',zh:'叶子变黄变红是什么季节',sc:null,a:'AUTUMN',o:['AUTUMN','SPRING','SUMMER','WINTER']},
+  {q:'_____ is my pencil. It is on my desk now.',zh:'指近处的单数物品',sc:null,a:'THIS',o:['THIS','THAT','THESE','THOSE']},
+  {q:'_____ are my shoes. They are over there, far from me.',zh:'指远处的复数物品',sc:null,a:'THOSE',o:['THOSE','THIS','THAT','THESE']},
+  {q:'My brother _____ football every Sunday.',zh:'第三人称单数动词变化',sc:null,a:'PLAYS',o:['PLAYS','PLAY','PLAYING','TO PLAY']},
+  {q:'She _____ a new bag. It is red and white.',zh:'第三人称单数have变has',sc:null,a:'HAS',o:['HAS','HAVE','HAVING','HAD']},
 ];
 const CN_QS=[
   {q:'"耐心"的近义词是？',a:'耐烦',o:['耐烦','急躁','焦虑','烦躁'],e:'"耐心"与"耐烦"意思相近，都表示能忍耐等待。'},
@@ -389,6 +448,46 @@ const CN_QS=[
   {q:'（　　）地躲藏，括号里填什么？',a:'悄悄',o:['悄悄','漂亮','蔚蓝','凶猛'],e:'"悄悄地躲藏"，副词修饰动词。'},
   {q:'"骏马"的"骏"是什么意思？',a:'好马',o:['好马','高山','英俊','结束'],e:'"骏"专指良马，"骏马"是指好马、快马。'},
   {q:'选出正确的字：工程终于（骏/俊/峻/竣）工了。',a:'竣',o:['竣','骏','俊','峻'],e:'"竣工"表示工程完成，用"竣"字。'},
+  {q:'"闷热"的"闷"读什么？',a:'mēn',o:['mēn','mèn','mén','mèng'],e:'"闷热"读mēnrè，形容天气憋闷，"闷"读第一声。'},
+  {q:'"沉闷"的"闷"读什么？',a:'mèn',o:['mèn','mēn','mén','mèng'],e:'"沉闷"读chénmèn，"闷"读第四声，形容气氛压抑。'},
+  {q:'"劲敌"的"劲"读什么？',a:'jìng',o:['jìng','jìn','jǐng','jīn'],e:'"劲敌"指强劲的对手，"劲"读jìng。'},
+  {q:'"使劲"的"劲"读什么？',a:'jìn',o:['jìn','jìng','jǐn','jīn'],e:'"使劲"指用力气，"劲"读jìn。'},
+  {q:'"教室"的"教"读什么？',a:'jiào',o:['jiào','jiāo','jiǎo','jiǔ'],e:'"教室"是名词，"教"读jiào。'},
+  {q:'"教我们"的"教"读什么？',a:'jiāo',o:['jiāo','jiào','jiǎo','jiū'],e:'表示"传授"的意思时，"教"读jiāo。'},
+  {q:'"重复"的"重"读什么？',a:'chóng',o:['chóng','zhòng','zhǒng','chōng'],e:'"重复"表示再来一次，"重"读chóng。'},
+  {q:'"沉重"的"重"读什么？',a:'zhòng',o:['zhòng','chóng','zhǒng','chōng'],e:'"沉重"形容分量大，"重"读zhòng。'},
+  {q:'"美丽"的近义词是？',a:'漂亮',o:['漂亮','丑陋','普通','朴素'],e:'"美丽"与"漂亮"都形容好看。'},
+  {q:'"高兴"的近义词是？',a:'快乐',o:['快乐','难过','生气','害怕'],e:'"高兴"与"快乐"都表示愉快的心情。'},
+  {q:'"仔细"的近义词是？',a:'认真',o:['认真','马虎','粗心','随便'],e:'"仔细"与"认真"都表示做事专心、不马虎。'},
+  {q:'"突然"的近义词是？',a:'忽然',o:['忽然','渐渐','经常','总是'],e:'"突然"与"忽然"都表示事情发生得很快、出乎意料。'},
+  {q:'"立刻"的近义词是？',a:'马上',o:['马上','慢慢','后来','从前'],e:'"立刻"与"马上"都表示时间很短、马上发生。'},
+  {q:'"辽阔"的近义词是？',a:'广阔',o:['广阔','狭窄','弯曲','短小'],e:'"辽阔"与"广阔"都形容范围很大。'},
+  {q:'"寻找"的近义词是？',a:'寻觅',o:['寻觅','丢失','放弃','藏起'],e:'"寻找"与"寻觅"都表示找东西。'},
+  {q:'"勇敢"的近义词是？',a:'英勇',o:['英勇','胆小','害怕','懦弱'],e:'"勇敢"与"英勇"都形容不怕困难和危险。'},
+  {q:'"干净"的反义词是？',a:'脏',o:['脏','亮','新','旧'],e:'"干净"的反义词是"脏"。'},
+  {q:'"宽阔"的反义词是？',a:'狭窄',o:['狭窄','辽阔','广阔','漫长'],e:'"宽阔"的反义词是"狭窄"。'},
+  {q:'"迅速"的反义词是？',a:'缓慢',o:['缓慢','快速','立刻','马上'],e:'"迅速"的反义词是"缓慢"。'},
+  {q:'"坚强"的反义词是？',a:'脆弱',o:['脆弱','勇敢','顽强','坚定'],e:'"坚强"的反义词是"脆弱"。'},
+  {q:'"热闹"的反义词是？',a:'安静',o:['安静','喧闹','吵闹','繁华'],e:'"热闹"的反义词是"安静"。'},
+  {q:'"茂盛"的反义词是？',a:'枯萎',o:['枯萎','茂密','繁茂','旺盛'],e:'"茂盛"的反义词是"枯萎"。'},
+  {q:'"陌生"的反义词是？',a:'熟悉',o:['熟悉','生疏','新奇','奇怪'],e:'"陌生"的反义词是"熟悉"。'},
+  {q:'"谦虚"的反义词是？',a:'骄傲',o:['骄傲','谨慎','谦让','客气'],e:'"谦虚"的反义词是"骄傲"。'},
+  {q:'选出正确的字：今天天气很（晴/睛/请/情）朗。',a:'晴',o:['晴','睛','请','情'],e:'"晴朗"指天气好，用"日"旁的"晴"。'},
+  {q:'选出正确的字：他的眼（睛/晴/清/蜻）又大又亮。',a:'睛',o:['睛','晴','清','蜻'],e:'"眼睛"用"目"旁的"睛"。'},
+  {q:'选出正确的字：小明很（乖/乘/千/秉）巧，听妈妈的话。',a:'乖',o:['乖','乘','千','秉'],e:'"乖巧"用"乖"，"乘"是乘坐的意思，两字形近但意义不同。'},
+  {q:'选出正确的字：我们一起（幻/幼/幽/纪）想未来的世界。',a:'幻',o:['幻','幼','幽','纪'],e:'"幻想"用"幻"，"幼"是幼小的意思。'},
+  {q:'选出正确的字：这是一所（幼/幻/幽/纺）儿园。',a:'幼',o:['幼','幻','幽','纺'],e:'"幼儿园"用"幼"，表示年纪小。'},
+  {q:'选出正确的字：他在（练/炼/链/炫）习写字。',a:'练',o:['练','炼','链','炫'],e:'"练习"用"练"，"火"旁的"炼"是炼钢的意思。'},
+  {q:'（　　）的世界，括号里填什么？',a:'奇妙',o:['奇妙','蔚蓝','凶猛','昏暗'],e:'"奇妙的世界"形容世界充满奇异和美妙。'},
+  {q:'（　　）的星星，括号里填什么？',a:'闪烁',o:['闪烁','蔚蓝','辽阔','茂盛'],e:'"闪烁的星星"形容星星忽明忽暗地发光。'},
+  {q:'（　　）的乌云，括号里填什么？',a:'奇形怪状',o:['奇形怪状','漂亮','蔚蓝','闪烁'],e:'"奇形怪状的乌云"形容乌云形状古怪多变。'},
+  {q:'（　　）地观察，括号里填什么？',a:'仔细',o:['仔细','漂亮','蔚蓝','凶猛'],e:'"仔细地观察"，副词修饰动词"观察"。'},
+  {q:'"葡萄紫"是借用什么事物来形容颜色？',a:'葡萄',o:['葡萄','茄子','西瓜','柠檬'],e:'"葡萄紫"是借用葡萄的颜色来形容紫色。'},
+  {q:'下列哪个词语是表示颜色的词语？',a:'柠檬黄',o:['柠檬黄','奇形怪状','匆匆忙忙','叮叮当当'],e:'"柠檬黄"是表示颜色的词语，像柠檬一样的黄色。'},
+  {q:'"西瓜红""茄子紫"这类词语的特点是？',a:'用事物名称表示颜色',o:['用事物名称表示颜色','表示形状','表示声音','表示数量'],e:'这类词语借用熟悉事物的颜色来描述新的颜色，更生动形象。'},
+  {q:'下列词语中，哪个不是表示颜色的？',a:'奇形怪状',o:['奇形怪状','葡萄紫','柠檬黄','半红半黄'],e:'"奇形怪状"形容形状，不是颜色词。'},
+  {q:'"人间四月芳菲尽，山寺桃花始盛___。"横线填什么？',a:'开',o:['开','放','香','红'],e:'"始盛开"是说桃花刚刚开始盛开。'},
+  {q:'《大林寺桃花》的作者是？',a:'白居易',o:['白居易','李白','杜甫','孟浩然'],e:'《大林寺桃花》是唐代诗人白居易所作。'},
 ];
 const MA_QS=[
   {q:'6/9里面有几个1/9？',a:'6',o:['6','9','3','4'],e:'6/9里面有6个1/9，分子就是份数。'},
@@ -406,6 +505,21 @@ const MA_QS=[
   {q:'正方形边长扩大2倍，面积扩大几倍？',a:'4',o:['4','2','6','8'],e:'面积=边长²，边长×2则面积×4。'},
   {q:'5个1/7是多少？',a:'5/7',o:['5/7','1/7','7/5','2/7'],e:'5个1/7就是5/7。'},
   {q:'一个长方形长增加3cm面积增加21cm²，宽减少5cm面积减少45cm²，原面积是多少？',a:'63',o:['63','70','45','90'],e:'长=21÷3=7，宽=45÷5=9，面积=7×9=63。'},
+  {q:'一个数的3倍是96，这个数是多少？',a:'32',o:['32','29','36','48'],e:'96÷3=32。'},
+  {q:'3/8里面有几个1/8？',a:'3',o:['3','8','5','4'],e:'3/8的分子是3，就是3个1/8。'},
+  {q:'长方形长15cm，宽9cm，周长是多少？',a:'48',o:['48','24','135','54'],e:'周长=(15+9)×2=48cm。'},
+  {q:'正方形边长6m，周长是多少米？',a:'24',o:['24','36','12','30'],e:'周长=6×4=24m。'},
+  {q:'一筐有84个苹果，平均分给6个班，每班分多少个？',a:'14',o:['14','12','16','18'],e:'84÷6=14个。'},
+  {q:'飞船每小时行驶90千米，5小时行驶多少千米？',a:'450',o:['450','400','500','360'],e:'90×5=450千米。'},
+  {q:'小华买了3本书，每本15元，付了50元，应找回多少元？',a:'5',o:['5','10','15','20'],e:'50-3×15=50-45=5元。'},
+  {q:'一个数比48多12，这个数是多少？',a:'60',o:['60','36','56','64'],e:'48+12=60。'},
+  {q:'8/9-3/9=？',a:'5/9',o:['5/9','11/9','5/18','3/9'],e:'同分母分数相减，分子相减：8-3=5，结果5/9。'},
+  {q:'操场长方形长100米，宽60米，面积是多少平方米？',a:'6000',o:['6000','160','320','5000'],e:'面积=100×60=6000平方米。'},
+  {q:'一个数除以7商是8余数是3，这个数是多少？',a:'59',o:['59','56','53','63'],e:'7×8+3=59。'},
+  {q:'妈妈买了2kg苹果和3kg香蕉，苹果每kg6元，香蕉每kg4元，一共多少钱？',a:'24',o:['24','30','18','20'],e:'2×6+3×4=12+12=24元。'},
+  {q:'钟面上时针走1大格，分针走多少小格？',a:'60',o:['60','12','30','5'],e:'时针走1大格是1小时，分针正好走一圈，是60小格。'},
+  {q:'1/4+2/4=？',a:'3/4',o:['3/4','3/8','1/2','2/4'],e:'同分母分数相加，分子相加：1+2=3，结果3/4。'},
+  {q:'用36个小正方形拼成一个长方形，长是9个，宽是多少个？',a:'4',o:['4','3','6','5'],e:'36÷9=4。'},
 ];
 const CHN0=[
   {t:'雷克斯[0]族群，踏上了穿越丛林的征途。丛林深处，恐龙的[1]在树梢间回响，像是在[2]守卫者加快脚步。',b:[{l:'第一空',h:'统帅带领',a:'率领',o:['带领','率领','指引','号召']},{l:'第二空',h:'动物发声',a:'鸣叫',o:['声音','喧嚣','鸣叫','呐喊']},{l:'第三空',h:'提醒之意',a:'提醒',o:['督促','提醒','告知','嘱咐']}],e:['"率领"有统帅之意。','"鸣叫"专指动物发声。','"提醒"语气自然贴切。']},
@@ -431,6 +545,8 @@ const MATH_OPEN=[
   {sc:'陨石碎片 <b>4056</b> 块，用 <b>13</b> 艘飞船平均运走。',q:'每艘飞船运多少块？',a:312},
   {sc:'步行 <b>75</b> 米/分，走了 <b>30</b> 分钟。',q:'走了多少米？',a:2250},
   {sc:'飞船 <b>3</b> 小时飞行 <b>336</b> 千米。',q:'每小时飞多少千米？',a:112},
+  {sc:'飞船每天消耗 <b>156</b> 升燃料，连续飞行 <b>18</b> 天。',q:'一共消耗多少升燃料？',a:2808},
+  {sc:'探险队共有 <b>2752</b> 块化石，平均分成 <b>16</b> 份。',q:'每份有多少块化石？',a:172},
 ];
 const READ=[
   [{p:'雷克斯率领族群穿越丛林，遇到陨石袭击。面对危机，雷克斯沉着冷静，找到隐蔽通道，成功撤退。',q:'雷克斯在危机中表现出什么品质？',o:['胆小怕事','沉着冷静','莽撞行事','犹豫不决'],a:1,e:'"沉着冷静"直接描述了雷克斯的品质。'},
@@ -819,6 +935,24 @@ function drawSc(sc,name){
     bird_nextto:()=>{c.fillText('🌳',w*.28,my);c.fillText('🐦',w*.64,h*.44);},
     fox_in:()=>{c.fillText('📦',mx,h*.56);c.font=sml;c.fillText('🦊',mx,h*.51);},
     dog_on:()=>{c.fillText('🪑',mx,h*.54);c.fillText('🐕',mx,h*.27);},
+    rabbit_on:()=>{c.fillText('📦',mx,h*.6);c.fillText('🐰',mx,h*.3);},
+    rabbit_in:()=>{c.fillText('📦',mx,h*.56);c.font=sml;c.fillText('🐰',mx,h*.51);},
+    rabbit_under:()=>{c.fillText('🪑',mx,my);c.fillText('🐰',mx,h*.78);},
+    bear_behind:()=>{c.fillText('🌳',w*.3,my);c.font=sml;c.fillText('🐻',w*.52,h*.65);},
+    bear_nextto:()=>{c.fillText('📦',w*.24,h*.56);c.fillText('🐻',w*.62,h*.58);},
+    bear_on:()=>{c.fillText('🪑',mx,h*.54);c.fillText('🐻',mx,h*.27);},
+    monkey_in:()=>{c.fillText('📦',mx,h*.56);c.font=sml;c.fillText('🐒',mx,h*.51);},
+    monkey_under:()=>{c.fillText('🌳',mx,my);c.fillText('🐒',mx,h*.78);},
+    monkey_nextto:()=>{c.fillText('🪑',w*.28,my);c.fillText('🐒',w*.64,h*.44);},
+    cat_behind:()=>{c.fillText('🌳',w*.3,my);c.font=sml;c.fillText('🐱',w*.52,h*.65);},
+    cat_in:()=>{c.fillText('📦',mx,h*.56);c.font=sml;c.fillText('🐱',mx,h*.51);},
+    dog_under:()=>{c.fillText('🌳',mx,my);c.fillText('🐕',mx,h*.78);},
+    dog_in:()=>{c.fillText('📦',mx,h*.56);c.font=sml;c.fillText('🐕',mx,h*.51);},
+    dog_nextto:()=>{c.fillText('🌳',w*.28,my);c.fillText('🐕',w*.64,h*.44);},
+    fox_on:()=>{c.fillText('🪑',mx,h*.54);c.fillText('🦊',mx,h*.27);},
+    fox_behind:()=>{c.fillText('🌳',w*.3,my);c.font=sml;c.fillText('🦊',w*.52,h*.65);},
+    fox_nextto:()=>{c.fillText('📦',w*.24,h*.56);c.fillText('🦊',w*.62,h*.58);},
+    bird_under:()=>{c.fillText('🪑',mx,my);c.font=sml;c.fillText('🐦',mx,h*.78);},
     rain:()=>{c.fillText('🌧️',w*.5,h*.44);},
     snow:()=>{c.fillText('❄️',w*.3,h*.44);c.font=sml;c.fillText('⛄',w*.68,h*.62);},
     sunny:()=>{c.fillText('☀️',w*.5,h*.4);},
@@ -1296,8 +1430,12 @@ function sfxLevelStart(){playSfx(_sfx.start||[],0.12);}
 function sfxCorrect(){playSfx(_sfx.correct,0.1);}
 function sfxWrong(){playSfx(_sfx.wrong);}
 
-const BG_NOTES=[[523,.22],[587,.22],[659,.22],[784,.22],[880,.22],[784,.22],[659,.22],[587,.22],[523,.22],[523,.22],[659,.22],[784,.22],[880,.45],[784,.22],[659,.22],[659,.22],[587,.22],[523,.22],[494,.22],[523,.45],[587,.22],[659,.22],[784,.22],[880,.22],[784,.22],[659,.22],[523,.45],[587,.22],[523,.45]];
-const BG_BASS=[[131,.9],[196,.9],[165,.9],[147,.9],[131,.9],[196,.9],[165,.9],[147,.9]];
+// 原创《史诗冒险》风格BGM：D小调，三角波主旋律 + 正弦波低音 + 噪声鼓点
+const BG_NOTES=[[293.66,.3],[349.23,.3],[440.00,.3],[587.33,.6],[523.25,.3],[466.16,.3],[440.00,.6],
+                [440.00,.3],[466.16,.3],[523.25,.3],[587.33,.6],[698.46,.3],[587.33,.3],[440.00,.6],
+                [392.00,.3],[349.23,.3],[329.63,.3],[293.66,.6],[349.23,.3],[440.00,.3],[587.33,.9]];
+const BG_BASS=[[146.83,.6],[146.83,.6],[220.00,.6],[220.00,.6],[233.08,.6],[233.08,.6],[196.00,.6],[196.00,.6],[146.83,.6],[146.83,.6],[220.00,.6],[220.00,.6],[146.83,.6],[146.83,.6]];
+const BG_PERC=[0,.6,1.2,1.8,2.4,3.0,3.6,4.2,4.8,5.4,6.0,6.6,7.2,7.8];
 function buildBGBuffer(){
   if(!AC)return null;
   const sr=AC.sampleRate;
@@ -1305,17 +1443,26 @@ function buildBGBuffer(){
   const len=Math.ceil(sr*totalDur);
   const buf=AC.createBuffer(1,len,sr);
   const out=buf.getChannelData(0);
+  const tri=ph=>(2/Math.PI)*Math.asin(Math.sin(ph));
   let pos=0;
+  // 主旋律：三角波，号角般的史诗感
   BG_NOTES.forEach(([freq,dur])=>{
     const nl=Math.ceil(sr*dur);
-    for(let i=0;i<nl&&pos+i<len;i++){const env=Math.min(1,i/(sr*0.01))*Math.max(0,1-i/(nl*0.85));out[pos+i]+=Math.sin(2*Math.PI*freq*i/sr)*0.12*env;}
+    for(let i=0;i<nl&&pos+i<len;i++){const env=Math.min(1,i/(sr*0.01))*Math.max(0,1-i/(nl*0.85));out[pos+i]+=tri(2*Math.PI*freq*i/sr)*0.14*env;}
     pos+=nl;
   });
+  // 低音：正弦波厚重根音，D小调行进感
   let bp=0;
   BG_BASS.forEach(([freq,dur])=>{
     const nl=Math.ceil(sr*dur);
-    for(let i=0;i<nl&&bp+i<len;i++){const env=Math.min(1,i/(sr*0.02))*Math.max(0,1-i/(nl*0.8));out[bp+i]+=Math.sin(2*Math.PI*freq*i/sr)*0.08*env;}
+    for(let i=0;i<nl&&bp+i<len;i++){const env=Math.min(1,i/(sr*0.02))*Math.max(0,1-i/(nl*0.8));out[bp+i]+=Math.sin(2*Math.PI*freq*i/sr)*0.09*env;}
     bp+=nl;
+  });
+  // 打击：噪声鼓点，与低音同步，增强冒险行军感
+  BG_PERC.forEach(t=>{
+    const start=Math.floor(sr*t);
+    const nl=Math.ceil(sr*0.12);
+    for(let i=0;i<nl&&start+i<len;i++){const env=Math.max(0,1-i/nl);out[start+i]+=(Math.random()*2-1)*0.1*env;}
   });
   return buf;
 }
