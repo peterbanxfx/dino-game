@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 <title>恐龙星球守卫战</title>
-<!-- VERSION: v1.4.0 | 2026-06-14 | feat: 洗牌发牌算法(10局零重复) + 题库扩充(WORDS/PREP/SENT/CN_QS/MA_QS/MATH_OPEN) + 原创史诗冒险风BGM，旧版dg_stars等数据完整保留 -->
+<!-- VERSION: v1.4.0 | 2026-06-14 | feat: 洗牌发牌算法(10局零重复) + 题库扩充(WORDS/PREP/SENT/CN_QS/MA_QS/MATH_OPEN) + 原创侏罗纪冒险氛围BGM + 自定义背景音乐(IndexedDB持久化)，旧版dg_stars等数据完整保留 -->
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;}
 html,body{width:100%;height:100%;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;}
@@ -199,6 +199,12 @@ canvas#gc{position:absolute;inset:0;width:100%;height:100%;}
     <div class="msub">语文·数学·英语 · 每次随机不重复</div>
     <div class="mlevels" id="mlevels"></div>
     <button id="music-btn" onclick="toggleMusic()" style="padding:8px 24px;border-radius:20px;border:1.5px solid #a5d6a7;background:#fff;color:#1B8A5A;font-size:13px;font-weight:600;cursor:pointer;">🔊 开启音乐</button>
+    <div style="margin-top:8px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <button id="custom-music-btn" onclick="pickCustomMusic()" style="padding:6px 16px;border-radius:16px;border:1.5px solid #a5d6a7;background:#fff;color:#1B8A5A;font-size:12px;font-weight:600;cursor:pointer;">🎵 自定义背景音乐</button>
+      <button id="reset-music-btn" onclick="resetCustomMusic()" style="display:none;padding:6px 16px;border-radius:16px;border:1.5px solid #ffccbc;background:#fff;color:#d84315;font-size:12px;font-weight:600;cursor:pointer;">↩️ 恢复默认音乐</button>
+    </div>
+    <div id="custom-music-status" style="font-size:11px;color:#888;margin-top:4px;"></div>
+    <input type="file" id="customMusicInput" accept="audio/*" style="display:none" onchange="onCustomMusicSelected(event)">
   </div>
 </div>
 
@@ -1430,12 +1436,13 @@ function sfxLevelStart(){playSfx(_sfx.start||[],0.12);}
 function sfxCorrect(){playSfx(_sfx.correct,0.1);}
 function sfxWrong(){playSfx(_sfx.wrong);}
 
-// 原创《史诗冒险》风格BGM：D小调，三角波主旋律 + 正弦波低音 + 噪声鼓点
-const BG_NOTES=[[293.66,.3],[349.23,.3],[440.00,.3],[587.33,.6],[523.25,.3],[466.16,.3],[440.00,.6],
-                [440.00,.3],[466.16,.3],[523.25,.3],[587.33,.6],[698.46,.3],[587.33,.3],[440.00,.6],
-                [392.00,.3],[349.23,.3],[329.63,.3],[293.66,.6],[349.23,.3],[440.00,.3],[587.33,.9]];
-const BG_BASS=[[146.83,.6],[146.83,.6],[220.00,.6],[220.00,.6],[233.08,.6],[233.08,.6],[196.00,.6],[196.00,.6],[146.83,.6],[146.83,.6],[220.00,.6],[220.00,.6],[146.83,.6],[146.83,.6]];
-const BG_PERC=[0,.6,1.2,1.8,2.4,3.0,3.6,4.2,4.8,5.4,6.0,6.6,7.2,7.8];
+// 原创《侏罗纪冒险》氛围风BGM（注意：旋律为原创，不复刻任何已有作品）
+// C大调，慢板舒展号角式正弦波主旋律 + 长音弦乐根音 + 定音鼓重音，营造神秘宏大的冒险感
+const BG_NOTES=[[261.63,.6],[329.63,.6],[392.00,.6],[523.25,1.2],[493.88,.6],[392.00,.6],[329.63,1.2],
+                [440.00,.6],[523.25,.6],[659.25,.6],[783.99,1.2],[659.25,.6],[523.25,.6],[440.00,1.2],
+                [349.23,.6],[440.00,.6],[523.25,.6],[659.25,1.2],[587.33,.6],[523.25,.6],[392.00,1.8]];
+const BG_BASS=[[130.81,2.8],[196.00,2.8],[220.00,2.8],[174.61,2.8],[130.81,2.8],[196.00,2.8]];
+const BG_PERC=[0,2.8,5.6,8.4,11.2,14.0];
 function buildBGBuffer(){
   if(!AC)return null;
   const sr=AC.sampleRate;
@@ -1443,32 +1450,46 @@ function buildBGBuffer(){
   const len=Math.ceil(sr*totalDur);
   const buf=AC.createBuffer(1,len,sr);
   const out=buf.getChannelData(0);
-  const tri=ph=>(2/Math.PI)*Math.asin(Math.sin(ph));
   let pos=0;
-  // 主旋律：三角波，号角般的史诗感
+  // 主旋律：正弦波号角，渐入渐出的舒展长音，营造悠远的冒险氛围
   BG_NOTES.forEach(([freq,dur])=>{
     const nl=Math.ceil(sr*dur);
-    for(let i=0;i<nl&&pos+i<len;i++){const env=Math.min(1,i/(sr*0.01))*Math.max(0,1-i/(nl*0.85));out[pos+i]+=tri(2*Math.PI*freq*i/sr)*0.14*env;}
+    for(let i=0;i<nl&&pos+i<len;i++){
+      const env=Math.min(1,i/(sr*0.08))*Math.max(0,1-Math.max(0,i-nl*0.7)/(nl*0.3));
+      out[pos+i]+=Math.sin(2*Math.PI*freq*i/sr)*0.16*env;
+    }
     pos+=nl;
   });
-  // 低音：正弦波厚重根音，D小调行进感
+  // 低音：长音正弦波根音(弦乐感)，烘托宏大场景
   let bp=0;
   BG_BASS.forEach(([freq,dur])=>{
     const nl=Math.ceil(sr*dur);
-    for(let i=0;i<nl&&bp+i<len;i++){const env=Math.min(1,i/(sr*0.02))*Math.max(0,1-i/(nl*0.8));out[bp+i]+=Math.sin(2*Math.PI*freq*i/sr)*0.09*env;}
+    for(let i=0;i<nl&&bp+i<len;i++){
+      const env=Math.min(1,i/(sr*0.15))*Math.max(0,1-Math.max(0,i-nl*0.75)/(nl*0.25));
+      out[bp+i]+=Math.sin(2*Math.PI*freq*i/sr)*0.1*env;
+    }
     bp+=nl;
   });
-  // 打击：噪声鼓点，与低音同步，增强冒险行军感
+  // 打击：低频定音鼓式重音，标志每个乐句的起点
   BG_PERC.forEach(t=>{
     const start=Math.floor(sr*t);
-    const nl=Math.ceil(sr*0.12);
-    for(let i=0;i<nl&&start+i<len;i++){const env=Math.max(0,1-i/nl);out[start+i]+=(Math.random()*2-1)*0.1*env;}
+    const nl=Math.ceil(sr*0.35);
+    for(let i=0;i<nl&&start+i<len;i++){
+      const env=Math.exp(-i/(sr*0.08));
+      out[start+i]+=Math.sin(2*Math.PI*80*i/sr)*0.18*env;
+    }
   });
   return buf;
 }
 function startBGMusic(){
-  if(!AC||!musicOn)return;
+  if(!musicOn)return;
   stopBGMusic();
+  // 优先播放用户自定义音乐
+  if(_customAudio&&_customAudio.src){
+    try{_customAudio.currentTime=0;_customAudio.play().catch(()=>{});}catch(e){}
+    return;
+  }
+  if(!AC)return;
   if(!_bgBuf)_bgBuf=buildBGBuffer();
   if(!_bgBuf)return;
   const src=AC.createBufferSource();
@@ -1477,11 +1498,104 @@ function startBGMusic(){
   src.connect(g);g.connect(AC.destination);
   src.start(0);_bgSrc=src;
 }
-function stopBGMusic(){if(_bgSrc){try{_bgSrc.stop();}catch(e){}_bgSrc=null;}}
+function stopBGMusic(){
+  if(_bgSrc){try{_bgSrc.stop();}catch(e){}_bgSrc=null;}
+  if(_customAudio){try{_customAudio.pause();}catch(e){}}
+}
+
+// ══════ 自定义背景音乐（IndexedDB持久化，不影响dg_stars等localStorage数据）══════
+const MUSIC_DB='dg_music_db',MUSIC_STORE='music',MUSIC_KEY='custom';
+function openMusicDB(){
+  return new Promise((resolve,reject)=>{
+    if(!window.indexedDB)return reject(new Error('no indexedDB'));
+    const req=indexedDB.open(MUSIC_DB,1);
+    req.onupgradeneeded=()=>{req.result.createObjectStore(MUSIC_STORE);};
+    req.onsuccess=()=>resolve(req.result);
+    req.onerror=()=>reject(req.error);
+  });
+}
+async function saveCustomMusicBlob(blob){
+  try{
+    const db=await openMusicDB();
+    return new Promise(resolve=>{
+      const tx=db.transaction(MUSIC_STORE,'readwrite');
+      tx.objectStore(MUSIC_STORE).put(blob,MUSIC_KEY);
+      tx.oncomplete=()=>resolve(true);
+      tx.onerror=()=>resolve(false);
+    });
+  }catch(e){return false;}
+}
+async function loadCustomMusicBlob(){
+  try{
+    const db=await openMusicDB();
+    return new Promise(resolve=>{
+      const tx=db.transaction(MUSIC_STORE,'readonly');
+      const req=tx.objectStore(MUSIC_STORE).get(MUSIC_KEY);
+      req.onsuccess=()=>resolve(req.result||null);
+      req.onerror=()=>resolve(null);
+    });
+  }catch(e){return null;}
+}
+async function clearCustomMusicBlob(){
+  try{
+    const db=await openMusicDB();
+    return new Promise(resolve=>{
+      const tx=db.transaction(MUSIC_STORE,'readwrite');
+      tx.objectStore(MUSIC_STORE).delete(MUSIC_KEY);
+      tx.oncomplete=()=>resolve(true);
+      tx.onerror=()=>resolve(false);
+    });
+  }catch(e){return false;}
+}
+let _customAudio=null,_customMusicURL=null;
+function setupCustomAudioEl(blob){
+  if(_customMusicURL){URL.revokeObjectURL(_customMusicURL);_customMusicURL=null;}
+  _customMusicURL=URL.createObjectURL(blob);
+  if(!_customAudio){_customAudio=new Audio();_customAudio.loop=true;_customAudio.volume=0.5;}
+  _customAudio.src=_customMusicURL;
+}
+function updateCustomMusicUI(has,name){
+  const status=document.getElementById('custom-music-status');
+  const resetBtn=document.getElementById('reset-music-btn');
+  if(status)status.textContent=has?('🎵 当前使用自定义音乐'+(name?'：'+name:'')):'';
+  if(resetBtn)resetBtn.style.display=has?'inline-block':'none';
+}
+function pickCustomMusic(){
+  const inp=document.getElementById('customMusicInput');
+  if(inp)inp.click();
+}
+async function onCustomMusicSelected(ev){
+  const file=ev.target.files&&ev.target.files[0];
+  if(!file)return;
+  if(file.size>20*1024*1024){
+    alert('文件太大，请选择20MB以内的音频文件');
+    ev.target.value='';return;
+  }
+  setupCustomAudioEl(file);
+  await saveCustomMusicBlob(file);
+  updateCustomMusicUI(true,file.name);
+  ev.target.value='';
+  if(musicOn)startBGMusic();
+}
+async function resetCustomMusic(){
+  if(_customAudio){try{_customAudio.pause();}catch(e){}_customAudio.src='';}
+  if(_customMusicURL){URL.revokeObjectURL(_customMusicURL);_customMusicURL=null;}
+  _customAudio=null;
+  await clearCustomMusicBlob();
+  updateCustomMusicUI(false);
+  if(musicOn)startBGMusic();
+}
+// 启动时恢复已保存的自定义音乐（若有）
+(async()=>{
+  try{
+    const blob=await loadCustomMusicBlob();
+    if(blob){setupCustomAudioEl(blob);updateCustomMusicUI(true);}
+  }catch(e){}
+})();
 
 function toggleMusic(){
-  if(!AC){try{AC=new(window.AudioContext||window.webkitAudioContext)();}catch(e){return;}}
-  if(AC.state==='suspended')AC.resume();
+  if(!AC){try{AC=new(window.AudioContext||window.webkitAudioContext)();}catch(e){}}
+  if(AC&&AC.state==='suspended')AC.resume();
   musicOn=!musicOn;
   const btn=document.getElementById('music-btn');
   const hbtn=document.getElementById('hud-music-btn');
